@@ -25,142 +25,164 @@
         var(--bg);
       color:var(--text);
     }
-    .app{ max-width:520px; margin:0 auto; padding:18px 14px 22px; }
-
-    .top{ display:flex; gap:10px; align-items:flex-start; justify-content:space-between; margin-bottom:10px; }
-    .title{ font-size:20px; font-weight:800; letter-spacing:0.2px; }
-    .metaLine{ margin-top:4px; font-size:12px; color:var(--muted); line-height:1.25; }
+    .app{
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 18px 14px 22px;
+    }
+    .top{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 10px;
+    }
+    .titleWrap{display:flex; flex-direction:column; gap:4px}
+    .title{
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      line-height: 1.1;
+    }
+    .slogan{
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      opacity: 0.95;
+    }
 
     .iconBtn{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,0.04);
-      color:var(--text);
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      font-weight:900;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
       cursor:pointer;
-      user-select:none;
       display:flex;
       align-items:center;
       justify-content:center;
+      user-select:none;
     }
-    .iconBtn:active{ transform:scale(0.99); }
+    .iconBtn:active{transform: scale(0.99)}
+    .iconBtn svg{width:20px; height:20px; opacity:0.95}
 
-    .monthRow{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin:10px 0 10px; }
-
+    .monthRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      margin: 10px 0 10px;
+    }
     .btn{
       border:1px solid var(--line);
-      background:rgba(255,255,255,0.04);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
       cursor:pointer;
       user-select:none;
     }
-    .btn:active{ transform:scale(0.99); }
-
+    .btn:active{transform: scale(0.99)}
     .btnPurple{
       border:1px solid rgba(181,140,232,0.45);
-      background:rgba(181,140,232,0.18);
+      background: rgba(181,140,232,0.18);
     }
     .dangerBtn{
       border:1px solid rgba(255,92,108,0.45);
-      background:rgba(255,92,108,0.16);
+      background: rgba(255,92,108,0.16);
     }
     .okBtn{
       border:1px solid rgba(43,213,118,0.45);
-      background:rgba(43,213,118,0.14);
+      background: rgba(43,213,118,0.14);
     }
 
-    select,input,textarea{
+    select, input, textarea{
       width:100%;
       border:1px solid var(--line);
-      background:rgba(255,255,255,0.04);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
       outline:none;
     }
 
     .stats{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap:10px;
-      margin-bottom:10px;
+      margin-bottom: 10px;
     }
     .stat{
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:10px 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px 12px;
     }
-    .stat .k{ font-size:12px; color:var(--muted); }
-    .stat .v{ font-size:16px; font-weight:900; margin-top:4px; }
+    .stat .k{font-size:12px; color: var(--muted)}
+    .stat .v{font-size:16px; font-weight:900; margin-top:4px}
 
     .seg{
       display:flex;
       gap:8px;
-      background:rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.04);
       border:1px solid var(--line);
-      border-radius:14px;
-      padding:6px;
-      margin:12px 0 12px;
+      border-radius: 14px;
+      padding: 6px;
+      margin: 12px 0 12px;
     }
     .seg button{
       flex:1;
       padding:10px 10px;
-      border-radius:12px;
+      border-radius: 12px;
       border:0;
-      background:transparent;
-      color:var(--muted);
-      font-weight:900;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 900;
       cursor:pointer;
     }
     .seg button.active{
-      background:rgba(181,140,232,0.22);
-      color:var(--text);
-      border:1px solid rgba(181,140,232,0.35);
+      background: rgba(181,140,232,0.22);
+      color: var(--text);
+      border: 1px solid rgba(181,140,232,0.35);
     }
 
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:12px;
-      margin-bottom:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      margin-bottom: 10px;
     }
-    .row{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
     .pill{
-      font-size:12px;
-      font-weight:900;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(181,140,232,0.16);
-      border:1px solid rgba(181,140,232,0.35);
-      color:var(--text);
+      font-size: 12px;
+      font-weight: 900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(181,140,232,0.16);
+      border: 1px solid rgba(181,140,232,0.35);
+      color: var(--text);
       white-space:nowrap;
     }
-    .pillGrey{
-      background:rgba(255,255,255,0.06);
-      border:1px solid var(--line);
-      color:var(--muted);
-    }
-    .muted{ color:var(--muted); }
-    .big{ font-size:16px; font-weight:900; }
-    .small{ font-size:12px; }
-
+    .muted{color: var(--muted)}
+    .big{font-size: 16px; font-weight: 950}
+    .small{font-size: 12px}
     .dueSoon{
-      border-color:rgba(181,140,232,0.55);
-      background:linear-gradient(180deg, rgba(181,140,232,0.18), rgba(255,255,255,0.03));
+      border-color: rgba(181,140,232,0.55);
+      background: linear-gradient(180deg, rgba(181,140,232,0.18), rgba(255,255,255,0.03));
     }
     .overdue{
-      border-color:rgba(255,92,108,0.55);
-      background:linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
+      border-color: rgba(255,92,108,0.55);
+      background: linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
     }
-    .paidFade{ opacity:0.78; }
-
+    .paidFade{opacity:0.72}
     .toggle{
       display:flex;
       gap:10px;
@@ -168,69 +190,136 @@
       justify-content:flex-end;
       white-space:nowrap;
     }
-    .checkbox{ width:22px; height:22px; accent-color:var(--purple); }
-
-    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .hr{ height:1px; background:var(--line); margin:10px 0; }
-
-    .catTotals{ margin-bottom:8px; display:grid; gap:8px; }
-    .catRow{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:10px 12px; border-radius:14px; border:1px solid var(--line);
-      background:rgba(255,255,255,0.04);
+    .checkbox{
+      width:22px; height:22px;
+      accent-color: var(--purple);
     }
-    .catName{ font-weight:900; }
-    .catAmt{ font-weight:900; }
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .hr{
+      height:1px;
+      background: var(--line);
+      margin: 10px 0;
+    }
 
-    .footerNote{ margin-top:14px; font-size:12px; color:var(--muted); line-height:1.35; }
+    /* Settings page */
+    .settingsHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin: 4px 0 12px;
+    }
+    .settingsTitle{
+      font-size: 18px;
+      font-weight: 950;
+    }
+    .footerNote{
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
   </style>
 </head>
+
 <body>
   <div class="app">
     <div class="top">
-      <div>
+      <div class="titleWrap">
         <div class="title">Bills Tracker</div>
-        <div class="metaLine" id="metaLine">Loading…</div>
+        <div class="slogan">Because forgetting costs money</div>
       </div>
-      <button class="iconBtn" id="btnSettings" title="Settings" aria-label="Settings">⚙︎</button>
+
+      <button class="iconBtn" id="btnSettings" aria-label="Open settings">
+        <!-- gear icon -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 13.5a7.9 7.9 0 0 0 0-3l1.5-1.2-2-3.4-1.8.7a8.1 8.1 0 0 0-2.6-1.5L14.2 3h-4l-.3 2.1a8.1 8.1 0 0 0-2.6 1.5l-1.8-.7-2 3.4 1.5 1.2a7.9 7.9 0 0 0 0 3L3.5 14.7l2 3.4 1.8-.7a8.1 8.1 0 0 0 2.6 1.5L10.2 21h4l.3-2.1a8.1 8.1 0 0 0 2.6-1.5l1.8.7 2-3.4-1.5-1.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
 
-    <div class="monthRow">
-      <button class="btn" id="prevMonth">◀︎</button>
-      <select id="monthSelect" aria-label="Month selector"></select>
-      <button class="btn" id="nextMonth">▶︎</button>
+    <!-- MAIN APP (Tracker/Bills/History) -->
+    <div id="pageMain">
+      <div class="monthRow">
+        <button class="btn" id="prevMonth">◀︎</button>
+        <select id="monthSelect" aria-label="Month selector"></select>
+        <button class="btn" id="nextMonth">▶︎</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">Total due</div><div class="v" id="statDue">$0.00</div></div>
+        <div class="stat"><div class="k">Paid</div><div class="v" id="statPaid">$0.00</div></div>
+        <div class="stat"><div class="k">Unpaid</div><div class="v" id="statUnpaid">$0.00</div></div>
+      </div>
+
+      <div class="seg">
+        <button id="tabTracker" class="active">Tracker</button>
+        <button id="tabBills">Bills</button>
+        <button id="tabHistory">History</button>
+      </div>
+
+      <div id="viewTracker"></div>
+      <div id="viewBills" style="display:none;"></div>
+      <div id="viewHistory" style="display:none;"></div>
+
+      <div class="footerNote">
+        Data stays in this browser. Use Settings to export calendar reminders or run backups.
+      </div>
     </div>
 
-    <div class="stats">
-      <div class="stat"><div class="k">Total due</div><div class="v" id="statDue">$0.00</div></div>
-      <div class="stat"><div class="k">Paid</div><div class="v" id="statPaid">$0.00</div></div>
-      <div class="stat"><div class="k">Unpaid</div><div class="v" id="statUnpaid">$0.00</div></div>
-    </div>
+    <!-- SETTINGS PAGE -->
+    <div id="pageSettings" style="display:none;">
+      <div class="settingsHeader">
+        <div class="settingsTitle">Settings</div>
+        <button class="btn" id="btnCloseSettings">Done</button>
+      </div>
 
-    <div id="catTotals" class="catTotals"></div>
+      <div class="card">
+        <div class="big">Tools</div>
+        <div class="small muted" style="margin-top:6px;">Exports and backups for this build.</div>
+        <div class="hr"></div>
+        <div style="display:grid; gap:10px;">
+          <button class="btn btnPurple" id="btnCalendarExport">Export Calendar reminders</button>
+          <button class="btn" id="btnBackup">Backup and Import</button>
+        </div>
+        <div class="small muted" style="margin-top:10px;">
+          Calendar downloads an .ics file. Backup exports and imports a JSON file.
+        </div>
+      </div>
 
-    <div class="seg">
-      <button id="tabTracker" class="active">Tracker</button>
-      <button id="tabBills">Bills</button>
-      <button id="tabHistory">History</button>
-      <button id="tabSettings">Settings</button>
-    </div>
+      <div class="card">
+        <div class="big">About</div>
+        <div class="hr"></div>
+        <div class="small">
+          <div>Version: <span id="aboutVersion"></span></div>
+          <div>Release date: <span id="aboutRelease"></span></div>
+          <div>Developer: <span id="aboutDev"></span></div>
+          <div style="margin-top:8px;" class="muted">Storage key: <span id="aboutStorage"></span></div>
+        </div>
+      </div>
 
-    <div id="viewTracker"></div>
-    <div id="viewBills" style="display:none;"></div>
-    <div id="viewHistory" style="display:none;"></div>
-    <div id="viewSettings" style="display:none;"></div>
-
-    <div class="footerNote">
-      Model A local only. Data stays in this browser. Use Settings for Calendar and Backups.
+      <div class="footerNote">
+        Tip: If you want a completely fresh start on this device, use Backup and choose option 3 to reset.
+      </div>
     </div>
   </div>
 
 <script>
 (function(){
-  const VERSION = "1.2";
-  const RELEASE_DATE = "2025-12-16";
-  const DEVELOPER = "Manny Ch.";
+  // ====== BUILD META ======
+  const BUILD = {
+    version: "1.2",
+    releaseDate: "2025-12-16",
+    developer: "Manny Ch."
+  };
+
+  // IMPORTANT:
+  // New storage key so this blank build does NOT load your prior bills from older versions.
   const STORAGE_KEY = "billTrackerBlankV1_2";
 
   const today = () => {
@@ -239,15 +328,13 @@
     return d;
   };
 
-  const fmtMoney = (n) => new Intl.NumberFormat(undefined, {style:"currency", currency:"USD"}).format(Number(n || 0));
+  const fmtMoney = (n) => {
+    return new Intl.NumberFormat(undefined, {style:"currency", currency:"USD"})
+      .format(Number(n || 0));
+  };
+
   const pad2 = (n) => String(n).padStart(2,"0");
   const toISODate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
-  const fromISODate = (s) => {
-    const [y,m,d] = String(s).split("-").map(Number);
-    const dt = new Date(y, m-1, d);
-    dt.setHours(0,0,0,0);
-    return dt;
-  };
 
   const monthKeyFromDate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}`;
   const monthLabelFromKey = (key) => {
@@ -269,12 +356,6 @@
     return dt;
   };
 
-  const monthsBetweenKeys = (fromKey, toKey) => {
-    const [fy,fm] = fromKey.split("-").map(Number);
-    const [ty,tm] = toKey.split("-").map(Number);
-    return (ty*12 + (tm-1)) - (fy*12 + (fm-1));
-  };
-
   const computeDueDate = (monthKey, dueDay) => {
     const base = firstOfMonthFromKey(monthKey);
     const y = base.getFullYear();
@@ -286,15 +367,18 @@
     return dt;
   };
 
-  const daysBetween = (a,b) => Math.floor((b.getTime() - a.getTime())/(24*60*60*1000));
+  const daysBetween = (a,b) => {
+    const ms = 24*60*60*1000;
+    return Math.floor((b.getTime() - a.getTime())/ms);
+  };
+
   const uid = () => Math.random().toString(36).slice(2,10) + Math.random().toString(36).slice(2,10);
 
   function defaultData(){
     return {
       bills: [],
-      payments: {}, // month|bill -> { paidAtISO, dueISO, amountDue, amountPaid }
-      notes: {},    // month|bill -> string
-      skips: {}     // month|bill -> true
+      payments: {}, // key: `${monthKey}|${billId}` -> { paidAtISO, dueISO, amount }
+      notes: {}     // key: `${monthKey}|${billId}` -> "text"
     };
   }
 
@@ -306,11 +390,9 @@
       if(!data || !Array.isArray(data.bills)) return defaultData();
       data.payments ||= {};
       data.notes ||= {};
-      data.skips ||= {};
       data.bills.forEach(b => {
         if (b.calendarExported === undefined) b.calendarExported = false;
-        if (!b.frequency) b.frequency = "monthly";
-        if (!b.startMonthKey) b.startMonthKey = monthKeyFromDate(today());
+        if (b.active === undefined) b.active = true;
       });
       return data;
     }catch(e){
@@ -318,46 +400,52 @@
     }
   }
 
-  const state = {
-    data: load(),
-    monthKey: monthKeyFromDate(today()),
-    activeTab: "tracker",
-  };
-
   function save(){
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
   }
 
+  const state = {
+    data: load(),
+    monthKey: monthKeyFromDate(today()),
+    activeTab: "tracker"
+  };
+
   const el = {
-    metaLine: document.getElementById("metaLine"),
+    pageMain: document.getElementById("pageMain"),
+    pageSettings: document.getElementById("pageSettings"),
+
     btnSettings: document.getElementById("btnSettings"),
+    btnCloseSettings: document.getElementById("btnCloseSettings"),
+    btnCalendarExport: document.getElementById("btnCalendarExport"),
+    btnBackup: document.getElementById("btnBackup"),
+
     monthSelect: document.getElementById("monthSelect"),
     prevMonth: document.getElementById("prevMonth"),
     nextMonth: document.getElementById("nextMonth"),
+
     statDue: document.getElementById("statDue"),
     statPaid: document.getElementById("statPaid"),
     statUnpaid: document.getElementById("statUnpaid"),
-    catTotals: document.getElementById("catTotals"),
+
     tabTracker: document.getElementById("tabTracker"),
     tabBills: document.getElementById("tabBills"),
     tabHistory: document.getElementById("tabHistory"),
-    tabSettings: document.getElementById("tabSettings"),
+
     viewTracker: document.getElementById("viewTracker"),
     viewBills: document.getElementById("viewBills"),
     viewHistory: document.getElementById("viewHistory"),
-    viewSettings: document.getElementById("viewSettings"),
+
+    aboutVersion: document.getElementById("aboutVersion"),
+    aboutRelease: document.getElementById("aboutRelease"),
+    aboutDev: document.getElementById("aboutDev"),
+    aboutStorage: document.getElementById("aboutStorage"),
   };
 
-  function escapeHtml(s){
-    return String(s ?? "").replace(/[&<>"']/g, m => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[m]));
-  }
-  function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
-
-  function renderMeta(){
-    el.metaLine.textContent = `Viewing ${monthLabelFromKey(state.monthKey)} • v${VERSION} • Released ${RELEASE_DATE} • Dev ${DEVELOPER}`;
-  }
+  // About values
+  el.aboutVersion.textContent = BUILD.version;
+  el.aboutRelease.textContent = BUILD.releaseDate;
+  el.aboutDev.textContent = BUILD.developer;
+  el.aboutStorage.textContent = STORAGE_KEY;
 
   function monthOptions(){
     const now = today();
@@ -378,7 +466,9 @@
     el.monthSelect.value = state.monthKey;
   }
 
-  function getInstanceKey(monthKey, billId){ return `${monthKey}|${billId}`; }
+  function getInstanceKey(monthKey, billId){
+    return `${monthKey}|${billId}`;
+  }
 
   function isPaid(monthKey, billId){
     return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]);
@@ -388,147 +478,13 @@
     return state.data.payments[getInstanceKey(monthKey, billId)] || null;
   }
 
-  function isSkipped(monthKey, billId){
-    return Boolean(state.data.skips[getInstanceKey(monthKey, billId)]);
-  }
-
-  function setSkipped(monthKey, billId, val){
-    const k = getInstanceKey(monthKey, billId);
-    if(val) state.data.skips[k] = true;
-    else delete state.data.skips[k];
-    save();
-  }
-
-  function getNote(monthKey, billId){
-    return state.data.notes[getInstanceKey(monthKey, billId)] || "";
-  }
-
-  function setNote(monthKey, billId, text){
-    const k = getInstanceKey(monthKey, billId);
-    if(text && text.trim()) state.data.notes[k] = text.trim();
-    else delete state.data.notes[k];
-    save();
-  }
-
-  function activeBills(){
-    return state.data.bills.filter(b => b.active !== false);
-  }
-
-  function freqIntervalMonths(freq){
-    if(freq === "quarterly") return 3;
-    if(freq === "yearly") return 12;
-    return 1; // monthly
-  }
-
-  function billAppliesThisMonth(bill, monthKey){
-    const startKey = bill.startMonthKey || monthKeyFromDate(today());
-    const diff = monthsBetweenKeys(startKey, monthKey);
-    if(diff < 0) return false;
-    const interval = freqIntervalMonths(bill.frequency || "monthly");
-    return diff % interval === 0;
-  }
-
-  function buildTrackerRows(){
-    const bills = activeBills().filter(b => billAppliesThisMonth(b, state.monthKey));
-    const rows = bills.map(b => {
-      const dueDate = computeDueDate(state.monthKey, b.dueDay);
-      const dueISO = toISODate(dueDate);
-      const paid = isPaid(state.monthKey, b.id);
-      const info = paid ? paidInfo(state.monthKey, b.id) : null;
-      const note = getNote(state.monthKey, b.id);
-      const skipped = isSkipped(state.monthKey, b.id);
-
-      return {
-        bill: b,
-        dueDate,
-        dueISO,
-        dueAmount: Number(b.amount || 0),
-        paid,
-        paidAtISO: info ? info.paidAtISO : null,
-        amountPaid: info ? Number(info.amountPaid ?? info.amountDue ?? b.amount ?? 0) : null,
-        skipped,
-        note
-      };
-    });
-
-    rows.sort((a,b) => a.dueDate - b.dueDate || a.bill.provider.localeCompare(b.bill.provider));
-    return rows;
-  }
-
-  function updateStats(rows){
-    const dueRows = rows.filter(r => !r.skipped);
-    const totalDue = dueRows.reduce((s,r)=> s + Number(r.dueAmount||0), 0);
-    const totalPaid = dueRows.filter(r=>r.paid).reduce((s,r)=> s + Number(r.amountPaid ?? r.dueAmount ?? 0), 0);
-    const totalUnpaid = dueRows.filter(r=>!r.paid).reduce((s,r)=> s + Number(r.dueAmount||0), 0);
-
-    el.statDue.textContent = fmtMoney(totalDue);
-    el.statPaid.textContent = fmtMoney(totalPaid);
-    el.statUnpaid.textContent = fmtMoney(totalUnpaid);
-  }
-
-  function renderCategoryTotals(rows){
-    const dueRows = rows.filter(r => !r.skipped);
-    const byCat = new Map();
-    dueRows.forEach(r => {
-      const cat = (r.bill.category || "Other").trim() || "Other";
-      byCat.set(cat, (byCat.get(cat) || 0) + Number(r.dueAmount || 0));
-    });
-
-    const items = Array.from(byCat.entries())
-      .sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-
-    if(items.length === 0){
-      el.catTotals.innerHTML = "";
-      return;
-    }
-
-    el.catTotals.innerHTML = items.map(([cat, amt]) => `
-      <div class="catRow">
-        <div class="catName">${escapeHtml(cat)}</div>
-        <div class="catAmt">${fmtMoney(amt)}</div>
-      </div>
-    `).join("");
-  }
-
-  function paidTimingLabel(paidAtISO, dueDate){
-    if(!paidAtISO) return "";
-    const paidDate = fromISODate(paidAtISO);
-    const diff = daysBetween(paidDate, dueDate); // due - paid
-    if(diff > 0) return `Paid ${diff} day${diff===1?"":"s"} early`;
-    if(diff < 0){
-      const late = Math.abs(diff);
-      return `Paid ${late} day${late===1?"":"s"} late`;
-    }
-    return "Paid on time";
-  }
-
-  function promptAmountPaid(defaultAmt){
-    const raw = prompt("Amount paid (leave blank to use the bill amount)", String(Number(defaultAmt || 0).toFixed(2)));
-    if(raw === null) return null; // cancelled
-    const trimmed = raw.trim();
-    if(!trimmed) return Number(defaultAmt || 0);
-    const num = Number(trimmed);
-    if(!Number.isFinite(num) || num < 0){
-      alert("Please enter a valid amount, 0 or more.");
-      return null;
-    }
-    return num;
-  }
-
   function setPaid(monthKey, bill){
     const k = getInstanceKey(monthKey, bill.id);
     const due = computeDueDate(monthKey, bill.dueDay);
-    const amountPaid = promptAmountPaid(Number(bill.amount || 0));
-    if(amountPaid === null) return; // cancelled or invalid
-
-    // If it was skipped, unskip it since you paid it
-    setSkipped(monthKey, bill.id, false);
-
     state.data.payments[k] = {
       paidAtISO: toISODate(today()),
       dueISO: toISODate(due),
-      amountDue: Number(bill.amount || 0),
-      amountPaid: Number(amountPaid)
+      amount: Number(bill.amount || 0)
     };
     save();
   }
@@ -539,58 +495,78 @@
     save();
   }
 
+  function getNote(monthKey, billId){
+    return state.data.notes[getInstanceKey(monthKey, billId)] || "";
+  }
+
+  function setNote(monthKey, billId, text){
+    const k = getInstanceKey(monthKey, billId);
+    if(text && text.trim()){
+      state.data.notes[k] = text.trim();
+    }else{
+      delete state.data.notes[k];
+    }
+    save();
+  }
+
+  function activeBills(){
+    return state.data.bills.filter(b => b.active !== false);
+  }
+
+  function buildTrackerRows(){
+    const bills = activeBills();
+    const rows = bills.map(b => {
+      const dueDate = computeDueDate(state.monthKey, b.dueDay);
+      const paid = isPaid(state.monthKey, b.id);
+      const info = paid ? paidInfo(state.monthKey, b.id) : null;
+      const note = getNote(state.monthKey, b.id);
+      return {
+        bill: b,
+        dueDate,
+        dueISO: toISODate(dueDate),
+        paid,
+        paidAtISO: info ? info.paidAtISO : null,
+        note
+      };
+    });
+    rows.sort((a,b) => a.dueDate - b.dueDate || a.bill.provider.localeCompare(b.bill.provider));
+    return rows;
+  }
+
+  function updateStats(rows){
+    const totalDue = rows.reduce((s,r)=> s + Number(r.bill.amount||0), 0);
+    const totalPaid = rows.filter(r=>r.paid).reduce((s,r)=> s + Number(r.bill.amount||0), 0);
+    const totalUnpaid = totalDue - totalPaid;
+    el.statDue.textContent = fmtMoney(totalDue);
+    el.statPaid.textContent = fmtMoney(totalPaid);
+    el.statUnpaid.textContent = fmtMoney(totalUnpaid);
+  }
+
   function renderTracker(){
     const rows = buildTrackerRows();
     updateStats(rows);
-    renderCategoryTotals(rows);
-
-    if(rows.length === 0){
-      el.viewTracker.innerHTML = `
-        <div class="card">
-          <div class="big">No bills due this month</div>
-          <div class="small muted" style="margin-top:6px;">
-            If you have bills, go to Bills and make sure they are Active, and their Start Month and Frequency include this month.
-          </div>
-          <div class="row" style="margin-top:12px;">
-            <button class="btn btnPurple" id="goBills">Go to Bills</button>
-          </div>
-        </div>
-      `;
-      const btn = document.getElementById("goBills");
-      if(btn) btn.addEventListener("click", () => { setTab("bills"); renderAll(); });
-      return;
-    }
 
     const now = today();
-
-    el.viewTracker.innerHTML = rows.map(r => {
+    el.viewTracker.innerHTML = rows.length === 0 ? `
+      <div class="card">
+        <div class="big">No bills yet</div>
+        <div class="small muted" style="margin-top:6px;">
+          Go to the Bills tab to add your first recurring bill.
+        </div>
+      </div>
+    ` : rows.map(r => {
       const dueIn = daysBetween(now, r.dueDate);
-      const overdue = !r.paid && !r.skipped && r.dueDate < now;
-      const dueSoon = !r.paid && !r.skipped && r.dueDate >= now && dueIn <= 7;
-
+      const overdue = !r.paid && r.dueDate < now;
+      const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
       const cls = [
         "card",
         dueSoon ? "dueSoon" : "",
         overdue ? "overdue" : "",
-        (r.paid || r.skipped) ? "paidFade" : ""
+        r.paid ? "paidFade" : ""
       ].filter(Boolean).join(" ");
 
-      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : (r.skipped ? "Skipped" : "Unpaid");
-      const timing = r.paid ? paidTimingLabel(r.paidAtISO, r.dueDate) : "";
-      const timingLine = timing ? `<div class="small muted">${escapeHtml(timing)}</div>` : "";
-
+      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
       const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
-
-      const freqLabel = (r.bill.frequency || "monthly").toUpperCase();
-
-      const rightAmt = r.paid
-        ? `<div class="big">${fmtMoney(r.amountPaid ?? r.dueAmount)}</div>
-           <div class="small muted">Due ${fmtMoney(r.dueAmount)}</div>`
-        : `<div class="big">${fmtMoney(r.dueAmount)}</div>`;
-
-      const skipBtn = r.paid
-        ? ""
-        : `<button class="btn ${r.skipped ? "okBtn" : ""}" data-skip="${r.bill.id}">${r.skipped ? "Unskip" : "Skip this month"}</button>`;
 
       return `
         <div class="${cls}">
@@ -598,26 +574,19 @@
             <div>
               <div class="small muted">Due ${r.dueISO}</div>
               <div class="big">${escapeHtml(r.bill.provider)}</div>
-              <div class="small muted">${escapeHtml(r.bill.category)} • ${freqLabel}</div>
             </div>
             <div class="toggle">
               <div style="text-align:right;">
-                ${rightAmt}
+                <div class="big">${fmtMoney(r.bill.amount)}</div>
                 <div class="small muted">${paidLabel}</div>
-                ${timingLine}
               </div>
-              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} ${r.skipped ? "disabled" : ""} data-billid="${r.bill.id}" />
+              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} data-billid="${r.bill.id}" />
             </div>
           </div>
-
           <div class="row" style="margin-top:10px;">
             <div class="pill">${escapeHtml(r.bill.category)}</div>
-            <div style="display:flex; gap:8px;">
-              ${skipBtn}
-              <button class="btn" data-note="${r.bill.id}">Note</button>
-            </div>
+            <button class="btn" data-note="${r.bill.id}">Note</button>
           </div>
-
           ${noteLine}
         </div>
       `;
@@ -628,7 +597,6 @@
         const billId = e.target.getAttribute("data-billid");
         const bill = state.data.bills.find(b => b.id === billId);
         if(!bill) return;
-
         if(e.target.checked){
           setPaid(state.monthKey, bill);
         }else{
@@ -645,15 +613,6 @@
         const text = prompt("Note for this month and this bill", current);
         if(text === null) return;
         setNote(state.monthKey, billId, text);
-        renderAll();
-      });
-    });
-
-    el.viewTracker.querySelectorAll('button[data-skip]').forEach(btn => {
-      btn.addEventListener("click", () => {
-        const billId = btn.getAttribute("data-skip");
-        const currently = isSkipped(state.monthKey, billId);
-        setSkipped(state.monthKey, billId, !currently);
         renderAll();
       });
     });
@@ -674,28 +633,30 @@
       </div>
 
       ${bills.length === 0 ? `
-        <div class="card"><div class="muted">No bills added yet.</div></div>
-      ` : ""}
-
-      ${bills.map(b => `
+        <div class="card">
+          <div class="muted">No bills yet. Tap Add to create one.</div>
+        </div>
+      ` : bills.map(b => `
         <div class="card">
           <div class="row">
             <div>
               <div class="big">${escapeHtml(b.provider)}</div>
-              <div class="small muted">
-                ${escapeHtml(b.category)} • ${String(b.frequency||"monthly")} • Start ${escapeHtml(b.startMonthKey||"")}
-                <br/>
-                Due day ${Number(b.dueDay)} • ${fmtMoney(b.amount)}
-              </div>
+              <div class="small muted">${escapeHtml(b.category)} · Due day ${Number(b.dueDay)} · ${fmtMoney(b.amount)}</div>
             </div>
             <div class="toggle">
               <label class="small muted">Active</label>
               <input class="checkbox" type="checkbox" ${b.active !== false ? "checked" : ""} data-active="${b.id}" />
             </div>
           </div>
+
           <div class="row" style="margin-top:10px;">
             <button class="btn" data-edit="${b.id}">Edit</button>
+            <button class="btn" data-reexp="${b.id}">Re export</button>
             <button class="btn dangerBtn" data-del="${b.id}">Delete</button>
+          </div>
+
+          <div class="small muted" style="margin-top:8px;">
+            Calendar exported: ${b.calendarExported ? "Yes" : "No"}
           </div>
         </div>
       `).join("")}
@@ -718,6 +679,18 @@
       btn.addEventListener("click", () => editBill(btn.getAttribute("data-edit")));
     });
 
+    el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-reexp");
+        const bill = state.data.bills.find(x => x.id === id);
+        if(!bill) return;
+        bill.calendarExported = false;
+        save();
+        renderAll();
+        alert("This bill will be included in the next Calendar export.");
+      });
+    });
+
     el.viewBills.querySelectorAll('button[data-del]').forEach(btn => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-del");
@@ -725,9 +698,12 @@
         if(!bill) return;
         if(confirm(`Delete bill: ${bill.provider}?`)){
           state.data.bills = state.data.bills.filter(x => x.id !== id);
-          for(const k of Object.keys(state.data.payments)) if(k.endsWith("|"+id)) delete state.data.payments[k];
-          for(const k of Object.keys(state.data.notes)) if(k.endsWith("|"+id)) delete state.data.notes[k];
-          for(const k of Object.keys(state.data.skips)) if(k.endsWith("|"+id)) delete state.data.skips[k];
+          for(const k of Object.keys(state.data.payments)){
+            if(k.endsWith("|"+id)) delete state.data.payments[k];
+          }
+          for(const k of Object.keys(state.data.notes)){
+            if(k.endsWith("|"+id)) delete state.data.notes[k];
+          }
           save();
           renderAll();
         }
@@ -737,11 +713,11 @@
 
   function editBill(id){
     const isNew = !id;
-    const base = isNew
-      ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, frequency:"monthly", startMonthKey: state.monthKey}
+    const bill = isNew
+      ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, calendarExported:false}
       : JSON.parse(JSON.stringify(state.data.bills.find(b=>b.id===id)));
 
-    if(!base) return;
+    if(!bill) return;
 
     const formHtml = `
       <div class="card">
@@ -750,46 +726,29 @@
         <div style="display:grid; gap:10px;">
           <div>
             <div class="small muted" style="margin:0 0 6px;">Provider</div>
-            <input id="fProvider" value="${escapeAttr(base.provider)}" placeholder="Netflix" />
+            <input id="fProvider" value="${escapeAttr(bill.provider)}" placeholder="Netflix" />
           </div>
-
           <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Category</div>
-              <input id="fCategory" value="${escapeAttr(base.category)}" placeholder="Subscriptions" />
+              <input id="fCategory" value="${escapeAttr(bill.category)}" placeholder="Subscriptions" />
             </div>
             <div>
               <div class="small muted" style="margin:0 0 6px;">Due day</div>
-              <input id="fDueDay" type="number" min="1" max="31" value="${Number(base.dueDay)}" />
+              <input id="fDueDay" type="number" min="1" max="31" value="${Number(bill.dueDay)}" />
             </div>
           </div>
-
           <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Amount</div>
-              <input id="fAmount" type="number" step="0.01" value="${Number(base.amount)}" />
+              <input id="fAmount" type="number" step="0.01" value="${Number(bill.amount)}" />
             </div>
             <div>
               <div class="small muted" style="margin:0 0 6px;">Active</div>
               <select id="fActive">
-                <option value="true" ${base.active!==false ? "selected":""}>True</option>
-                <option value="false" ${base.active===false ? "selected":""}>False</option>
+                <option value="true" ${bill.active!==false ? "selected":""}>True</option>
+                <option value="false" ${bill.active===false ? "selected":""}>False</option>
               </select>
-            </div>
-          </div>
-
-          <div class="grid2">
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Frequency</div>
-              <select id="fFreq">
-                <option value="monthly" ${base.frequency==="monthly"?"selected":""}>Monthly</option>
-                <option value="quarterly" ${base.frequency==="quarterly"?"selected":""}>Quarterly</option>
-                <option value="yearly" ${base.frequency==="yearly"?"selected":""}>Yearly</option>
-              </select>
-            </div>
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Start month</div>
-              <select id="fStart"></select>
             </div>
           </div>
 
@@ -803,37 +762,27 @@
 
     el.viewBills.innerHTML = formHtml;
 
-    // Fill start month dropdown
-    const startSel = document.getElementById("fStart");
-    const keys = monthOptions();
-    startSel.innerHTML = keys.map(k => `<option value="${k}">${monthLabelFromKey(k)}</option>`).join("");
-    startSel.value = base.startMonthKey || state.monthKey;
-
     document.getElementById("cancelEdit").addEventListener("click", () => renderAll());
-
     document.getElementById("saveEdit").addEventListener("click", () => {
       const provider = document.getElementById("fProvider").value.trim();
       const category = document.getElementById("fCategory").value.trim();
       const dueDay = Number(document.getElementById("fDueDay").value);
       const amount = Number(document.getElementById("fAmount").value);
       const active = document.getElementById("fActive").value === "true";
-      const frequency = document.getElementById("fFreq").value;
-      const startMonthKey = document.getElementById("fStart").value;
 
       if(!provider){ alert("Provider is required."); return; }
       if(!category){ alert("Category is required."); return; }
       if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
       if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
-      if(!startMonthKey){ alert("Start month is required."); return; }
 
-      const newBill = { ...base, provider, category, dueDay, amount, active, frequency, startMonthKey };
+      const newBill = { ...bill, provider, category, dueDay, amount, active };
 
-      if(isNew) state.data.bills.push(newBill);
-      else{
+      if(isNew){
+        state.data.bills.push(newBill);
+      }else{
         const idx = state.data.bills.findIndex(b=>b.id===id);
         if(idx >= 0) state.data.bills[idx] = newBill;
       }
-
       save();
       renderAll();
     });
@@ -850,8 +799,7 @@
       items.push({
         provider: bill.provider,
         category: bill.category,
-        amountDue: Number(info.amountDue ?? bill.amount ?? 0),
-        amountPaid: Number(info.amountPaid ?? info.amountDue ?? bill.amount ?? 0),
+        amount: info.amount,
         paidAtISO: info.paidAtISO,
         dueISO: info.dueISO,
         billId
@@ -866,7 +814,9 @@
       </div>
 
       ${items.length === 0 ? `
-        <div class="card"><div class="muted">No payments logged for this month yet.</div></div>
+        <div class="card">
+          <div class="muted">No payments logged for this month yet.</div>
+        </div>
       ` : items.map(it => `
         <div class="card">
           <div class="row">
@@ -876,8 +826,7 @@
               <div class="small muted">For due date ${it.dueISO}</div>
             </div>
             <div style="text-align:right;">
-              <div class="big">${fmtMoney(it.amountPaid)}</div>
-              <div class="small muted">Due ${fmtMoney(it.amountDue)}</div>
+              <div class="big">${fmtMoney(it.amount)}</div>
               <div class="pill">${escapeHtml(it.category)}</div>
             </div>
           </div>
@@ -899,7 +848,37 @@
     });
   }
 
-  // Calendar and backup live inside Settings now
+  function setTab(tab){
+    state.activeTab = tab;
+    el.tabTracker.classList.toggle("active", tab === "tracker");
+    el.tabBills.classList.toggle("active", tab === "bills");
+    el.tabHistory.classList.toggle("active", tab === "history");
+
+    el.viewTracker.style.display = tab === "tracker" ? "" : "none";
+    el.viewBills.style.display = tab === "bills" ? "" : "none";
+    el.viewHistory.style.display = tab === "history" ? "" : "none";
+  }
+
+  function renderAll(){
+    renderMonthSelect();
+    if(state.activeTab === "tracker") renderTracker();
+    if(state.activeTab === "bills") renderBills();
+    if(state.activeTab === "history") renderHistory();
+
+    if(state.activeTab !== "tracker"){
+      const rows = buildTrackerRows();
+      updateStats(rows);
+    }
+  }
+
+  function escapeHtml(s){
+    return String(s ?? "").replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
+  }
+  function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
+
+  // ===== Settings Tools =====
   function downloadTextFile(filename, content, mime){
     const blob = new Blob([content], {type: mime});
     const a = document.createElement("a");
@@ -930,9 +909,9 @@
   }
 
   function exportBillsToCalendar(){
-    const bills = activeBills().filter(b => billAppliesThisMonth(b, state.monthKey));
+    const bills = activeBills().filter(b => !b.calendarExported);
     if(bills.length === 0){
-      alert("No active bills for this month to export.");
+      alert("No active bills to export.");
       return;
     }
 
@@ -950,13 +929,14 @@
 
     bills.forEach(b => {
       const due = computeDueDate(monthKeyFromDate(startMonth), b.dueDay);
+
       const dt = new Date(due.getFullYear(), due.getMonth(), due.getDate(), reminderHour, reminderMinute, 0);
       const dtStart = formatICSDateTimeLocal(dt);
       const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30 * 60000));
 
       const uidStr = `${b.id}@billstracker`;
       const summary = `${b.provider} due`;
-      const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}. Frequency: ${b.frequency || "monthly"}.`;
+      const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
 
       lines.push("BEGIN:VEVENT");
       lines.push(`UID:${icsEscape(uidStr)}`);
@@ -965,9 +945,6 @@
       lines.push(`DTEND:${dtEnd}`);
       lines.push(`SUMMARY:${icsEscape(summary)}`);
       lines.push(`DESCRIPTION:${icsEscape(desc)}`);
-
-      // Keep the RRULE simple: monthly reminders on that day.
-      // Frequency logic is still handled inside the app.
       lines.push(`RRULE:FREQ=MONTHLY;BYMONTHDAY=${Number(b.dueDay)}`);
 
       lines.push("BEGIN:VALARM");
@@ -982,6 +959,9 @@
     lines.push("END:VCALENDAR");
 
     downloadTextFile("bills-reminders.ics", lines.join("\r\n"), "text/calendar;charset=utf-8");
+    bills.forEach(b => b.calendarExported = true);
+    save();
+    renderAll();
     alert("Calendar file downloaded. Open it and add the events to your calendar.");
   }
 
@@ -998,10 +978,16 @@
     const c = choice.trim();
     if(c === "1"){
       const blob = new Blob([JSON.stringify(state.data, null, 2)], {type:"application/json"});
+      const a = document.createElement("a");
       const stamp = new Date();
       const name = `bills-backup-${stamp.getFullYear()}-${pad2(stamp.getMonth()+1)}-${pad2(stamp.getDate())}.json`;
-      downloadTextFile(name, JSON.stringify(state.data, null, 2), "application/json;charset=utf-8");
-      alert("Backup downloaded. Save it somewhere safe.");
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
+      alert("Backup downloaded. Save it somewhere safe, like Files or iCloud Drive.");
       return;
     }
 
@@ -1018,10 +1004,9 @@
           if(!obj || !Array.isArray(obj.bills)) throw new Error("Invalid file");
           obj.payments ||= {};
           obj.notes ||= {};
-          obj.skips ||= {};
           obj.bills.forEach(b => {
-            if (!b.frequency) b.frequency = "monthly";
-            if (!b.startMonthKey) b.startMonthKey = monthKeyFromDate(today());
+            if (b.calendarExported === undefined) b.calendarExported = false;
+            if (b.active === undefined) b.active = true;
           });
           state.data = obj;
           save();
@@ -1045,73 +1030,21 @@
     }
   }
 
-  function renderSettings(){
-    el.viewSettings.innerHTML = `
-      <div class="card">
-        <div class="big">Settings</div>
-        <div class="small muted" style="margin-top:6px;">
-          Tools and maintenance for this build.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="big">Tools</div>
-        <div class="hr"></div>
-        <div style="display:grid; gap:10px;">
-          <button class="btn btnPurple" id="btnCalExport">Export Calendar reminders</button>
-          <button class="btn" id="btnBackupRun">Backup and Import</button>
-        </div>
-        <div class="small muted" style="margin-top:10px;">
-          Calendar creates an .ics file. Backup exports and imports a JSON file.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="big">About</div>
-        <div class="hr"></div>
-        <div class="small muted">Version: ${VERSION}</div>
-        <div class="small muted">Release date: ${RELEASE_DATE}</div>
-        <div class="small muted">Developer: ${escapeHtml(DEVELOPER)}</div>
-        <div class="small muted" style="margin-top:8px;">
-          Storage key: ${escapeHtml(STORAGE_KEY)}
-        </div>
-      </div>
-    `;
-
-    document.getElementById("btnCalExport").addEventListener("click", exportBillsToCalendar);
-    document.getElementById("btnBackupRun").addEventListener("click", doBackup);
+  // ===== Navigation =====
+  function openSettings(){
+    el.pageMain.style.display = "none";
+    el.pageSettings.style.display = "";
+  }
+  function closeSettings(){
+    el.pageSettings.style.display = "none";
+    el.pageMain.style.display = "";
   }
 
-  function setTab(tab){
-    state.activeTab = tab;
+  el.btnSettings.addEventListener("click", openSettings);
+  el.btnCloseSettings.addEventListener("click", closeSettings);
 
-    el.tabTracker.classList.toggle("active", tab === "tracker");
-    el.tabBills.classList.toggle("active", tab === "bills");
-    el.tabHistory.classList.toggle("active", tab === "history");
-    el.tabSettings.classList.toggle("active", tab === "settings");
-
-    el.viewTracker.style.display = tab === "tracker" ? "" : "none";
-    el.viewBills.style.display = tab === "bills" ? "" : "none";
-    el.viewHistory.style.display = tab === "history" ? "" : "none";
-    el.viewSettings.style.display = tab === "settings" ? "" : "none";
-  }
-
-  function renderAll(){
-    renderMeta();
-    renderMonthSelect();
-
-    if(state.activeTab === "tracker") renderTracker();
-    if(state.activeTab === "bills") renderBills();
-    if(state.activeTab === "history") renderHistory();
-    if(state.activeTab === "settings") renderSettings();
-
-    // Keep stats visible even when not on Tracker
-    if(state.activeTab !== "tracker"){
-      const rows = buildTrackerRows();
-      updateStats(rows);
-      renderCategoryTotals(rows);
-    }
-  }
+  el.btnCalendarExport.addEventListener("click", exportBillsToCalendar);
+  el.btnBackup.addEventListener("click", doBackup);
 
   el.prevMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
@@ -1133,10 +1066,8 @@
   el.tabTracker.addEventListener("click", () => { setTab("tracker"); renderAll(); });
   el.tabBills.addEventListener("click", () => { setTab("bills"); renderAll(); });
   el.tabHistory.addEventListener("click", () => { setTab("history"); renderAll(); });
-  el.tabSettings.addEventListener("click", () => { setTab("settings"); renderAll(); });
 
-  el.btnSettings.addEventListener("click", () => { setTab("settings"); renderAll(); });
-
+  // Initial render
   renderAll();
 })();
 </script>
