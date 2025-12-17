@@ -6,78 +6,73 @@
   <title>Bills Tracker</title>
   <style>
     :root{
-      /* slightly lighter overall */
-      --bg:#171725;
-      --text:#f4f4f7;
-      --muted:#c2c2d6;
-
-      --cardA: rgba(255,255,255,0.075);
-      --cardB: rgba(255,255,255,0.04);
-      --line:rgba(255,255,255,0.11);
-
+      --bg:#161621;
+      --card:#1d1d2a;
+      --card2:#232336;
+      --text:#f6f6fb;
+      --muted:#c6c6d8;
       --purple:#b58ce8;
-      --purple2:#6f4bb8;
+      --purple2:#7b5bd6;
       --danger:#ff5c6c;
       --ok:#2bd576;
-      --accentSoft: rgba(255,255,255,0.14);
+      --line:rgba(255,255,255,0.10);
+      --soft:rgba(255,255,255,0.06);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:
-        radial-gradient(1200px 650px at 30% -25%, rgba(181,140,232,0.18), transparent 58%),
-        radial-gradient(900px 550px at 90% -10%, rgba(111,75,184,0.16), transparent 58%),
-        radial-gradient(900px 650px at 50% 120%, rgba(255,255,255,0.06), transparent 55%),
+        radial-gradient(1200px 650px at 30% -20%, rgba(181,140,232,0.22), transparent 55%),
+        radial-gradient(1000px 600px at 90% 0%, rgba(123,91,214,0.18), transparent 55%),
         var(--bg);
       color:var(--text);
     }
     .app{max-width:520px;margin:0 auto;padding:18px 14px 22px}
-    .top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
-    .titleWrap{display:flex;flex-direction:column;gap:4px}
-    .title{font-size:20px;font-weight:850;letter-spacing:0.2px;line-height:1.1}
-    .slogan{font-size:12px;color:var(--muted);font-style:italic}
-
+    .top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+    .titleWrap{display:flex;flex-direction:column;gap:6px}
+    .title{font-size:22px;font-weight:800;letter-spacing:0.2px}
+    .slogan{font-size:13px;color:var(--muted);font-style:italic}
     .iconBtn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.055);
-      color: var(--text);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
       width:44px;height:44px;
-      border-radius: 14px;
+      border-radius:14px;
+      font-size:18px;
       cursor:pointer;
       display:flex;align-items:center;justify-content:center;
       user-select:none;
     }
     .iconBtn:active{transform:scale(0.99)}
-    .monthRow{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:10px 0}
+    .monthRow{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:10px 0 10px}
     .btn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.055);
-      color: var(--text);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
       padding:10px 12px;
       border-radius:12px;
-      font-weight:750;
+      font-weight:700;
       cursor:pointer;
       user-select:none;
     }
-    .btn:active{transform: scale(0.99)}
-    .btnPurple{
-      border:1px solid rgba(181,140,232,0.45);
-      background: rgba(181,140,232,0.20);
-    }
+    .btn:active{transform:scale(0.99)}
+    .btnPurple{border:1px solid rgba(181,140,232,0.45);background:rgba(181,140,232,0.16)}
+    .dangerBtn{border:1px solid rgba(255,92,108,0.45);background:rgba(255,92,108,0.14)}
+    .okBtn{border:1px solid rgba(43,213,118,0.45);background:rgba(43,213,118,0.14)}
     select,input,textarea{
       width:100%;
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.055);
-      color: var(--text);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
       padding:10px 12px;
       border-radius:12px;
       outline:none;
     }
-    textarea{min-height:92px;resize:vertical}
+    textarea{min-height:90px;resize:vertical}
     .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
     .stat{
-      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
       border:1px solid var(--line);
       border-radius:14px;
       padding:10px 12px;
@@ -86,11 +81,11 @@
     .stat .v{font-size:16px;font-weight:900;margin-top:4px}
     .seg{
       display:flex;gap:8px;
-      background: rgba(255,255,255,0.05);
+      background:rgba(255,255,255,0.04);
       border:1px solid var(--line);
       border-radius:14px;
       padding:6px;
-      margin:12px 0;
+      margin:12px 0 12px;
     }
     .seg button{
       flex:1;
@@ -98,54 +93,51 @@
       border-radius:12px;
       border:0;
       background:transparent;
-      color: var(--muted);
+      color:var(--muted);
       font-weight:900;
       cursor:pointer;
     }
     .seg button.active{
-      background: rgba(181,140,232,0.18);
-      color: var(--text);
+      background:rgba(181,140,232,0.18);
+      color:var(--text);
       border:1px solid rgba(181,140,232,0.30);
     }
     .card{
-      background: linear-gradient(180deg, var(--cardA), var(--cardB));
+      background:linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
       margin-bottom:10px;
     }
     .row{display:flex;gap:10px;align-items:center;justify-content:space-between}
+    .muted{color:var(--muted)}
+    .big{font-size:16px;font-weight:900}
+    .small{font-size:12px}
     .pill{
       font-size:12px;font-weight:900;
       padding:6px 10px;border-radius:999px;
-      background: rgba(181,140,232,0.14);
+      background:rgba(181,140,232,0.14);
       border:1px solid rgba(181,140,232,0.28);
       color:var(--text);
       white-space:nowrap;
     }
     .pillSoft{
-      background: var(--accentSoft);
-      border:1px solid rgba(255,255,255,0.12);
-      color: var(--text);
+      font-size:12px;font-weight:900;
+      padding:6px 10px;border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line);
+      color:var(--text);
+      white-space:nowrap;
     }
-    .muted{color:var(--muted)}
-    .big{font-size:16px;font-weight:900}
-    .small{font-size:12px}
-    .dueSoon{
-      border-color: rgba(181,140,232,0.46);
-      background: linear-gradient(180deg, rgba(181,140,232,0.12), var(--cardB));
-    }
-    .overdue{
-      border-color: rgba(255,92,108,0.50);
-      background: linear-gradient(180deg, rgba(255,92,108,0.12), var(--cardB));
-    }
-    .paidFade{opacity:0.74}
+    .paidFade{opacity:0.76}
     .toggle{display:flex;gap:10px;align-items:center;justify-content:flex-end;white-space:nowrap}
-    .checkbox{width:22px;height:22px;accent-color: var(--purple)}
+    .checkbox{width:22px;height:22px;accent-color:var(--purple)}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .dangerBtn{border:1px solid rgba(255,92,108,0.42);background: rgba(255,92,108,0.14)}
-    .okBtn{border:1px solid rgba(43,213,118,0.42);background: rgba(43,213,118,0.12)}
-    .hr{height:1px;background: var(--line);margin:10px 0}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .hr{height:1px;background:var(--line);margin:10px 0}
+    .footerNote{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.35}
+    .toolbar{display:grid;gap:10px;margin-bottom:10px}
+    .toolbar .row{align-items:flex-end}
     a{color:var(--purple);text-decoration:none}
   </style>
 </head>
@@ -156,118 +148,72 @@
         <div class="title">Bills Tracker</div>
         <div class="slogan">Because forgetting costs money</div>
       </div>
-
-      <button class="iconBtn" id="btnSettings" aria-label="Settings" title="Settings">
-        <!-- cleaner gear icon -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 15.25a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M19.4 13.5c.04-.5.04-.5 0-1l2-1.16-2-3.46-2.26.76c-.26-.2-.54-.37-.83-.52L13.9 5h-3.8L9.7 7.12c-.3.15-.58.32-.83.52L6.6 6.88l-2 3.46 2 1.16c-.04.5-.04.5 0 1l-2 1.16 2 3.46 2.26-.76c.26.2.54.37.83.52L10.1 19h3.8l.4-2.12c.3-.15.58-.32.83-.52l2.26.76 2-3.46-2-1.16Z"
-                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      <button class="iconBtn" id="btnSettings" aria-label="Settings">⚙️</button>
     </div>
 
-    <div class="monthRow">
-      <button class="btn" id="prevMonth">◀︎</button>
-      <select id="monthSelect" aria-label="Month selector"></select>
-      <button class="btn" id="nextMonth">▶︎</button>
+    <div id="pageMain">
+      <div class="monthRow">
+        <button class="btn" id="prevMonth">◀︎</button>
+        <select id="monthSelect" aria-label="Month selector"></select>
+        <button class="btn" id="nextMonth">▶︎</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">Total due</div><div class="v" id="statDue">$0.00</div></div>
+        <div class="stat"><div class="k">Paid</div><div class="v" id="statPaid">$0.00</div></div>
+        <div class="stat"><div class="k">Unpaid</div><div class="v" id="statUnpaid">$0.00</div></div>
+      </div>
+
+      <div class="seg">
+        <button id="tabTracker" class="active">Tracker</button>
+        <button id="tabBills">Bills</button>
+        <button id="tabHistory">History</button>
+      </div>
+
+      <div id="viewTracker"></div>
+      <div id="viewBills" style="display:none;"></div>
+      <div id="viewHistory" style="display:none;"></div>
+
+      <div class="footerNote">
+        Local only. Your data lives in this browser. Use Settings for Calendar export and Backup.
+      </div>
     </div>
 
-    <div class="stats">
-      <div class="stat"><div class="k">Total due</div><div class="v" id="statDue">$0.00</div></div>
-      <div class="stat"><div class="k">Paid</div><div class="v" id="statPaid">$0.00</div></div>
-      <div class="stat"><div class="k">Unpaid</div><div class="v" id="statUnpaid">$0.00</div></div>
-    </div>
-
-    <div class="seg">
-      <button id="tabTracker" class="active">Tracker</button>
-      <button id="tabBills">Bills</button>
-      <button id="tabHistory">History</button>
-    </div>
-
-    <div id="viewTracker"></div>
-    <div id="viewBills" style="display:none;"></div>
-    <div id="viewHistory" style="display:none;"></div>
-    <div id="viewSettings" style="display:none;"></div>
+    <div id="pageSettings" style="display:none;"></div>
   </div>
 
 <script>
 (function(){
-  const APP_VERSION = "v1.3";
+  const APP_VERSION = "1.4";
   const RELEASE_DATE = "2025-12-16";
   const DEVELOPER = "Manny Ch.";
+  const STORAGE_KEY = "billTrackerV1_4";
 
-  /* IMPORTANT: new key so this build starts BLANK even if older builds had bills saved */
-  const STORAGE_KEY = "billTrackerBlankV1_3";
-  const SCHEMA_VERSION = 3;
-
-  const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
-  const fmtMoney = (n) => new Intl.NumberFormat(undefined,{style:"currency",currency:"USD"}).format(Number(n||0));
+  const today = () => { const d=new Date(); d.setHours(0,0,0,0); return d; };
   const pad2 = (n) => String(n).padStart(2,"0");
+  const fmtMoney = (n) => new Intl.NumberFormat(undefined,{style:"currency",currency:"USD"}).format(Number(n||0));
   const toISODate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
 
   const monthKeyFromDate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}`;
   const monthLabelFromKey = (key) => {
-    const [y,m] = key.split("-").map(Number);
-    const dt = new Date(y, m-1, 1);
-    return dt.toLocaleString(undefined,{month:"short",year:"numeric"});
+    const [y,m]=key.split("-").map(Number);
+    const dt=new Date(y,m-1,1);
+    return dt.toLocaleString(undefined,{month:"long",year:"numeric"});
   };
-  const addMonths = (d, delta) => { const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1); dt.setHours(0,0,0,0); return dt; };
-  const firstOfMonthFromKey = (key) => { const [y,m] = key.split("-").map(Number); const dt = new Date(y, m-1, 1); dt.setHours(0,0,0,0); return dt; };
+  const addMonths = (d,delta) => { const dt=new Date(d.getFullYear(), d.getMonth()+delta, 1); dt.setHours(0,0,0,0); return dt; };
+  const firstOfMonthFromKey = (key) => { const [y,m]=key.split("-").map(Number); const dt=new Date(y,m-1,1); dt.setHours(0,0,0,0); return dt; };
   const computeDueDate = (monthKey, dueDay) => {
-    const base = firstOfMonthFromKey(monthKey);
-    const y = base.getFullYear();
-    const m = base.getMonth();
-    const lastDay = new Date(y, m+1, 0).getDate();
-    const day = Math.min(Number(dueDay), lastDay);
-    const dt = new Date(y, m, day);
+    const base=firstOfMonthFromKey(monthKey);
+    const y=base.getFullYear();
+    const m=base.getMonth();
+    const lastDay=new Date(y,m+1,0).getDate();
+    const day=Math.min(Number(dueDay), lastDay);
+    const dt=new Date(y,m,day);
     dt.setHours(0,0,0,0);
     return dt;
   };
   const daysBetween = (a,b) => Math.floor((b.getTime()-a.getTime())/(24*60*60*1000));
-  const uid = () => Math.random().toString(36).slice(2,10) + Math.random().toString(36).slice(2,10);
-
-  function defaultData(){
-    return {
-      schemaVersion: SCHEMA_VERSION,
-      bills: [],
-      payments: {},
-      notes: {}
-    };
-  }
-
-  function migrateData(data){
-    if(!data || !Array.isArray(data.bills)) return defaultData();
-    data.payments ||= {};
-    data.notes ||= {};
-    if(!Number.isFinite(data.schemaVersion)) data.schemaVersion = 1;
-
-    data.bills.forEach(b => {
-      if(b.active === undefined) b.active = true;
-      if(b.calendarExported === undefined) b.calendarExported = false;
-
-      if(b.nickname === undefined) b.nickname = "";
-      if(b.url === undefined) b.url = "";
-      if(b.autopay === undefined) b.autopay = false;
-      if(b.payMethod === undefined) b.payMethod = "";
-      if(b.billNotes === undefined) b.billNotes = "";
-      if(b.variableAmount === undefined) b.variableAmount = false;
-    });
-
-    data.schemaVersion = SCHEMA_VERSION;
-    return data;
-  }
-
-  function load(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(!raw) return defaultData();
-      return migrateData(JSON.parse(raw));
-    }catch(e){
-      return defaultData();
-    }
-  }
-  function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data)); }
+  const uid = () => Math.random().toString(36).slice(2,10)+Math.random().toString(36).slice(2,10);
 
   function escapeHtml(s){
     return String(s ?? "").replace(/[&<>"']/g, m => ({
@@ -275,6 +221,742 @@
     }[m]));
   }
   function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
+
+  function defaultData(){
+    return { bills: [], payments: {}, notes: {} };
+  }
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return defaultData();
+      const data = JSON.parse(raw);
+      if(!data || !Array.isArray(data.bills)) return defaultData();
+      data.payments ||= {};
+      data.notes ||= {};
+      data.bills.forEach(b => {
+        if(b.active === undefined) b.active = true;
+        if(b.autopay === undefined) b.autopay = false;
+        if(b.variableAmount === undefined) b.variableAmount = false;
+        if(b.payMethod === undefined) b.payMethod = "";
+        if(b.url === undefined) b.url = "";
+        if(b.nickname === undefined) b.nickname = "";
+      });
+      return data;
+    }catch(e){
+      return defaultData();
+    }
+  }
+  function save(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+  }
+
+  const state = {
+    data: load(),
+    monthKey: monthKeyFromDate(today()),
+    activeTab: "tracker",
+    historyScope: "month", // month | last3 | all
+    trackerSort: "due", // due | amount | provider | category
+    trackerUnpaidOnly: false,
+    trackerAutopayOnly: false,
+    trackerCategory: "All",
+    trackerSearch: "",
+  };
+
+  const el = {
+    pageMain: document.getElementById("pageMain"),
+    pageSettings: document.getElementById("pageSettings"),
+    btnSettings: document.getElementById("btnSettings"),
+    monthSelect: document.getElementById("monthSelect"),
+    prevMonth: document.getElementById("prevMonth"),
+    nextMonth: document.getElementById("nextMonth"),
+    statDue: document.getElementById("statDue"),
+    statPaid: document.getElementById("statPaid"),
+    statUnpaid: document.getElementById("statUnpaid"),
+    tabTracker: document.getElementById("tabTracker"),
+    tabBills: document.getElementById("tabBills"),
+    tabHistory: document.getElementById("tabHistory"),
+    viewTracker: document.getElementById("viewTracker"),
+    viewBills: document.getElementById("viewBills"),
+    viewHistory: document.getElementById("viewHistory"),
+  };
+
+  function monthOptions(){
+    const now = today();
+    const start = addMonths(new Date(now.getFullYear(), now.getMonth(), 1), -12);
+    const end = addMonths(new Date(now.getFullYear(), now.getMonth(), 1), 60);
+    const keys = [];
+    let cur = new Date(start);
+    while(cur <= end){
+      keys.push(monthKeyFromDate(cur));
+      cur = addMonths(cur, 1);
+    }
+    return keys;
+  }
+  function renderMonthSelect(){
+    const keys = monthOptions();
+    el.monthSelect.innerHTML = keys.map(k => `<option value="${k}">${escapeHtml(monthLabelFromKey(k))}</option>`).join("");
+    el.monthSelect.value = state.monthKey;
+  }
+
+  function getInstanceKey(monthKey, billId){ return `${monthKey}|${billId}`; }
+  function activeBills(){ return state.data.bills.filter(b => b.active !== false); }
+  function isPaid(monthKey, billId){ return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]); }
+  function paidInfo(monthKey, billId){ return state.data.payments[getInstanceKey(monthKey, billId)] || null; }
+
+  function setPaid(monthKey, bill){
+    const k = getInstanceKey(monthKey, bill.id);
+    const due = computeDueDate(monthKey, bill.dueDay);
+    const amt = Number(bill.amount || 0);
+    state.data.payments[k] = { paidAtISO: toISODate(today()), dueISO: toISODate(due), amount: amt };
+    save();
+  }
+  function setUnpaid(monthKey, billId){
+    const k = getInstanceKey(monthKey, billId);
+    delete state.data.payments[k];
+    save();
+  }
+
+  function getNote(monthKey, billId){ return state.data.notes[getInstanceKey(monthKey, billId)] || ""; }
+  function setNote(monthKey, billId, text){
+    const k = getInstanceKey(monthKey, billId);
+    if(text && text.trim()) state.data.notes[k] = text.trim();
+    else delete state.data.notes[k];
+    save();
+  }
+
+  function trackerRowsForMonth(monthKey){
+    return activeBills().map(b => {
+      const dueDate = computeDueDate(monthKey, b.dueDay);
+      const paid = isPaid(monthKey, b.id);
+      const info = paid ? paidInfo(monthKey, b.id) : null;
+      const note = getNote(monthKey, b.id);
+      const displayName = (b.nickname && b.nickname.trim()) ? b.nickname.trim() : b.provider;
+      return {
+        bill: b,
+        displayName,
+        dueDate,
+        dueISO: toISODate(dueDate),
+        paid,
+        paidAtISO: info ? info.paidAtISO : null,
+        note
+      };
+    });
+  }
+
+  function updateStats(rows){
+    const totalDue = rows.reduce((s,r)=> s + (Number(r.bill.amount||0)), 0);
+    const totalPaid = rows.filter(r=>r.paid).reduce((s,r)=> s + (Number(r.bill.amount||0)), 0);
+    const totalUnpaid = totalDue - totalPaid;
+    el.statDue.textContent = fmtMoney(totalDue);
+    el.statPaid.textContent = fmtMoney(totalPaid);
+    el.statUnpaid.textContent = fmtMoney(totalUnpaid);
+  }
+
+  function renderTracker(){
+    const allRows = trackerRowsForMonth(state.monthKey);
+
+    const categories = Array.from(new Set(activeBills().map(b => b.category))).sort((a,b)=>a.localeCompare(b));
+    const catOptions = ["All", ...categories];
+
+    const toolbarHtml = `
+      <div class="card">
+        <div class="big">Controls</div>
+        <div class="small muted" style="margin-top:6px;">Search, sort, and filter this month</div>
+        <div class="hr"></div>
+
+        <div class="toolbar">
+          <div>
+            <div class="small muted" style="margin:0 0 6px;">Search</div>
+            <input id="tSearch" placeholder="Provider, nickname, category" value="${escapeAttr(state.trackerSearch)}" />
+          </div>
+
+          <div class="grid3">
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Sort</div>
+              <select id="tSort">
+                <option value="due" ${state.trackerSort==="due"?"selected":""}>Due date</option>
+                <option value="amount" ${state.trackerSort==="amount"?"selected":""}>Amount</option>
+                <option value="provider" ${state.trackerSort==="provider"?"selected":""}>Provider</option>
+                <option value="category" ${state.trackerSort==="category"?"selected":""}>Category</option>
+              </select>
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Category</div>
+              <select id="tCat">
+                ${catOptions.map(c => `<option value="${escapeAttr(c)}" ${state.trackerCategory===c?"selected":""}>${escapeHtml(c)}</option>`).join("")}
+              </select>
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Filters</div>
+              <select id="tFilters">
+                <option value="none">None</option>
+                <option value="unpaid" ${state.trackerUnpaidOnly?"selected":""}>Unpaid only</option>
+                <option value="autopay" ${state.trackerAutopayOnly?"selected":""}>Autopay only</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn" id="tClear">Clear</button>
+            <div class="small muted">Tips: nickname shows as the title if set</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    let rows = allRows.slice();
+
+    const q = (state.trackerSearch || "").trim().toLowerCase();
+    if(q){
+      rows = rows.filter(r => {
+        const b = r.bill;
+        const hay = [
+          r.displayName,
+          b.provider,
+          b.nickname || "",
+          b.category || "",
+        ].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    if(state.trackerCategory !== "All"){
+      rows = rows.filter(r => (r.bill.category || "") === state.trackerCategory);
+    }
+    if(state.trackerUnpaidOnly){
+      rows = rows.filter(r => !r.paid);
+    }
+    if(state.trackerAutopayOnly){
+      rows = rows.filter(r => r.bill.autopay === true);
+    }
+
+    if(state.trackerSort === "due"){
+      rows.sort((a,b)=> a.dueDate - b.dueDate || a.displayName.localeCompare(b.displayName));
+    }else if(state.trackerSort === "amount"){
+      rows.sort((a,b)=> (Number(b.bill.amount||0) - Number(a.bill.amount||0)) || a.displayName.localeCompare(b.displayName));
+    }else if(state.trackerSort === "provider"){
+      rows.sort((a,b)=> a.displayName.localeCompare(b.displayName));
+    }else if(state.trackerSort === "category"){
+      rows.sort((a,b)=> (a.bill.category||"").localeCompare(b.bill.category||"") || a.displayName.localeCompare(b.displayName));
+    }
+
+    updateStats(allRows);
+
+    const now = today();
+    const listHtml = rows.length === 0 ? `
+      <div class="card">
+        <div class="muted">Nothing to show. Try clearing filters or add bills in the Bills tab.</div>
+      </div>
+    ` : rows.map(r => {
+      const dueIn = daysBetween(now, r.dueDate);
+      const overdue = !r.paid && r.dueDate < now;
+      const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
+
+      const cls = [
+        "card",
+        r.paid ? "paidFade" : ""
+      ].filter(Boolean).join(" ");
+
+      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
+      const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
+
+      const tags = [];
+      tags.push(`<div class="pill">${escapeHtml(r.bill.category)}</div>`);
+      if(r.bill.autopay) tags.push(`<div class="pillSoft">Autopay</div>`);
+      if(r.bill.variableAmount) tags.push(`<div class="pillSoft">Varies</div>`);
+      if(dueSoon) tags.push(`<div class="pillSoft">Due soon</div>`);
+      if(overdue) tags.push(`<div class="pillSoft" style="border-color:rgba(255,92,108,0.35);">Overdue</div>`);
+
+      return `
+        <div class="${cls}">
+          <div class="row">
+            <div>
+              <div class="small muted">Due ${r.dueISO}</div>
+              <div class="big">${escapeHtml(r.displayName)}</div>
+            </div>
+            <div class="toggle">
+              <div style="text-align:right;">
+                <div class="big">${fmtMoney(r.bill.amount)}</div>
+                <div class="small muted">${paidLabel}</div>
+              </div>
+              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} data-billid="${r.bill.id}" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">${tags.join("")}</div>
+            <div style="display:flex; gap:8px;">
+              ${r.bill.url ? `<button class="btn" data-open="${r.bill.id}">Open</button>` : ``}
+              <button class="btn" data-note="${r.bill.id}">Note</button>
+            </div>
+          </div>
+          ${noteLine}
+        </div>
+      `;
+    }).join("");
+
+    el.viewTracker.innerHTML = toolbarHtml + listHtml;
+
+    const tSearch = document.getElementById("tSearch");
+    const tSort = document.getElementById("tSort");
+    const tCat = document.getElementById("tCat");
+    const tFilters = document.getElementById("tFilters");
+    const tClear = document.getElementById("tClear");
+
+    tSearch.addEventListener("input", () => { state.trackerSearch = tSearch.value; renderAll(); });
+    tSort.addEventListener("change", () => { state.trackerSort = tSort.value; renderAll(); });
+    tCat.addEventListener("change", () => { state.trackerCategory = tCat.value; renderAll(); });
+    tFilters.addEventListener("change", () => {
+      const v = tFilters.value;
+      state.trackerUnpaidOnly = (v === "unpaid");
+      state.trackerAutopayOnly = (v === "autopay");
+      renderAll();
+    });
+    tClear.addEventListener("click", () => {
+      state.trackerSearch = "";
+      state.trackerSort = "due";
+      state.trackerCategory = "All";
+      state.trackerUnpaidOnly = false;
+      state.trackerAutopayOnly = false;
+      renderAll();
+    });
+
+    el.viewTracker.querySelectorAll('input[type="checkbox"][data-billid]').forEach(cb => {
+      cb.addEventListener("change", (e) => {
+        const billId = e.target.getAttribute("data-billid");
+        const bill = state.data.bills.find(b => b.id === billId);
+        if(!bill) return;
+        if(e.target.checked) setPaid(state.monthKey, bill);
+        else setUnpaid(state.monthKey, billId);
+        renderAll();
+      });
+    });
+
+    el.viewTracker.querySelectorAll('button[data-note]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const billId = btn.getAttribute("data-note");
+        const current = getNote(state.monthKey, billId);
+        const text = prompt("Note for this month and this bill", current);
+        if(text === null) return;
+        setNote(state.monthKey, billId, text);
+        renderAll();
+      });
+    });
+
+    el.viewTracker.querySelectorAll('button[data-open]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const billId = btn.getAttribute("data-open");
+        const bill = state.data.bills.find(b => b.id === billId);
+        if(!bill || !bill.url) return;
+        window.open(bill.url, "_blank", "noopener,noreferrer");
+      });
+    });
+  }
+
+  function renderBills(){
+    const bills = state.data.bills.slice().sort((a,b)=>
+      (a.active===b.active?0:(a.active? -1:1)) || (a.provider||"").localeCompare(b.provider||"")
+    );
+
+    const emptyTip = bills.length === 0 ? `
+      <div class="card">
+        <div class="muted">No bills yet. Hit Add and create your first recurring bill.</div>
+      </div>
+    ` : "";
+
+    el.viewBills.innerHTML = `
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="big">Bills Master</div>
+            <div class="small muted">Add or edit recurring bills</div>
+          </div>
+          <button class="btn btnPurple" id="addBill">Add</button>
+        </div>
+      </div>
+
+      ${emptyTip}
+
+      ${bills.map(b => `
+        <div class="card">
+          <div class="row">
+            <div>
+              <div class="big">${escapeHtml(b.nickname && b.nickname.trim() ? b.nickname : b.provider)}</div>
+              <div class="small muted">
+                ${escapeHtml(b.provider)} · ${escapeHtml(b.category)} · Due day ${Number(b.dueDay)} · ${fmtMoney(b.amount)}
+              </div>
+              <div class="small muted" style="margin-top:6px;">
+                ${b.autopay ? "Autopay on" : "Autopay off"} · ${b.variableAmount ? "Amount varies" : "Fixed amount"}
+                ${b.payMethod ? " · " + escapeHtml(b.payMethod) : ""}
+              </div>
+              ${b.url ? `<div class="small muted" style="margin-top:6px;">Link: <a href="${escapeAttr(b.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(b.url)}</a></div>` : ""}
+            </div>
+            <div class="toggle">
+              <label class="small muted">Active</label>
+              <input class="checkbox" type="checkbox" ${b.active !== false ? "checked" : ""} data-active="${b.id}" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px;">
+            <button class="btn" data-edit="${b.id}">Edit</button>
+            <button class="btn dangerBtn" data-del="${b.id}">Delete</button>
+          </div>
+        </div>
+      `).join("")}
+    `;
+
+    document.getElementById("addBill").addEventListener("click", () => editBill(null));
+
+    el.viewBills.querySelectorAll('input[type="checkbox"][data-active]').forEach(cb => {
+      cb.addEventListener("change", (e) => {
+        const id = e.target.getAttribute("data-active");
+        const bill = state.data.bills.find(x => x.id === id);
+        if(!bill) return;
+        bill.active = e.target.checked;
+        save();
+        renderAll();
+      });
+    });
+
+    el.viewBills.querySelectorAll('button[data-edit]').forEach(btn => {
+      btn.addEventListener("click", () => editBill(btn.getAttribute("data-edit")));
+    });
+
+    el.viewBills.querySelectorAll('button[data-del]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-del");
+        const bill = state.data.bills.find(x => x.id === id);
+        if(!bill) return;
+        if(confirm(`Delete bill: ${bill.provider}?`)){
+          state.data.bills = state.data.bills.filter(x => x.id !== id);
+          for(const k of Object.keys(state.data.payments)){
+            if(k.endsWith("|"+id)) delete state.data.payments[k];
+          }
+          for(const k of Object.keys(state.data.notes)){
+            if(k.endsWith("|"+id)) delete state.data.notes[k];
+          }
+          save();
+          renderAll();
+        }
+      });
+    });
+  }
+
+  function editBill(id){
+    const isNew = !id;
+    const src = isNew ? null : state.data.bills.find(b=>b.id===id);
+    const bill = isNew ? {
+      id: uid(),
+      provider:"",
+      nickname:"",
+      category:"Subscriptions",
+      dueDay:1,
+      amount:0,
+      active:true,
+      autopay:false,
+      variableAmount:false,
+      payMethod:"",
+      url:""
+    } : JSON.parse(JSON.stringify(src));
+
+    if(!bill) return;
+
+    el.viewBills.innerHTML = `
+      <div class="card">
+        <div class="big">${isNew ? "Add bill" : "Edit bill"}</div>
+        <div class="hr"></div>
+
+        <div style="display:grid; gap:10px;">
+          <div>
+            <div class="small muted" style="margin:0 0 6px;">Provider</div>
+            <input id="fProvider" value="${escapeAttr(bill.provider)}" placeholder="Netflix" />
+          </div>
+
+          <div>
+            <div class="small muted" style="margin:0 0 6px;">Nickname (optional)</div>
+            <input id="fNick" value="${escapeAttr(bill.nickname || "")}" placeholder="Streaming" />
+          </div>
+
+          <div class="grid2">
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Category</div>
+              <input id="fCategory" value="${escapeAttr(bill.category)}" placeholder="Subscriptions" />
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Due day</div>
+              <input id="fDueDay" type="number" min="1" max="31" value="${Number(bill.dueDay)}" />
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Amount</div>
+              <input id="fAmount" type="number" step="0.01" value="${Number(bill.amount)}" />
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Payment method (optional)</div>
+              <input id="fPayMethod" value="${escapeAttr(bill.payMethod || "")}" placeholder="Debit card" />
+            </div>
+          </div>
+
+          <div>
+            <div class="small muted" style="margin:0 0 6px;">URL (optional)</div>
+            <input id="fUrl" value="${escapeAttr(bill.url || "")}" placeholder="https://..." />
+          </div>
+
+          <div class="grid3">
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Active</div>
+              <select id="fActive">
+                <option value="true" ${bill.active!==false ? "selected":""}>True</option>
+                <option value="false" ${bill.active===false ? "selected":""}>False</option>
+              </select>
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Autopay</div>
+              <select id="fAutopay">
+                <option value="false" ${bill.autopay ? "" : "selected"}>Off</option>
+                <option value="true" ${bill.autopay ? "selected" : ""}>On</option>
+              </select>
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Amount varies</div>
+              <select id="fVaries">
+                <option value="false" ${bill.variableAmount ? "" : "selected"}>No</option>
+                <option value="true" ${bill.variableAmount ? "selected" : ""}>Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="btn dangerBtn" id="cancelEdit">Cancel</button>
+            <button class="btn okBtn" id="saveEdit">Save</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("cancelEdit").addEventListener("click", () => renderAll());
+
+    document.getElementById("saveEdit").addEventListener("click", () => {
+      const provider = document.getElementById("fProvider").value.trim();
+      const nickname = document.getElementById("fNick").value.trim();
+      const category = document.getElementById("fCategory").value.trim();
+      const dueDay = Number(document.getElementById("fDueDay").value);
+      const amount = Number(document.getElementById("fAmount").value);
+      const payMethod = document.getElementById("fPayMethod").value.trim();
+      const url = document.getElementById("fUrl").value.trim();
+      const active = document.getElementById("fActive").value === "true";
+      const autopay = document.getElementById("fAutopay").value === "true";
+      const variableAmount = document.getElementById("fVaries").value === "true";
+
+      if(!provider){ alert("Provider is required."); return; }
+      if(!category){ alert("Category is required."); return; }
+      if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
+      if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
+
+      const newBill = {
+        ...bill,
+        provider,
+        nickname,
+        category,
+        dueDay,
+        amount,
+        payMethod,
+        url,
+        active,
+        autopay,
+        variableAmount
+      };
+
+      if(isNew) state.data.bills.push(newBill);
+      else{
+        const idx = state.data.bills.findIndex(b=>b.id===id);
+        if(idx >= 0) state.data.bills[idx] = newBill;
+      }
+      save();
+      renderAll();
+    });
+  }
+
+  function renderHistory(){
+    const months = monthOptions();
+    const currentIndex = months.indexOf(state.monthKey);
+
+    let includeMonths = [];
+    if(state.historyScope === "month"){
+      includeMonths = [state.monthKey];
+    }else if(state.historyScope === "last3"){
+      const start = Math.max(0, currentIndex - 2);
+      includeMonths = months.slice(start, currentIndex + 1);
+    }else{
+      includeMonths = months.slice();
+    }
+
+    const items = [];
+    for(const k of Object.keys(state.data.payments)){
+      const [monthKey, billId] = k.split("|");
+      if(!includeMonths.includes(monthKey)) continue;
+      const bill = state.data.bills.find(b=>b.id===billId);
+      const info = state.data.payments[k];
+      if(!bill || !info) continue;
+
+      items.push({
+        monthKey,
+        monthLabel: monthLabelFromKey(monthKey),
+        provider: bill.nickname && bill.nickname.trim() ? bill.nickname : bill.provider,
+        providerRaw: bill.provider,
+        category: bill.category,
+        amount: info.amount,
+        paidAtISO: info.paidAtISO,
+        dueISO: info.dueISO,
+        billId
+      });
+    }
+
+    items.sort((a,b)=> (a.paidAtISO < b.paidAtISO ? 1 : -1));
+
+    el.viewHistory.innerHTML = `
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="big">History</div>
+            <div class="small muted">Scope: ${state.historyScope === "month" ? "This month" : state.historyScope === "last3" ? "Last 3 months" : "All history"}</div>
+          </div>
+          <div style="min-width:160px;">
+            <div class="small muted" style="margin:0 0 6px;">History scope</div>
+            <select id="hScope">
+              <option value="month" ${state.historyScope==="month"?"selected":""}>This month</option>
+              <option value="last3" ${state.historyScope==="last3"?"selected":""}>Last 3 months</option>
+              <option value="all" ${state.historyScope==="all"?"selected":""}>All history</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      ${items.length === 0 ? `
+        <div class="card">
+          <div class="muted">No payments found for this scope yet.</div>
+        </div>
+      ` : items.map(it => `
+        <div class="card">
+          <div class="row">
+            <div>
+              <div class="small muted">${escapeHtml(it.monthLabel)} · Paid ${it.paidAtISO}</div>
+              <div class="big">${escapeHtml(it.provider)}</div>
+              <div class="small muted">For due date ${it.dueISO}</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="big">${fmtMoney(it.amount)}</div>
+              <div class="pill">${escapeHtml(it.category)}</div>
+            </div>
+          </div>
+          <div class="row" style="margin-top:10px;">
+            <button class="btn dangerBtn" data-undo="${escapeAttr(it.monthKey)}|${escapeAttr(it.billId)}">Undo</button>
+          </div>
+        </div>
+      `).join("")}
+    `;
+
+    document.getElementById("hScope").addEventListener("change", (e) => {
+      state.historyScope = e.target.value;
+      renderAll();
+    });
+
+    el.viewHistory.querySelectorAll('button[data-undo]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-undo");
+        const [mKey, billId] = key.split("|");
+        if(confirm("Mark unpaid for that month?")){
+          setUnpaid(mKey, billId);
+          renderAll();
+        }
+      });
+    });
+  }
+
+  function setTab(tab){
+    state.activeTab = tab;
+    el.tabTracker.classList.toggle("active", tab==="tracker");
+    el.tabBills.classList.toggle("active", tab==="bills");
+    el.tabHistory.classList.toggle("active", tab==="history");
+    el.viewTracker.style.display = tab==="tracker" ? "" : "none";
+    el.viewBills.style.display = tab==="bills" ? "" : "none";
+    el.viewHistory.style.display = tab==="history" ? "" : "none";
+  }
+
+  function renderAll(){
+    renderMonthSelect();
+
+    if(state.activeTab === "tracker") renderTracker();
+    if(state.activeTab === "bills") renderBills();
+    if(state.activeTab === "history") renderHistory();
+
+    const allRows = trackerRowsForMonth(state.monthKey);
+    updateStats(allRows);
+  }
+
+  function showSettings(){
+    el.pageMain.style.display = "none";
+    el.pageSettings.style.display = "";
+
+    el.pageSettings.innerHTML = `
+      <div class="card">
+        <div class="row">
+          <div>
+            <div class="big">Settings</div>
+            <div class="small muted">Tools and maintenance</div>
+          </div>
+          <button class="btn" id="backHome">Back</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="big">Tools</div>
+        <div class="hr"></div>
+        <div style="display:grid; gap:10px;">
+          <button class="btn btnPurple" id="btnCalendarExport">Export Calendar reminders</button>
+          <button class="btn" id="btnBackup">Backup and Import</button>
+          <button class="btn dangerBtn" id="btnReset">Reset this browser</button>
+        </div>
+        <div class="small muted" style="margin-top:10px;">
+          Calendar exports an .ics file. Backup exports or imports a JSON file.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="big">About</div>
+        <div class="hr"></div>
+        <div class="small muted" style="line-height:1.55;">
+          Version: ${escapeHtml(APP_VERSION)}<br />
+          Release date: ${escapeHtml(RELEASE_DATE)}<br />
+          Developer: ${escapeHtml(DEVELOPER)}<br />
+          Storage key: ${escapeHtml(STORAGE_KEY)}
+        </div>
+      </div>
+    `;
+
+    document.getElementById("backHome").addEventListener("click", () => {
+      el.pageSettings.style.display = "none";
+      el.pageMain.style.display = "";
+      renderAll();
+    });
+
+    document.getElementById("btnBackup").addEventListener("click", doBackup);
+    document.getElementById("btnReset").addEventListener("click", () => {
+      if(confirm("This wipes all data stored in this browser for this app. Continue?")){
+        state.data = defaultData();
+        save();
+        alert("Reset complete.");
+        el.pageSettings.style.display = "none";
+        el.pageMain.style.display = "";
+        renderAll();
+      }
+    });
+
+    document.getElementById("btnCalendarExport").addEventListener("click", exportBillsToCalendar);
+  }
 
   function downloadTextFile(filename, content, mime){
     const blob = new Blob([content], {type: mime});
@@ -294,390 +976,21 @@
       .replace(/;/g, "\\;");
   }
   function formatICSDateTimeLocal(d){
-    const y=d.getFullYear(), m=pad2(d.getMonth()+1), day=pad2(d.getDate());
-    const hh=pad2(d.getHours()), mm=pad2(d.getMinutes()), ss=pad2(d.getSeconds());
+    const y = d.getFullYear();
+    const m = pad2(d.getMonth()+1);
+    const day = pad2(d.getDate());
+    const hh = pad2(d.getHours());
+    const mm = pad2(d.getMinutes());
+    const ss = pad2(d.getSeconds());
     return `${y}${m}${day}T${hh}${mm}${ss}`;
   }
 
-  const state = {
-    data: load(),
-    monthKey: monthKeyFromDate(today()),
-    activeTab: "tracker",
-  };
-
-  const el = {
-    monthSelect: document.getElementById("monthSelect"),
-    prevMonth: document.getElementById("prevMonth"),
-    nextMonth: document.getElementById("nextMonth"),
-    statDue: document.getElementById("statDue"),
-    statPaid: document.getElementById("statPaid"),
-    statUnpaid: document.getElementById("statUnpaid"),
-    tabTracker: document.getElementById("tabTracker"),
-    tabBills: document.getElementById("tabBills"),
-    tabHistory: document.getElementById("tabHistory"),
-    viewTracker: document.getElementById("viewTracker"),
-    viewBills: document.getElementById("viewBills"),
-    viewHistory: document.getElementById("viewHistory"),
-    viewSettings: document.getElementById("viewSettings"),
-    btnSettings: document.getElementById("btnSettings"),
-  };
-
-  function monthOptions(){
-    const now = today();
-    const start = addMonths(new Date(now.getFullYear(), now.getMonth(), 1), -12);
-    const end = addMonths(new Date(now.getFullYear(), now.getMonth(), 1), 18);
-    const keys = [];
-    let cur = new Date(start);
-    while(cur <= end){
-      keys.push(monthKeyFromDate(cur));
-      cur = addMonths(cur, 1);
-    }
-    return keys;
-  }
-  function renderMonthSelect(){
-    const keys = monthOptions();
-    el.monthSelect.innerHTML = keys.map(k => `<option value="${k}">${monthLabelFromKey(k)}</option>`).join("");
-    el.monthSelect.value = state.monthKey;
-  }
-
-  function getInstanceKey(monthKey, billId){ return `${monthKey}|${billId}`; }
-  function isPaid(monthKey, billId){ return Boolean(state.data.payments[getInstanceKey(monthKey,billId)]); }
-  function paidInfo(monthKey, billId){ return state.data.payments[getInstanceKey(monthKey,billId)] || null; }
-
-  function setPaid(monthKey, bill){
-    const k = getInstanceKey(monthKey, bill.id);
-    const due = computeDueDate(monthKey, bill.dueDay);
-    state.data.payments[k] = { paidAtISO: toISODate(today()), dueISO: toISODate(due), amount: Number(bill.amount||0) };
-    save();
-  }
-  function setUnpaid(monthKey, billId){
-    delete state.data.payments[getInstanceKey(monthKey,billId)];
-    save();
-  }
-
-  function getNote(monthKey, billId){ return state.data.notes[getInstanceKey(monthKey,billId)] || ""; }
-  function setNote(monthKey, billId, text){
-    const k = getInstanceKey(monthKey,billId);
-    if(text && text.trim()) state.data.notes[k] = text.trim();
-    else delete state.data.notes[k];
-    save();
-  }
-
-  function activeBills(){ return state.data.bills.filter(b => b.active !== false); }
-
-  function buildTrackerRows(){
-    const bills = activeBills();
-    const rows = bills.map(b => {
-      const dueDate = computeDueDate(state.monthKey, b.dueDay);
-      const paid = isPaid(state.monthKey, b.id);
-      const info = paid ? paidInfo(state.monthKey, b.id) : null;
-      return {
-        bill: b,
-        dueDate,
-        dueISO: toISODate(dueDate),
-        paid,
-        paidAtISO: info ? info.paidAtISO : null,
-        note: getNote(state.monthKey, b.id),
-      };
-    });
-    rows.sort((a,b) => a.dueDate - b.dueDate || a.bill.provider.localeCompare(b.bill.provider));
-    return rows;
-  }
-
-  function updateStats(rows){
-    const totalDue = rows.reduce((s,r)=> s + Number(r.bill.amount||0), 0);
-    const totalPaid = rows.filter(r=>r.paid).reduce((s,r)=> s + Number(r.bill.amount||0), 0);
-    const totalUnpaid = totalDue - totalPaid;
-    el.statDue.textContent = fmtMoney(totalDue);
-    el.statPaid.textContent = fmtMoney(totalPaid);
-    el.statUnpaid.textContent = fmtMoney(totalUnpaid);
-  }
-
-  function renderTracker(){
-    const rows = buildTrackerRows();
-    updateStats(rows);
-
-    const now = today();
-    el.viewTracker.innerHTML = rows.length === 0 ? `
-      <div class="card">
-        <div class="big">No bills yet</div>
-        <div class="small muted" style="margin-top:6px;">Go to Bills and tap Add to create your first bill.</div>
-      </div>
-    ` : rows.map(r => {
-      const dueIn = daysBetween(now, r.dueDate);
-      const overdue = !r.paid && r.dueDate < now;
-      const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
-
-      const cls = ["card", dueSoon?"dueSoon":"", overdue?"overdue":"", r.paid?"paidFade":""].filter(Boolean).join(" ");
-      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
-      const displayName = (r.bill.nickname && r.bill.nickname.trim()) ? r.bill.nickname.trim() : r.bill.provider;
-
-      const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
-      const urlBtn = (r.bill.url && r.bill.url.trim()) ? `<button class="btn" data-openurl="${escapeAttr(r.bill.id)}">Open</button>` : "";
-
-      return `
-        <div class="${cls}">
-          <div class="row">
-            <div>
-              <div class="small muted">Due ${r.dueISO}</div>
-              <div class="big">${escapeHtml(displayName)}</div>
-            </div>
-            <div class="toggle">
-              <div style="text-align:right;">
-                <div class="big">${fmtMoney(r.bill.amount)}</div>
-                <div class="small muted">${paidLabel}</div>
-              </div>
-              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} data-billid="${escapeAttr(r.bill.id)}" />
-            </div>
-          </div>
-          <div class="row" style="margin-top:10px;">
-            <div class="pill">${escapeHtml(r.bill.category)}</div>
-            <div style="display:flex; gap:10px;">
-              ${urlBtn}
-              <button class="btn" data-note="${escapeAttr(r.bill.id)}">Note</button>
-            </div>
-          </div>
-          ${noteLine}
-        </div>
-      `;
-    }).join("");
-
-    el.viewTracker.querySelectorAll('input[type="checkbox"][data-billid]').forEach(cb => {
-      cb.addEventListener("change",(e)=>{
-        const billId = e.target.getAttribute("data-billid");
-        const bill = state.data.bills.find(b => b.id === billId);
-        if(!bill) return;
-        if(e.target.checked) setPaid(state.monthKey, bill);
-        else setUnpaid(state.monthKey, billId);
-        renderAll();
-      });
-    });
-
-    el.viewTracker.querySelectorAll('button[data-note]').forEach(btn => {
-      btn.addEventListener("click",()=>{
-        const billId = btn.getAttribute("data-note");
-        const current = getNote(state.monthKey, billId);
-        const text = prompt("Note for this month and this bill", current);
-        if(text === null) return;
-        setNote(state.monthKey, billId, text);
-        renderAll();
-      });
-    });
-
-    el.viewTracker.querySelectorAll('button[data-openurl]').forEach(btn => {
-      btn.addEventListener("click", ()=>{
-        const billId = btn.getAttribute("data-openurl");
-        const bill = state.data.bills.find(b=>b.id===billId);
-        if(!bill || !bill.url) return;
-        window.open(bill.url.trim(), "_blank", "noopener,noreferrer");
-      });
-    });
-  }
-
-  function renderBills(){
-    const bills = state.data.bills.slice().sort((a,b)=>
-      (a.active===b.active?0:(a.active?-1:1)) || a.provider.localeCompare(b.provider)
-    );
-
-    el.viewBills.innerHTML = `
-      <div class="card">
-        <div class="row">
-          <div>
-            <div class="big">Bills Master</div>
-            <div class="small muted">Add or edit recurring bills</div>
-          </div>
-          <button class="btn btnPurple" id="addBill">Add</button>
-        </div>
-      </div>
-
-      ${bills.length===0 ? `
-        <div class="card"><div class="muted">No bills added yet.</div></div>
-      ` : bills.map(b => `
-        <div class="card">
-          <div class="row">
-            <div>
-              <div class="big">${escapeHtml(b.provider)}</div>
-              <div class="small muted">${escapeHtml(b.category)} • Due day ${Number(b.dueDay)} • ${fmtMoney(b.amount)}</div>
-            </div>
-            <div class="toggle">
-              <label class="small muted">Active</label>
-              <input class="checkbox" type="checkbox" ${b.active !== false ? "checked" : ""} data-active="${escapeAttr(b.id)}" />
-            </div>
-          </div>
-          <div class="row" style="margin-top:10px;">
-            <button class="btn" data-edit="${escapeAttr(b.id)}">Edit</button>
-            <button class="btn dangerBtn" data-del="${escapeAttr(b.id)}">Delete</button>
-          </div>
-        </div>
-      `).join("")}
-    `;
-
-    document.getElementById("addBill").addEventListener("click", ()=> editBill(null));
-
-    el.viewBills.querySelectorAll('input[type="checkbox"][data-active]').forEach(cb => {
-      cb.addEventListener("change",(e)=>{
-        const id = e.target.getAttribute("data-active");
-        const bill = state.data.bills.find(x=>x.id===id);
-        if(!bill) return;
-        bill.active = e.target.checked;
-        save();
-        renderAll();
-      });
-    });
-
-    el.viewBills.querySelectorAll('button[data-edit]').forEach(btn => {
-      btn.addEventListener("click", ()=> editBill(btn.getAttribute("data-edit")));
-    });
-
-    el.viewBills.querySelectorAll('button[data-del]').forEach(btn => {
-      btn.addEventListener("click", ()=>{
-        const id = btn.getAttribute("data-del");
-        const bill = state.data.bills.find(x=>x.id===id);
-        if(!bill) return;
-        if(confirm(`Delete bill: ${bill.provider}?`)){
-          state.data.bills = state.data.bills.filter(x=>x.id!==id);
-          for(const k of Object.keys(state.data.payments)) if(k.endsWith("|"+id)) delete state.data.payments[k];
-          for(const k of Object.keys(state.data.notes)) if(k.endsWith("|"+id)) delete state.data.notes[k];
-          save();
-          renderAll();
-        }
-      });
-    });
-  }
-
-  function editBill(id){
-    const isNew = !id;
-    const existing = !isNew ? state.data.bills.find(b=>b.id===id) : null;
-
-    const bill = isNew
-      ? { id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, nickname:"", url:"", autopay:false, payMethod:"", billNotes:"", variableAmount:false }
-      : JSON.parse(JSON.stringify(existing));
-
-    if(!bill) return;
-
-    el.viewBills.innerHTML = `
-      <div class="card">
-        <div class="big">${isNew ? "Add bill" : "Edit bill"}</div>
-        <div class="hr"></div>
-
-        <div style="display:grid; gap:10px;">
-          <div class="grid2">
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Provider</div>
-              <input id="fProvider" value="${escapeAttr(bill.provider)}" placeholder="Netflix" />
-            </div>
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Category</div>
-              <input id="fCategory" value="${escapeAttr(bill.category)}" placeholder="Subscriptions" />
-            </div>
-          </div>
-
-          <div class="grid2">
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Due day</div>
-              <input id="fDueDay" type="number" min="1" max="31" value="${Number(bill.dueDay)}" />
-            </div>
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Amount</div>
-              <input id="fAmount" type="number" step="0.01" value="${Number(bill.amount)}" />
-            </div>
-          </div>
-
-          <div class="grid2">
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Active</div>
-              <select id="fActive">
-                <option value="true" ${bill.active!==false ? "selected":""}>True</option>
-                <option value="false" ${bill.active===false ? "selected":""}>False</option>
-              </select>
-            </div>
-            <div class="row" style="justify-content:flex-end;">
-              <button class="btn dangerBtn" id="cancelEdit">Cancel</button>
-              <button class="btn okBtn" id="saveEdit">Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("cancelEdit").addEventListener("click", ()=> renderAll());
-    document.getElementById("saveEdit").addEventListener("click", ()=>{
-      const provider = document.getElementById("fProvider").value.trim();
-      const category = document.getElementById("fCategory").value.trim();
-      const dueDay = Number(document.getElementById("fDueDay").value);
-      const amount = Number(document.getElementById("fAmount").value);
-      const active = document.getElementById("fActive").value === "true";
-
-      if(!provider){ alert("Provider is required."); return; }
-      if(!category){ alert("Category is required."); return; }
-      if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
-      if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
-
-      const newBill = { ...bill, provider, category, dueDay, amount, active };
-      if(isNew) state.data.bills.push(newBill);
-      else{
-        const idx = state.data.bills.findIndex(b=>b.id===id);
-        if(idx>=0) state.data.bills[idx] = newBill;
-      }
-      save();
-      renderAll();
-    });
-  }
-
-  function renderHistory(){
-    const items = [];
-    for(const k of Object.keys(state.data.payments)){
-      const [monthKey, billId] = k.split("|");
-      if(monthKey !== state.monthKey) continue;
-      const bill = state.data.bills.find(b=>b.id===billId);
-      const info = state.data.payments[k];
-      if(!bill || !info) continue;
-      items.push({ provider: bill.provider, category: bill.category, amount: info.amount, paidAtISO: info.paidAtISO, dueISO: info.dueISO, billId });
-    }
-    items.sort((a,b)=> (a.paidAtISO < b.paidAtISO ? 1 : -1) || a.provider.localeCompare(b.provider));
-
-    el.viewHistory.innerHTML = `
-      <div class="card">
-        <div class="big">History</div>
-        <div class="small muted">Paid entries for ${monthLabelFromKey(state.monthKey)}</div>
-      </div>
-
-      ${items.length===0 ? `<div class="card"><div class="muted">No payments logged for this month yet.</div></div>` :
-        items.map(it => `
-          <div class="card">
-            <div class="row">
-              <div>
-                <div class="small muted">Paid ${it.paidAtISO}</div>
-                <div class="big">${escapeHtml(it.provider)}</div>
-                <div class="small muted">For due date ${it.dueISO}</div>
-              </div>
-              <div style="text-align:right;">
-                <div class="big">${fmtMoney(it.amount)}</div>
-                <div class="pill">${escapeHtml(it.category)}</div>
-              </div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-              <button class="btn dangerBtn" data-undo="${escapeAttr(it.billId)}">Undo</button>
-            </div>
-          </div>
-        `).join("")
-      }
-    `;
-
-    el.viewHistory.querySelectorAll('button[data-undo]').forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        const billId = btn.getAttribute("data-undo");
-        if(confirm("Mark unpaid for this month?")){
-          setUnpaid(state.monthKey, billId);
-          renderAll();
-        }
-      });
-    });
-  }
-
   function exportBillsToCalendar(){
-    const bills = activeBills().filter(b => !b.calendarExported);
-    if(bills.length === 0){ alert("No active bills to export."); return; }
+    const bills = activeBills();
+    if(bills.length === 0){
+      alert("No active bills to export. Add bills first.");
+      return;
+    }
 
     const startMonth = firstOfMonthFromKey(state.monthKey);
     const reminderHour = 9;
@@ -685,16 +998,21 @@
     const alarmMinutesBefore = 24 * 60;
 
     const lines = [];
-    lines.push("BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//BillsTracker//EN","CALSCALE:GREGORIAN","METHOD:PUBLISH");
+    lines.push("BEGIN:VCALENDAR");
+    lines.push("VERSION:2.0");
+    lines.push("PRODID:-//BillsTracker//EN");
+    lines.push("CALSCALE:GREGORIAN");
+    lines.push("METHOD:PUBLISH");
 
-    bills.forEach(b=>{
+    bills.forEach(b => {
       const due = computeDueDate(monthKeyFromDate(startMonth), b.dueDay);
       const dt = new Date(due.getFullYear(), due.getMonth(), due.getDate(), reminderHour, reminderMinute, 0);
+
       const dtStart = formatICSDateTimeLocal(dt);
-      const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30*60000));
+      const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30 * 60000));
 
       const uidStr = `${b.id}@billstracker`;
-      const summary = `${b.provider} due`;
+      const summary = `${(b.nickname && b.nickname.trim()) ? b.nickname.trim() : b.provider} due`;
       const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
 
       lines.push("BEGIN:VEVENT");
@@ -705,20 +1023,19 @@
       lines.push(`SUMMARY:${icsEscape(summary)}`);
       lines.push(`DESCRIPTION:${icsEscape(desc)}`);
       lines.push(`RRULE:FREQ=MONTHLY;BYMONTHDAY=${Number(b.dueDay)}`);
+
       lines.push("BEGIN:VALARM");
       lines.push(`TRIGGER:-PT${alarmMinutesBefore}M`);
       lines.push("ACTION:DISPLAY");
       lines.push(`DESCRIPTION:${icsEscape(summary)}`);
       lines.push("END:VALARM");
+
       lines.push("END:VEVENT");
     });
 
     lines.push("END:VCALENDAR");
 
     downloadTextFile("bills-reminders.ics", lines.join("\r\n"), "text/calendar;charset=utf-8");
-    bills.forEach(b => b.calendarExported = true);
-    save();
-    renderAll();
     alert("Calendar file downloaded. Open it and add the events to your calendar.");
   }
 
@@ -726,7 +1043,8 @@
     const choice = prompt(
 `Type:
 1 to export backup
-2 to import backup`,
+2 to import backup
+3 to reset everything`,
 "1"
     );
     if(choice === null) return;
@@ -743,7 +1061,7 @@
       a.click();
       a.remove();
       setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-      alert("Backup downloaded.");
+      alert("Backup downloaded. Save it somewhere safe.");
       return;
     }
 
@@ -751,127 +1069,59 @@
       const input = document.createElement("input");
       input.type = "file";
       input.accept = "application/json";
-      input.onchange = async ()=>{
+      input.onchange = async () => {
         const file = input.files && input.files[0];
         if(!file) return;
         const text = await file.text();
         try{
-          const obj = migrateData(JSON.parse(text));
+          const obj = JSON.parse(text);
+          if(!obj || !Array.isArray(obj.bills)) throw new Error("Invalid file");
+          obj.payments ||= {};
+          obj.notes ||= {};
           state.data = obj;
           save();
           renderAll();
           alert("Import complete.");
         }catch(e){
-          alert("Import failed.");
+          alert("Import failed. That file did not look valid.");
         }
       };
       input.click();
       return;
     }
-  }
 
-  function resetLocalData(){
-    if(confirm("Reset all local data for this build? This cannot be undone.")){
-      state.data = defaultData();
-      save();
-      renderAll();
-      alert("Reset complete.");
+    if(c === "3"){
+      if(confirm("This wipes all data in this browser. Continue?")){
+        state.data = defaultData();
+        save();
+        renderAll();
+        alert("Reset complete.");
+      }
+      return;
     }
   }
 
-  function renderSettings(){
-    el.viewSettings.innerHTML = `
-      <div class="card">
-        <div class="row">
-          <div>
-            <div class="big">Settings</div>
-            <div class="small muted">Tools and app info</div>
-          </div>
-          <button class="btn" id="closeSettings">Close</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="big">Tools</div>
-        <div class="hr"></div>
-        <div class="row">
-          <button class="btn btnPurple" id="btnCalendar">Calendar export</button>
-          <button class="btn" id="btnBackup">Backup</button>
-        </div>
-        <div class="row" style="margin-top:10px;">
-          <button class="btn dangerBtn" id="btnReset">Reset local data</button>
-        </div>
-        <div class="small muted" style="margin-top:10px;">
-          Calendar export downloads an .ics file, backup exports or imports a JSON file.
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="big">About</div>
-        <div class="hr"></div>
-        <div class="small muted">Version: ${APP_VERSION}</div>
-        <div class="small muted">Release date: ${RELEASE_DATE}</div>
-        <div class="small muted">Developer: ${DEVELOPER}</div>
-        <div class="small muted" style="margin-top:10px;">Storage key: ${STORAGE_KEY}</div>
-      </div>
-    `;
-
-    document.getElementById("closeSettings").addEventListener("click", ()=>{
-      el.viewSettings.style.display = "none";
-      setTab(state.activeTab);
-      renderAll();
-    });
-    document.getElementById("btnCalendar").addEventListener("click", exportBillsToCalendar);
-    document.getElementById("btnBackup").addEventListener("click", doBackup);
-    document.getElementById("btnReset").addEventListener("click", resetLocalData);
-  }
-
-  function setTab(tab){
-    state.activeTab = tab;
-    el.tabTracker.classList.toggle("active", tab==="tracker");
-    el.tabBills.classList.toggle("active", tab==="bills");
-    el.tabHistory.classList.toggle("active", tab==="history");
-
-    el.viewTracker.style.display = tab==="tracker" ? "" : "none";
-    el.viewBills.style.display = tab==="bills" ? "" : "none";
-    el.viewHistory.style.display = tab==="history" ? "" : "none";
-    el.viewSettings.style.display = "none";
-  }
-
-  function renderAll(){
-    renderMonthSelect();
-    if(state.activeTab==="tracker") renderTracker();
-    if(state.activeTab==="bills") renderBills();
-    if(state.activeTab==="history") renderHistory();
-    if(state.activeTab!=="tracker") updateStats(buildTrackerRows());
-  }
-
-  el.prevMonth.addEventListener("click", ()=>{
-    state.monthKey = monthKeyFromDate(addMonths(firstOfMonthFromKey(state.monthKey), -1));
+  el.prevMonth.addEventListener("click", () => {
+    const d = firstOfMonthFromKey(state.monthKey);
+    state.monthKey = monthKeyFromDate(addMonths(d, -1));
     renderAll();
   });
-  el.nextMonth.addEventListener("click", ()=>{
-    state.monthKey = monthKeyFromDate(addMonths(firstOfMonthFromKey(state.monthKey), 1));
+  el.nextMonth.addEventListener("click", () => {
+    const d = firstOfMonthFromKey(state.monthKey);
+    state.monthKey = monthKeyFromDate(addMonths(d, 1));
     renderAll();
   });
-  el.monthSelect.addEventListener("change", ()=>{
+  el.monthSelect.addEventListener("change", () => {
     state.monthKey = el.monthSelect.value;
     renderAll();
   });
 
-  el.tabTracker.addEventListener("click", ()=>{ setTab("tracker"); renderAll(); });
-  el.tabBills.addEventListener("click", ()=>{ setTab("bills"); renderAll(); });
-  el.tabHistory.addEventListener("click", ()=>{ setTab("history"); renderAll(); });
+  el.tabTracker.addEventListener("click", () => { setTab("tracker"); renderAll(); });
+  el.tabBills.addEventListener("click", () => { setTab("bills"); renderAll(); });
+  el.tabHistory.addEventListener("click", () => { setTab("history"); renderAll(); });
 
-  el.btnSettings.addEventListener("click", ()=>{
-    el.viewTracker.style.display = "none";
-    el.viewBills.style.display = "none";
-    el.viewHistory.style.display = "none";
-    el.viewSettings.style.display = "";
-    renderSettings();
-  });
+  el.btnSettings.addEventListener("click", showSettings);
 
-  save();
   renderAll();
 })();
 </script>
