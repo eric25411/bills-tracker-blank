@@ -6,37 +6,41 @@
   <title>Bills Tracker</title>
   <style>
     :root{
-      --bg:#12121a; /* softened */
-      --card:#171722;
-      --card2:#1f1f2c;
+      /* slightly lighter overall */
+      --bg:#171725;
       --text:#f4f4f7;
-      --muted:#b7b7c8;
+      --muted:#c2c2d6;
+
+      --cardA: rgba(255,255,255,0.075);
+      --cardB: rgba(255,255,255,0.04);
+      --line:rgba(255,255,255,0.11);
+
       --purple:#b58ce8;
       --purple2:#6f4bb8;
       --danger:#ff5c6c;
       --ok:#2bd576;
-      --line:rgba(255,255,255,0.08);
-      --accentSoft: rgba(255,255,255,0.12); /* new */
+      --accentSoft: rgba(255,255,255,0.14);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       background:
-        radial-gradient(1200px 600px at 30% -20%, rgba(181,140,232,0.22), transparent 55%),
-        radial-gradient(900px 500px at 90% 0%, rgba(111,75,184,0.20), transparent 55%),
+        radial-gradient(1200px 650px at 30% -25%, rgba(181,140,232,0.18), transparent 58%),
+        radial-gradient(900px 550px at 90% -10%, rgba(111,75,184,0.16), transparent 58%),
+        radial-gradient(900px 650px at 50% 120%, rgba(255,255,255,0.06), transparent 55%),
         var(--bg);
       color:var(--text);
     }
     .app{max-width:520px;margin:0 auto;padding:18px 14px 22px}
     .top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
     .titleWrap{display:flex;flex-direction:column;gap:4px}
-    .title{font-size:20px;font-weight:800;letter-spacing:0.2px;line-height:1.1}
+    .title{font-size:20px;font-weight:850;letter-spacing:0.2px;line-height:1.1}
     .slogan{font-size:12px;color:var(--muted);font-style:italic}
-    .meta{font-size:12px;color:var(--muted);margin-top:2px}
+
     .iconBtn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.055);
       color: var(--text);
       width:44px;height:44px;
       border-radius: 14px;
@@ -48,23 +52,23 @@
     .monthRow{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:10px 0}
     .btn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.055);
       color: var(--text);
       padding:10px 12px;
       border-radius:12px;
-      font-weight:700;
+      font-weight:750;
       cursor:pointer;
       user-select:none;
     }
     .btn:active{transform: scale(0.99)}
     .btnPurple{
       border:1px solid rgba(181,140,232,0.45);
-      background: rgba(181,140,232,0.18);
+      background: rgba(181,140,232,0.20);
     }
     select,input,textarea{
       width:100%;
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.055);
       color: var(--text);
       padding:10px 12px;
       border-radius:12px;
@@ -73,7 +77,7 @@
     textarea{min-height:92px;resize:vertical}
     .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
     .stat{
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
       border:1px solid var(--line);
       border-radius:14px;
       padding:10px 12px;
@@ -82,7 +86,7 @@
     .stat .v{font-size:16px;font-weight:900;margin-top:4px}
     .seg{
       display:flex;gap:8px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border:1px solid var(--line);
       border-radius:14px;
       padding:6px;
@@ -99,12 +103,12 @@
       cursor:pointer;
     }
     .seg button.active{
-      background: rgba(181,140,232,0.20);
+      background: rgba(181,140,232,0.18);
       color: var(--text);
-      border:1px solid rgba(181,140,232,0.32);
+      border:1px solid rgba(181,140,232,0.30);
     }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, var(--cardA), var(--cardB));
       border:1px solid var(--line);
       border-radius:16px;
       padding:12px;
@@ -114,33 +118,33 @@
     .pill{
       font-size:12px;font-weight:900;
       padding:6px 10px;border-radius:999px;
-      background: rgba(181,140,232,0.14); /* reduced */
-      border:1px solid rgba(181,140,232,0.30);
+      background: rgba(181,140,232,0.14);
+      border:1px solid rgba(181,140,232,0.28);
       color:var(--text);
       white-space:nowrap;
     }
     .pillSoft{
       background: var(--accentSoft);
-      border:1px solid rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.12);
       color: var(--text);
     }
     .muted{color:var(--muted)}
     .big{font-size:16px;font-weight:900}
     .small{font-size:12px}
     .dueSoon{
-      border-color: rgba(181,140,232,0.50);
-      background: linear-gradient(180deg, rgba(181,140,232,0.14), rgba(255,255,255,0.03));
+      border-color: rgba(181,140,232,0.46);
+      background: linear-gradient(180deg, rgba(181,140,232,0.12), var(--cardB));
     }
     .overdue{
-      border-color: rgba(255,92,108,0.55);
-      background: linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
+      border-color: rgba(255,92,108,0.50);
+      background: linear-gradient(180deg, rgba(255,92,108,0.12), var(--cardB));
     }
-    .paidFade{opacity:0.72}
+    .paidFade{opacity:0.74}
     .toggle{display:flex;gap:10px;align-items:center;justify-content:flex-end;white-space:nowrap}
     .checkbox{width:22px;height:22px;accent-color: var(--purple)}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .dangerBtn{border:1px solid rgba(255,92,108,0.45);background: rgba(255,92,108,0.16)}
-    .okBtn{border:1px solid rgba(43,213,118,0.45);background: rgba(43,213,118,0.14)}
+    .dangerBtn{border:1px solid rgba(255,92,108,0.42);background: rgba(255,92,108,0.14)}
+    .okBtn{border:1px solid rgba(43,213,118,0.42);background: rgba(43,213,118,0.12)}
     .hr{height:1px;background: var(--line);margin:10px 0}
     a{color:var(--purple);text-decoration:none}
   </style>
@@ -151,13 +155,14 @@
       <div class="titleWrap">
         <div class="title">Bills Tracker</div>
         <div class="slogan">Because forgetting costs money</div>
-        <div class="meta" id="metaLine"></div>
       </div>
+
       <button class="iconBtn" id="btnSettings" aria-label="Settings" title="Settings">
-        <!-- simple cog -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M19.4 15a8.2 8.2 0 0 0 .1-1l2-1.2-2-3.4-2.3.7a7.5 7.5 0 0 0-1.7-1l-.3-2.4H11l-.3 2.4a7.5 7.5 0 0 0-1.7 1l-2.3-.7-2 3.4 2 1.2a8.2 8.2 0 0 0 0 2l-2 1.2 2 3.4 2.3-.7a7.5 7.5 0 0 0 1.7 1L11 23h4l.3-2.4a7.5 7.5 0 0 0 1.7-1l2.3.7 2-3.4-2-1.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <!-- cleaner gear icon -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 15.25a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 13.5c.04-.5.04-.5 0-1l2-1.16-2-3.46-2.26.76c-.26-.2-.54-.37-.83-.52L13.9 5h-3.8L9.7 7.12c-.3.15-.58.32-.83.52L6.6 6.88l-2 3.46 2 1.16c-.04.5-.04.5 0 1l-2 1.16 2 3.46 2.26-.76c.26.2.54.37.83.52L10.1 19h3.8l.4-2.12c.3-.15.58-.32.83-.52l2.26.76 2-3.46-2-1.16Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
       </button>
     </div>
@@ -191,15 +196,12 @@
   const APP_VERSION = "v1.3";
   const RELEASE_DATE = "2025-12-16";
   const DEVELOPER = "Manny Ch.";
-  const STORAGE_KEY = "billTrackerV1";
+
+  /* IMPORTANT: new key so this build starts BLANK even if older builds had bills saved */
+  const STORAGE_KEY = "billTrackerBlankV1_3";
   const SCHEMA_VERSION = 3;
 
-  const today = () => {
-    const d = new Date();
-    d.setHours(0,0,0,0);
-    return d;
-  };
-
+  const today = () => { const d = new Date(); d.setHours(0,0,0,0); return d; };
   const fmtMoney = (n) => new Intl.NumberFormat(undefined,{style:"currency",currency:"USD"}).format(Number(n||0));
   const pad2 = (n) => String(n).padStart(2,"0");
   const toISODate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
@@ -210,17 +212,8 @@
     const dt = new Date(y, m-1, 1);
     return dt.toLocaleString(undefined,{month:"short",year:"numeric"});
   };
-  const addMonths = (d, delta) => {
-    const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1);
-    dt.setHours(0,0,0,0);
-    return dt;
-  };
-  const firstOfMonthFromKey = (key) => {
-    const [y,m] = key.split("-").map(Number);
-    const dt = new Date(y, m-1, 1);
-    dt.setHours(0,0,0,0);
-    return dt;
-  };
+  const addMonths = (d, delta) => { const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1); dt.setHours(0,0,0,0); return dt; };
+  const firstOfMonthFromKey = (key) => { const [y,m] = key.split("-").map(Number); const dt = new Date(y, m-1, 1); dt.setHours(0,0,0,0); return dt; };
   const computeDueDate = (monthKey, dueDay) => {
     const base = firstOfMonthFromKey(monthKey);
     const y = base.getFullYear();
@@ -237,28 +230,22 @@
   function defaultData(){
     return {
       schemaVersion: SCHEMA_VERSION,
-      bills: [],   // blank template by default
-      payments: {},// key: `${monthKey}|${billId}` -> { paidAtISO, dueISO, amount }
-      notes: {}    // key: `${monthKey}|${billId}` -> month note
+      bills: [],
+      payments: {},
+      notes: {}
     };
   }
 
   function migrateData(data){
-    // Ensure structure exists
     if(!data || !Array.isArray(data.bills)) return defaultData();
     data.payments ||= {};
     data.notes ||= {};
-
-    // Schema version bump
     if(!Number.isFinite(data.schemaVersion)) data.schemaVersion = 1;
 
-    // Backfill new fields on each bill
     data.bills.forEach(b => {
-      // existing fields
       if(b.active === undefined) b.active = true;
       if(b.calendarExported === undefined) b.calendarExported = false;
 
-      // v1.3 fields
       if(b.nickname === undefined) b.nickname = "";
       if(b.url === undefined) b.url = "";
       if(b.autopay === undefined) b.autopay = false;
@@ -319,7 +306,6 @@
   };
 
   const el = {
-    metaLine: document.getElementById("metaLine"),
     monthSelect: document.getElementById("monthSelect"),
     prevMonth: document.getElementById("prevMonth"),
     nextMonth: document.getElementById("nextMonth"),
@@ -335,12 +321,6 @@
     viewSettings: document.getElementById("viewSettings"),
     btnSettings: document.getElementById("btnSettings"),
   };
-
-  function setMetaLine(){
-    const now = new Date();
-    const monthYear = now.toLocaleString(undefined,{month:"long",year:"numeric"});
-    el.metaLine.textContent = `${monthYear} • ${APP_VERSION} • Released ${RELEASE_DATE} • Developer ${DEVELOPER}`;
-  }
 
   function monthOptions(){
     const now = today();
@@ -431,11 +411,6 @@
       const cls = ["card", dueSoon?"dueSoon":"", overdue?"overdue":"", r.paid?"paidFade":""].filter(Boolean).join(" ");
       const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
       const displayName = (r.bill.nickname && r.bill.nickname.trim()) ? r.bill.nickname.trim() : r.bill.provider;
-      const subLineParts = [];
-      if(r.bill.autopay) subLineParts.push("Autopay");
-      if(r.bill.variableAmount) subLineParts.push("Varies");
-      if(r.bill.payMethod && r.bill.payMethod.trim()) subLineParts.push(r.bill.payMethod.trim());
-      const subLine = subLineParts.length ? subLineParts.join(" • ") : "";
 
       const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
       const urlBtn = (r.bill.url && r.bill.url.trim()) ? `<button class="btn" data-openurl="${escapeAttr(r.bill.id)}">Open</button>` : "";
@@ -446,7 +421,6 @@
             <div>
               <div class="small muted">Due ${r.dueISO}</div>
               <div class="big">${escapeHtml(displayName)}</div>
-              ${subLine ? `<div class="small muted" style="margin-top:4px;">${escapeHtml(subLine)}</div>` : ``}
             </div>
             <div class="toggle">
               <div style="text-align:right;">
@@ -495,8 +469,7 @@
         const billId = btn.getAttribute("data-openurl");
         const bill = state.data.bills.find(b=>b.id===billId);
         if(!bill || !bill.url) return;
-        const url = bill.url.trim();
-        window.open(url, "_blank", "noopener,noreferrer");
+        window.open(bill.url.trim(), "_blank", "noopener,noreferrer");
       });
     });
   }
@@ -518,34 +491,25 @@
       </div>
 
       ${bills.length===0 ? `
+        <div class="card"><div class="muted">No bills added yet.</div></div>
+      ` : bills.map(b => `
         <div class="card">
-          <div class="muted">No bills added yet.</div>
-        </div>
-      ` : bills.map(b => {
-        const displayName = (b.nickname && b.nickname.trim()) ? `${b.nickname.trim()} (${b.provider})` : b.provider;
-        const flags = [];
-        if(b.autopay) flags.push("Autopay");
-        if(b.variableAmount) flags.push("Varies");
-        const flagText = flags.length ? ` • ${flags.join(" • ")}` : "";
-        return `
-          <div class="card">
-            <div class="row">
-              <div>
-                <div class="big">${escapeHtml(displayName)}</div>
-                <div class="small muted">${escapeHtml(b.category)} • Due day ${Number(b.dueDay)} • ${fmtMoney(b.amount)}${flagText}</div>
-              </div>
-              <div class="toggle">
-                <label class="small muted">Active</label>
-                <input class="checkbox" type="checkbox" ${b.active !== false ? "checked" : ""} data-active="${escapeAttr(b.id)}" />
-              </div>
+          <div class="row">
+            <div>
+              <div class="big">${escapeHtml(b.provider)}</div>
+              <div class="small muted">${escapeHtml(b.category)} • Due day ${Number(b.dueDay)} • ${fmtMoney(b.amount)}</div>
             </div>
-            <div class="row" style="margin-top:10px;">
-              <button class="btn" data-edit="${escapeAttr(b.id)}">Edit</button>
-              <button class="btn dangerBtn" data-del="${escapeAttr(b.id)}">Delete</button>
+            <div class="toggle">
+              <label class="small muted">Active</label>
+              <input class="checkbox" type="checkbox" ${b.active !== false ? "checked" : ""} data-active="${escapeAttr(b.id)}" />
             </div>
           </div>
-        `;
-      }).join("")}
+          <div class="row" style="margin-top:10px;">
+            <button class="btn" data-edit="${escapeAttr(b.id)}">Edit</button>
+            <button class="btn dangerBtn" data-del="${escapeAttr(b.id)}">Delete</button>
+          </div>
+        </div>
+      `).join("")}
     `;
 
     document.getElementById("addBill").addEventListener("click", ()=> editBill(null));
@@ -586,20 +550,7 @@
     const existing = !isNew ? state.data.bills.find(b=>b.id===id) : null;
 
     const bill = isNew
-      ? {
-          id: uid(),
-          category:"Subscriptions",
-          provider:"",
-          nickname:"",
-          url:"",
-          dueDay:1,
-          amount:0,
-          autopay:false,
-          payMethod:"",
-          billNotes:"",
-          variableAmount:false,
-          active:true
-        }
+      ? { id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, nickname:"", url:"", autopay:false, payMethod:"", billNotes:"", variableAmount:false }
       : JSON.parse(JSON.stringify(existing));
 
     if(!bill) return;
@@ -616,63 +567,20 @@
               <input id="fProvider" value="${escapeAttr(bill.provider)}" placeholder="Netflix" />
             </div>
             <div>
-              <div class="small muted" style="margin:0 0 6px;">Nickname (optional)</div>
-              <input id="fNickname" value="${escapeAttr(bill.nickname||"")}" placeholder="Streaming" />
-            </div>
-          </div>
-
-          <div>
-            <div class="small muted" style="margin:0 0 6px;">Provider URL (optional)</div>
-            <input id="fUrl" value="${escapeAttr(bill.url||"")}" placeholder="https://..." />
-          </div>
-
-          <div class="grid2">
-            <div>
               <div class="small muted" style="margin:0 0 6px;">Category</div>
               <input id="fCategory" value="${escapeAttr(bill.category)}" placeholder="Subscriptions" />
             </div>
+          </div>
+
+          <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Due day</div>
               <input id="fDueDay" type="number" min="1" max="31" value="${Number(bill.dueDay)}" />
             </div>
-          </div>
-
-          <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Amount</div>
               <input id="fAmount" type="number" step="0.01" value="${Number(bill.amount)}" />
             </div>
-            <div>
-              <div class="small muted" style="margin:0 0 6px;">Payment method (optional)</div>
-              <input id="fPayMethod" value="${escapeAttr(bill.payMethod||"")}" placeholder="Debit, Credit, ACH..." />
-            </div>
-          </div>
-
-          <div class="grid2">
-            <div class="card" style="margin:0; padding:10px;">
-              <div class="row">
-                <div>
-                  <div class="big">Autopay</div>
-                  <div class="small muted">Tracks if this is on autopay</div>
-                </div>
-                <input id="fAutopay" class="checkbox" type="checkbox" ${bill.autopay ? "checked" : ""} />
-              </div>
-            </div>
-
-            <div class="card" style="margin:0; padding:10px;">
-              <div class="row">
-                <div>
-                  <div class="big">Amount varies</div>
-                  <div class="small muted">For bills that change monthly</div>
-                </div>
-                <input id="fVaries" class="checkbox" type="checkbox" ${bill.variableAmount ? "checked" : ""} />
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="small muted" style="margin:0 0 6px;">Bill notes (optional)</div>
-            <textarea id="fBillNotes" placeholder="Account details, login hints, anything you want to remember...">${escapeHtml(bill.billNotes||"")}</textarea>
           </div>
 
           <div class="grid2">
@@ -695,48 +603,22 @@
     document.getElementById("cancelEdit").addEventListener("click", ()=> renderAll());
     document.getElementById("saveEdit").addEventListener("click", ()=>{
       const provider = document.getElementById("fProvider").value.trim();
-      const nickname = document.getElementById("fNickname").value.trim();
-      const url = document.getElementById("fUrl").value.trim();
       const category = document.getElementById("fCategory").value.trim();
       const dueDay = Number(document.getElementById("fDueDay").value);
       const amount = Number(document.getElementById("fAmount").value);
-      const payMethod = document.getElementById("fPayMethod").value.trim();
-      const autopay = document.getElementById("fAutopay").checked;
-      const variableAmount = document.getElementById("fVaries").checked;
-      const billNotes = document.getElementById("fBillNotes").value.trim();
       const active = document.getElementById("fActive").value === "true";
 
       if(!provider){ alert("Provider is required."); return; }
       if(!category){ alert("Category is required."); return; }
       if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
       if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
-      if(url && !/^https?:\/\//i.test(url)){
-        alert("URL should start with http:// or https://");
-        return;
-      }
 
-      const newBill = {
-        ...bill,
-        provider,
-        nickname,
-        url,
-        category,
-        dueDay,
-        amount,
-        payMethod,
-        autopay,
-        variableAmount,
-        billNotes,
-        active,
-        calendarExported: bill.calendarExported === true ? true : false
-      };
-
+      const newBill = { ...bill, provider, category, dueDay, amount, active };
       if(isNew) state.data.bills.push(newBill);
       else{
         const idx = state.data.bills.findIndex(b=>b.id===id);
         if(idx>=0) state.data.bills[idx] = newBill;
       }
-
       save();
       renderAll();
     });
@@ -750,7 +632,7 @@
       const bill = state.data.bills.find(b=>b.id===billId);
       const info = state.data.payments[k];
       if(!bill || !info) continue;
-      items.push({ provider: bill.provider, nickname: bill.nickname||"", category: bill.category, amount: info.amount, paidAtISO: info.paidAtISO, dueISO: info.dueISO, billId });
+      items.push({ provider: bill.provider, category: bill.category, amount: info.amount, paidAtISO: info.paidAtISO, dueISO: info.dueISO, billId });
     }
     items.sort((a,b)=> (a.paidAtISO < b.paidAtISO ? 1 : -1) || a.provider.localeCompare(b.provider));
 
@@ -760,16 +642,13 @@
         <div class="small muted">Paid entries for ${monthLabelFromKey(state.monthKey)}</div>
       </div>
 
-      ${items.length===0 ? `
-        <div class="card"><div class="muted">No payments logged for this month yet.</div></div>
-      ` : items.map(it => {
-        const name = (it.nickname && it.nickname.trim()) ? `${it.nickname.trim()} (${it.provider})` : it.provider;
-        return `
+      ${items.length===0 ? `<div class="card"><div class="muted">No payments logged for this month yet.</div></div>` :
+        items.map(it => `
           <div class="card">
             <div class="row">
               <div>
                 <div class="small muted">Paid ${it.paidAtISO}</div>
-                <div class="big">${escapeHtml(name)}</div>
+                <div class="big">${escapeHtml(it.provider)}</div>
                 <div class="small muted">For due date ${it.dueISO}</div>
               </div>
               <div style="text-align:right;">
@@ -781,8 +660,8 @@
               <button class="btn dangerBtn" data-undo="${escapeAttr(it.billId)}">Undo</button>
             </div>
           </div>
-        `;
-      }).join("")}
+        `).join("")
+      }
     `;
 
     el.viewHistory.querySelectorAll('button[data-undo]').forEach(btn=>{
@@ -815,8 +694,7 @@
       const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30*60000));
 
       const uidStr = `${b.id}@billstracker`;
-      const titleName = (b.nickname && b.nickname.trim()) ? b.nickname.trim() : b.provider;
-      const summary = `${titleName} due`;
+      const summary = `${b.provider} due`;
       const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
 
       lines.push("BEGIN:VEVENT");
@@ -848,8 +726,7 @@
     const choice = prompt(
 `Type:
 1 to export backup
-2 to import backup
-3 to reset everything`,
+2 to import backup`,
 "1"
     );
     if(choice === null) return;
@@ -866,7 +743,7 @@
       a.click();
       a.remove();
       setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-      alert("Backup downloaded. Save it somewhere safe.");
+      alert("Backup downloaded.");
       return;
     }
 
@@ -885,20 +762,20 @@
           renderAll();
           alert("Import complete.");
         }catch(e){
-          alert("Import failed. That file did not look like a valid backup.");
+          alert("Import failed.");
         }
       };
       input.click();
       return;
     }
+  }
 
-    if(c === "3"){
-      if(confirm("This wipes all data in this browser. Continue?")){
-        state.data = defaultData();
-        save();
-        renderAll();
-      }
-      return;
+  function resetLocalData(){
+    if(confirm("Reset all local data for this build? This cannot be undone.")){
+      state.data = defaultData();
+      save();
+      renderAll();
+      alert("Reset complete.");
     }
   }
 
@@ -908,7 +785,7 @@
         <div class="row">
           <div>
             <div class="big">Settings</div>
-            <div class="small muted">Tools, backup, and app info</div>
+            <div class="small muted">Tools and app info</div>
           </div>
           <button class="btn" id="closeSettings">Close</button>
         </div>
@@ -921,8 +798,11 @@
           <button class="btn btnPurple" id="btnCalendar">Calendar export</button>
           <button class="btn" id="btnBackup">Backup</button>
         </div>
+        <div class="row" style="margin-top:10px;">
+          <button class="btn dangerBtn" id="btnReset">Reset local data</button>
+        </div>
         <div class="small muted" style="margin-top:10px;">
-          Calendar export downloads an .ics file for bills that have not been exported yet.
+          Calendar export downloads an .ics file, backup exports or imports a JSON file.
         </div>
       </div>
 
@@ -932,19 +812,18 @@
         <div class="small muted">Version: ${APP_VERSION}</div>
         <div class="small muted">Release date: ${RELEASE_DATE}</div>
         <div class="small muted">Developer: ${DEVELOPER}</div>
-        <div class="small muted" style="margin-top:10px;">Model A local only. Data stays in this browser unless you export a backup.</div>
+        <div class="small muted" style="margin-top:10px;">Storage key: ${STORAGE_KEY}</div>
       </div>
     `;
 
     document.getElementById("closeSettings").addEventListener("click", ()=>{
       el.viewSettings.style.display = "none";
-      // return to current tab view
       setTab(state.activeTab);
       renderAll();
     });
-
     document.getElementById("btnCalendar").addEventListener("click", exportBillsToCalendar);
     document.getElementById("btnBackup").addEventListener("click", doBackup);
+    document.getElementById("btnReset").addEventListener("click", resetLocalData);
   }
 
   function setTab(tab){
@@ -960,17 +839,13 @@
   }
 
   function renderAll(){
-    setMetaLine();
     renderMonthSelect();
     if(state.activeTab==="tracker") renderTracker();
     if(state.activeTab==="bills") renderBills();
     if(state.activeTab==="history") renderHistory();
-    if(state.activeTab!=="tracker"){
-      updateStats(buildTrackerRows());
-    }
+    if(state.activeTab!=="tracker") updateStats(buildTrackerRows());
   }
 
-  // Month nav
   el.prevMonth.addEventListener("click", ()=>{
     state.monthKey = monthKeyFromDate(addMonths(firstOfMonthFromKey(state.monthKey), -1));
     renderAll();
@@ -984,12 +859,10 @@
     renderAll();
   });
 
-  // Tabs
   el.tabTracker.addEventListener("click", ()=>{ setTab("tracker"); renderAll(); });
   el.tabBills.addEventListener("click", ()=>{ setTab("bills"); renderAll(); });
   el.tabHistory.addEventListener("click", ()=>{ setTab("history"); renderAll(); });
 
-  // Settings
   el.btnSettings.addEventListener("click", ()=>{
     el.viewTracker.style.display = "none";
     el.viewBills.style.display = "none";
@@ -998,8 +871,7 @@
     renderSettings();
   });
 
-  // Initial
-  save();      // ensures schema updates persist
+  save();
   renderAll();
 })();
 </script>
