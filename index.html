@@ -293,23 +293,13 @@
   const uid = () => Math.random().toString(36).slice(2,10) + Math.random().toString(36).slice(2,10);
 
   function defaultData(){
-    return {
-      bills: [
-        {id: uid(), category:"Subscriptions", provider:"Discord", dueDay:8, amount:10.81, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Google One", dueDay:12, amount:2.12, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Spotify", dueDay:13, amount:6.48, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Nord Privacy", dueDay:18, amount:14.03, active:true, calendarExported:false},
-        {id: uid(), category:"Utilities", provider:"Atmos Energy", dueDay:18, amount:68.22, active:true, calendarExported:false},
-        {id: uid(), category:"Insurance", provider:"Progressive", dueDay:20, amount:68.59, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Netflix", dueDay:20, amount:27.05, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Crunchyroll", dueDay:20, amount:7.99, active:true, calendarExported:false},
-        {id: uid(), category:"Utilities", provider:"Just Energy", dueDay:1, amount:154.90, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Nintendo", dueDay:1, amount:3.24, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"OpenAI", dueDay:2, amount:21.28, active:true, calendarExported:false},
-        {id: uid(), category:"Utilities", provider:"T-Mobile", dueDay:2, amount:135.00, active:true, calendarExported:false},
-        {id: uid(), category:"Utilities", provider:"RCN (Astound)", dueDay:4, amount:20.95, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"Disney+", dueDay:7, amount:11.89, active:true, calendarExported:false},
-        {id: uid(), category:"Subscriptions", provider:"YouTube TV", dueDay:7, amount:100.65, active:true, calendarExported:false},
+  return {
+    bills: [],
+    payments: {},
+    notes: {}
+  };
+}
+
       ],
       payments: {
         // key: `${monthKey}|${billId}` -> { paidAtISO: "YYYY-MM-DD", dueISO:"YYYY-MM-DD", amount:number }
