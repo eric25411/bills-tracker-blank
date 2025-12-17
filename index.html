@@ -20,141 +20,109 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 30% -20%, rgba(181,140,232,0.25), transparent 55%),
-                  radial-gradient(900px 500px at 90% 0%, rgba(111,75,184,0.22), transparent 55%),
-                  var(--bg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 600px at 30% -20%, rgba(181,140,232,0.25), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, rgba(111,75,184,0.22), transparent 55%),
+        var(--bg);
       color:var(--text);
     }
-    .app{
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 18px 14px 22px;
-    }
-    .top{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom: 10px;
-    }
-    .title{
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-    }
-    .monthRow{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      margin: 10px 0 10px;
-    }
+    .app{ max-width:520px; margin:0 auto; padding:18px 14px 22px; }
+    .top{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .title{ font-size:20px; font-weight:700; letter-spacing:0.2px; }
+    .monthRow{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin:10px 0 10px; }
     .btn{
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-weight: 600;
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:600;
       cursor:pointer;
       user-select:none;
     }
-    .btn:active{transform: scale(0.99)}
+    .btn:active{ transform:scale(0.99); }
     .btnPurple{
       border:1px solid rgba(181,140,232,0.45);
-      background: rgba(181,140,232,0.18);
+      background:rgba(181,140,232,0.18);
     }
-    select, input, textarea{
+    select,input,textarea{
       width:100%;
       border:1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
       outline:none;
     }
     .stats{
       display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns:1fr 1fr 1fr;
       gap:10px;
-      margin-bottom: 10px;
+      margin-bottom:10px;
     }
     .stat{
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 10px 12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
     }
-    .stat .k{font-size:12px; color: var(--muted)}
-    .stat .v{font-size:16px; font-weight:800; margin-top:4px}
+    .stat .k{ font-size:12px; color:var(--muted); }
+    .stat .v{ font-size:16px; font-weight:800; margin-top:4px; }
     .seg{
       display:flex;
       gap:8px;
-      background: rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.04);
       border:1px solid var(--line);
-      border-radius: 14px;
-      padding: 6px;
-      margin: 12px 0 12px;
+      border-radius:14px;
+      padding:6px;
+      margin:12px 0 12px;
     }
     .seg button{
       flex:1;
       padding:10px 10px;
-      border-radius: 12px;
+      border-radius:12px;
       border:0;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 800;
+      background:transparent;
+      color:var(--muted);
+      font-weight:800;
       cursor:pointer;
     }
     .seg button.active{
-      background: rgba(181,140,232,0.22);
-      color: var(--text);
-      border: 1px solid rgba(181,140,232,0.35);
+      background:rgba(181,140,232,0.22);
+      color:var(--text);
+      border:1px solid rgba(181,140,232,0.35);
     }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      margin-bottom:10px;
     }
-    .row{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-    }
+    .row{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
     .pill{
-      font-size: 12px;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(181,140,232,0.16);
-      border: 1px solid rgba(181,140,232,0.35);
-      color: var(--text);
+      font-size:12px;
+      font-weight:800;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(181,140,232,0.16);
+      border:1px solid rgba(181,140,232,0.35);
+      color:var(--text);
       white-space:nowrap;
     }
-    .muted{color: var(--muted)}
-    .big{
-      font-size: 16px;
-      font-weight: 900;
-    }
-    .small{font-size: 12px}
-    .listItem{
-      border-top: 1px solid var(--line);
-      padding-top: 10px;
-      margin-top: 10px;
-    }
+    .muted{ color:var(--muted); }
+    .big{ font-size:16px; font-weight:900; }
+    .small{ font-size:12px; }
     .dueSoon{
-      border-color: rgba(181,140,232,0.55);
-      background: linear-gradient(180deg, rgba(181,140,232,0.18), rgba(255,255,255,0.03));
+      border-color:rgba(181,140,232,0.55);
+      background:linear-gradient(180deg, rgba(181,140,232,0.18), rgba(255,255,255,0.03));
     }
     .overdue{
-      border-color: rgba(255,92,108,0.55);
-      background: linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
+      border-color:rgba(255,92,108,0.55);
+      background:linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
     }
-    .paidFade{opacity:0.72}
+    .paidFade{ opacity:0.72; }
     .toggle{
       display:flex;
       gap:10px;
@@ -162,47 +130,35 @@
       justify-content:flex-end;
       white-space:nowrap;
     }
-    .checkbox{
-      width:22px; height:22px;
-      accent-color: var(--purple);
-    }
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
+    .checkbox{ width:22px; height:22px; accent-color:var(--purple); }
+    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .dangerBtn{
       border:1px solid rgba(255,92,108,0.45);
-      background: rgba(255,92,108,0.16);
+      background:rgba(255,92,108,0.16);
     }
     .okBtn{
       border:1px solid rgba(43,213,118,0.45);
-      background: rgba(43,213,118,0.14);
+      background:rgba(43,213,118,0.14);
     }
     .footerNote{
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.35;
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.35;
     }
-    .hr{
-      height:1px;
-      background: var(--line);
-      margin: 10px 0;
-    }
-    a{color: var(--purple); text-decoration:none}
+    .hr{ height:1px; background:var(--line); margin:10px 0; }
+    a{ color:var(--purple); text-decoration:none; }
   </style>
 </head>
 <body>
   <div class="app">
     <div class="top">
-  <div class="title">Bills Tracker</div>
-  <div style="display:flex; gap:10px;">
-    <button class="btn" id="btnCalendar">Calendar</button>
-    <button class="btn btnPurple" id="btnBackup">Backup</button>
-  </div>
-</div>
-
+      <div class="title">Bills Tracker</div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn" id="btnCalendar">Calendar</button>
+        <button class="btn btnPurple" id="btnBackup">Backup</button>
+      </div>
+    </div>
 
     <div class="monthRow">
       <button class="btn" id="prevMonth">◀︎</button>
@@ -241,18 +197,9 @@
     return d;
   };
 
-  const fmtMoney = (n) => {
-    return new Intl.NumberFormat(undefined, {style:"currency", currency:"USD"}).format(Number(n || 0));
-  };
-
+  const fmtMoney = (n) => new Intl.NumberFormat(undefined, {style:"currency", currency:"USD"}).format(Number(n || 0));
   const pad2 = (n) => String(n).padStart(2,"0");
   const toISODate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
-  const fromISODate = (s) => {
-    const [y,m,d] = s.split("-").map(Number);
-    const dt = new Date(y, m-1, d);
-    dt.setHours(0,0,0,0);
-    return dt;
-  };
 
   const monthKeyFromDate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}`;
   const monthLabelFromKey = (key) => {
@@ -260,20 +207,17 @@
     const dt = new Date(y, m-1, 1);
     return dt.toLocaleString(undefined, {month:"short", year:"numeric"});
   };
-
   const addMonths = (d, delta) => {
     const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1);
     dt.setHours(0,0,0,0);
     return dt;
   };
-
   const firstOfMonthFromKey = (key) => {
     const [y,m] = key.split("-").map(Number);
     const dt = new Date(y, m-1, 1);
     dt.setHours(0,0,0,0);
     return dt;
   };
-
   const computeDueDate = (monthKey, dueDay) => {
     const base = firstOfMonthFromKey(monthKey);
     const y = base.getFullYear();
@@ -284,118 +228,46 @@
     dt.setHours(0,0,0,0);
     return dt;
   };
-
-  const daysBetween = (a,b) => {
-    const ms = 24*60*60*1000;
-    return Math.floor((b.getTime() - a.getTime())/ms);
-  };
-
+  const daysBetween = (a,b) => Math.floor((b.getTime() - a.getTime())/(24*60*60*1000));
   const uid = () => Math.random().toString(36).slice(2,10) + Math.random().toString(36).slice(2,10);
 
   function defaultData(){
-  return {
-    bills: [],
-    payments: {},
-    notes: {}
-  };
-}
-
-
-      ],
-      payments: {
-        // key: `${monthKey}|${billId}` -> { paidAtISO: "YYYY-MM-DD", dueISO:"YYYY-MM-DD", amount:number }
-      },
-      notes: {
-        // key: `${monthKey}|${billId}` -> "text"
-      }
+    return {
+      bills: [],            // BLANK BUILD
+      payments: {},         // `${monthKey}|${billId}` -> { paidAtISO, dueISO, amount }
+      notes: {}             // `${monthKey}|${billId}` -> "text"
     };
   }
-function downloadTextFile(filename, content, mime){
-  const blob = new Blob([content], {type: mime});
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-}
 
-function icsEscape(s){
-  return String(s ?? "")
-    .replace(/\\/g, "\\\\")
-    .replace(/\n/g, "\\n")
-    .replace(/,/g, "\\,")
-    .replace(/;/g, "\\;");
-}
-
-function formatICSDateTimeLocal(d){
-  const y = d.getFullYear();
-  const m = pad2(d.getMonth()+1);
-  const day = pad2(d.getDate());
-  const hh = pad2(d.getHours());
-  const mm = pad2(d.getMinutes());
-  const ss = pad2(d.getSeconds());
-  return `${y}${m}${day}T${hh}${mm}${ss}`;
-}
-function exportBillsToCalendar(){
-  const bills = activeBills().filter(b => !b.calendarExported);
-  if(bills.length === 0){
-    alert("No active bills to export.");
-    return;
+  // Calendar helpers (MUST be inside the IIFE)
+  function downloadTextFile(filename, content, mime){
+    const blob = new Blob([content], {type: mime});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
   }
 
-  const startMonth = firstOfMonthFromKey(state.monthKey);
+  function icsEscape(s){
+    return String(s ?? "")
+      .replace(/\\/g, "\\\\")
+      .replace(/\n/g, "\\n")
+      .replace(/,/g, "\\,")
+      .replace(/;/g, "\\;");
+  }
 
-  const reminderHour = 9;
-  const reminderMinute = 0;
-
-  const alarmMinutesBefore = 24 * 60;
-
-  const lines = [];
-  lines.push("BEGIN:VCALENDAR");
-  lines.push("VERSION:2.0");
-  lines.push("PRODID:-//BillsTracker//EN");
-  lines.push("CALSCALE:GREGORIAN");
-  lines.push("METHOD:PUBLISH");
-
-  bills.forEach(b => {
-    const due = computeDueDate(monthKeyFromDate(startMonth), b.dueDay);
-
-    const dt = new Date(due.getFullYear(), due.getMonth(), due.getDate(), reminderHour, reminderMinute, 0);
-    const dtStart = formatICSDateTimeLocal(dt);
-    const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30 * 60000));
-
-    const uidStr = `${b.id}@billstracker`;
-    const summary = `${b.provider} due`;
-    const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
-
-    lines.push("BEGIN:VEVENT");
-    lines.push(`UID:${icsEscape(uidStr)}`);
-    lines.push(`DTSTAMP:${formatICSDateTimeLocal(new Date())}`);
-    lines.push(`DTSTART:${dtStart}`);
-    lines.push(`DTEND:${dtEnd}`);
-    lines.push(`SUMMARY:${icsEscape(summary)}`);
-    lines.push(`DESCRIPTION:${icsEscape(desc)}`);
-    lines.push(`RRULE:FREQ=MONTHLY;BYMONTHDAY=${Number(b.dueDay)}`);
-
-    lines.push("BEGIN:VALARM");
-    lines.push(`TRIGGER:-PT${alarmMinutesBefore}M`);
-    lines.push("ACTION:DISPLAY");
-    lines.push(`DESCRIPTION:${icsEscape(summary)}`);
-    lines.push("END:VALARM");
-
-    lines.push("END:VEVENT");
-  });
-
-  lines.push("END:VCALENDAR");
-
-  downloadTextFile("bills-reminders.ics", lines.join("\r\n"), "text/calendar;charset=utf-8");
-  bills.forEach(b => b.calendarExported = true);
-save();
-renderAll();
-  alert("Calendar file downloaded. Open it and add the events to your calendar.");
-}
+  function formatICSDateTimeLocal(d){
+    const y = d.getFullYear();
+    const m = pad2(d.getMonth()+1);
+    const day = pad2(d.getDate());
+    const hh = pad2(d.getHours());
+    const mm = pad2(d.getMinutes());
+    const ss = pad2(d.getSeconds());
+    return `${y}${m}${day}T${hh}${mm}${ss}`;
+  }
 
   function load(){
     try{
@@ -405,18 +277,11 @@ renderAll();
       if(!data || !Array.isArray(data.bills)) return defaultData();
       data.payments ||= {};
       data.notes ||= {};
-      data.bills.forEach(b => {
-  if (b.calendarExported === undefined) b.calendarExported = false;
-});
-
+      data.bills.forEach(b => { if (b.calendarExported === undefined) b.calendarExported = false; });
       return data;
     }catch(e){
       return defaultData();
     }
-  }
-
-  function save(){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
   }
 
   const state = {
@@ -424,6 +289,10 @@ renderAll();
     monthKey: monthKeyFromDate(today()),
     activeTab: "tracker",
   };
+
+  function save(){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.data));
+  }
 
   const el = {
     monthSelect: document.getElementById("monthSelect"),
@@ -439,7 +308,15 @@ renderAll();
     viewBills: document.getElementById("viewBills"),
     viewHistory: document.getElementById("viewHistory"),
     btnBackup: document.getElementById("btnBackup"),
+    btnCalendar: document.getElementById("btnCalendar"),
   };
+
+  function escapeHtml(s){
+    return String(s ?? "").replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
+  }
+  function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
 
   function monthOptions(){
     const now = today();
@@ -460,26 +337,14 @@ renderAll();
     el.monthSelect.value = state.monthKey;
   }
 
-  function getInstanceKey(monthKey, billId){
-    return `${monthKey}|${billId}`;
-  }
-
-  function isPaid(monthKey, billId){
-    return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]);
-  }
-
-  function paidInfo(monthKey, billId){
-    return state.data.payments[getInstanceKey(monthKey, billId)] || null;
-  }
+  function getInstanceKey(monthKey, billId){ return `${monthKey}|${billId}`; }
+  function isPaid(monthKey, billId){ return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]); }
+  function paidInfo(monthKey, billId){ return state.data.payments[getInstanceKey(monthKey, billId)] || null; }
 
   function setPaid(monthKey, bill){
     const k = getInstanceKey(monthKey, bill.id);
     const due = computeDueDate(monthKey, bill.dueDay);
-    state.data.payments[k] = {
-      paidAtISO: toISODate(today()),
-      dueISO: toISODate(due),
-      amount: Number(bill.amount || 0)
-    };
+    state.data.payments[k] = { paidAtISO: toISODate(today()), dueISO: toISODate(due), amount: Number(bill.amount||0) };
     save();
   }
 
@@ -489,23 +354,15 @@ renderAll();
     save();
   }
 
-  function getNote(monthKey, billId){
-    return state.data.notes[getInstanceKey(monthKey, billId)] || "";
-  }
-
+  function getNote(monthKey, billId){ return state.data.notes[getInstanceKey(monthKey, billId)] || ""; }
   function setNote(monthKey, billId, text){
     const k = getInstanceKey(monthKey, billId);
-    if(text && text.trim()){
-      state.data.notes[k] = text.trim();
-    }else{
-      delete state.data.notes[k];
-    }
+    if(text && text.trim()) state.data.notes[k] = text.trim();
+    else delete state.data.notes[k];
     save();
   }
 
-  function activeBills(){
-    return state.data.bills.filter(b => b.active !== false);
-  }
+  function activeBills(){ return state.data.bills.filter(b => b.active !== false); }
 
   function buildTrackerRows(){
     const bills = activeBills();
@@ -514,14 +371,7 @@ renderAll();
       const paid = isPaid(state.monthKey, b.id);
       const info = paid ? paidInfo(state.monthKey, b.id) : null;
       const note = getNote(state.monthKey, b.id);
-      return {
-        bill: b,
-        dueDate,
-        dueISO: toISODate(dueDate),
-        paid,
-        paidAtISO: info ? info.paidAtISO : null,
-        note
-      };
+      return { bill:b, dueDate, dueISO:toISODate(dueDate), paid, paidAtISO: info ? info.paidAtISO : null, note };
     });
     rows.sort((a,b) => a.dueDate - b.dueDate || a.bill.provider.localeCompare(b.bill.provider));
     return rows;
@@ -540,18 +390,24 @@ renderAll();
     const rows = buildTrackerRows();
     updateStats(rows);
 
+    if(rows.length === 0){
+      el.viewTracker.innerHTML = `
+        <div class="card">
+          <div class="big">No bills yet</div>
+          <div class="small muted" style="margin-top:6px;">
+            Tap <b>Bills</b> then <b>Add</b> to create your first recurring bill.
+          </div>
+        </div>
+      `;
+      return;
+    }
+
     const now = today();
     el.viewTracker.innerHTML = rows.map(r => {
       const dueIn = daysBetween(now, r.dueDate);
       const overdue = !r.paid && r.dueDate < now;
       const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
-      const cls = [
-        "card",
-        dueSoon ? "dueSoon" : "",
-        overdue ? "overdue" : "",
-        r.paid ? "paidFade" : ""
-      ].filter(Boolean).join(" ");
-
+      const cls = ["card", dueSoon ? "dueSoon" : "", overdue ? "overdue" : "", r.paid ? "paidFade" : ""].filter(Boolean).join(" ");
       const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
       const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
 
@@ -584,11 +440,8 @@ renderAll();
         const billId = e.target.getAttribute("data-billid");
         const bill = state.data.bills.find(b => b.id === billId);
         if(!bill) return;
-        if(e.target.checked){
-          setPaid(state.monthKey, bill);
-        }else{
-          setUnpaid(state.monthKey, billId);
-        }
+        if(e.target.checked) setPaid(state.monthKey, bill);
+        else setUnpaid(state.monthKey, billId);
         renderAll();
       });
     });
@@ -607,6 +460,7 @@ renderAll();
 
   function renderBills(){
     const bills = state.data.bills.slice().sort((a,b)=> (a.active===b.active?0:(a.active? -1:1)) || a.provider.localeCompare(b.provider));
+
     el.viewBills.innerHTML = `
       <div class="card">
         <div class="row">
@@ -617,6 +471,12 @@ renderAll();
           <button class="btn btnPurple" id="addBill">Add</button>
         </div>
       </div>
+
+      ${bills.length === 0 ? `
+        <div class="card">
+          <div class="muted">No bills added yet.</div>
+        </div>
+      ` : ""}
 
       ${bills.map(b => `
         <div class="card">
@@ -631,20 +491,18 @@ renderAll();
             </div>
           </div>
           <div class="row" style="margin-top:10px;">
-  <button class="btn" data-edit="${b.id}">Edit</button>
-  <button class="btn" data-reexp="${b.id}">Re export</button>
-  <button class="btn dangerBtn" data-del="${b.id}">Delete</button>
-</div>
-<div class="small muted" style="margin-top:8px;">
-  Calendar exported: ${b.calendarExported ? "Yes" : "No"}
-</div>
+            <button class="btn" data-edit="${b.id}">Edit</button>
+            <button class="btn" data-reexp="${b.id}">Re export</button>
+            <button class="btn dangerBtn" data-del="${b.id}">Delete</button>
+          </div>
+          <div class="small muted" style="margin-top:8px;">
+            Calendar exported: ${b.calendarExported ? "Yes" : "No"}
+          </div>
         </div>
       `).join("")}
     `;
 
-    document.getElementById("addBill").addEventListener("click", () => {
-      editBill(null);
-    });
+    document.getElementById("addBill").addEventListener("click", () => editBill(null));
 
     el.viewBills.querySelectorAll('input[type="checkbox"][data-active]').forEach(cb => {
       cb.addEventListener("change", (e) => {
@@ -660,17 +518,18 @@ renderAll();
     el.viewBills.querySelectorAll('button[data-edit]').forEach(btn => {
       btn.addEventListener("click", () => editBill(btn.getAttribute("data-edit")));
     });
-el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
-  btn.addEventListener("click", () => {
-    const id = btn.getAttribute("data-reexp");
-    const bill = state.data.bills.find(x => x.id === id);
-    if(!bill) return;
-    bill.calendarExported = false;
-    save();
-    renderAll();
-    alert("This bill will be included in the next Calendar export.");
-  });
-});
+
+    el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-reexp");
+        const bill = state.data.bills.find(x => x.id === id);
+        if(!bill) return;
+        bill.calendarExported = false;
+        save();
+        renderAll();
+        alert("This bill will be included in the next Calendar export.");
+      });
+    });
 
     el.viewBills.querySelectorAll('button[data-del]').forEach(btn => {
       btn.addEventListener("click", () => {
@@ -679,12 +538,8 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
         if(!bill) return;
         if(confirm(`Delete bill: ${bill.provider}?`)){
           state.data.bills = state.data.bills.filter(x => x.id !== id);
-          for(const k of Object.keys(state.data.payments)){
-            if(k.endsWith("|"+id)) delete state.data.payments[k];
-          }
-          for(const k of Object.keys(state.data.notes)){
-            if(k.endsWith("|"+id)) delete state.data.notes[k];
-          }
+          for(const k of Object.keys(state.data.payments)) if(k.endsWith("|"+id)) delete state.data.payments[k];
+          for(const k of Object.keys(state.data.notes)) if(k.endsWith("|"+id)) delete state.data.notes[k];
           save();
           renderAll();
         }
@@ -694,7 +549,10 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
 
   function editBill(id){
     const isNew = !id;
-    const bill = isNew ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true} : JSON.parse(JSON.stringify(state.data.bills.find(b=>b.id===id)));
+    const bill = isNew
+      ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, calendarExported:false}
+      : JSON.parse(JSON.stringify(state.data.bills.find(b=>b.id===id)));
+
     if(!bill) return;
 
     const formHtml = `
@@ -748,31 +606,19 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
       const amount = Number(document.getElementById("fAmount").value);
       const active = document.getElementById("fActive").value === "true";
 
-      if(!provider){
-        alert("Provider is required.");
-        return;
-      }
-      if(!category){
-        alert("Category is required.");
-        return;
-      }
-      if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){
-        alert("Due day must be 1 to 31.");
-        return;
-      }
-      if(!Number.isFinite(amount) || amount < 0){
-        alert("Amount must be 0 or more.");
-        return;
-      }
+      if(!provider){ alert("Provider is required."); return; }
+      if(!category){ alert("Category is required."); return; }
+      if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
+      if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
 
       const newBill = { ...bill, provider, category, dueDay, amount, active };
 
-      if(isNew){
-        state.data.bills.push(newBill);
-      }else{
+      if(isNew) state.data.bills.push(newBill);
+      else{
         const idx = state.data.bills.findIndex(b=>b.id===id);
         if(idx >= 0) state.data.bills[idx] = newBill;
       }
+
       save();
       renderAll();
     });
@@ -786,14 +632,7 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
       const bill = state.data.bills.find(b=>b.id===billId);
       const info = state.data.payments[k];
       if(!bill || !info) continue;
-      items.push({
-        provider: bill.provider,
-        category: bill.category,
-        amount: info.amount,
-        paidAtISO: info.paidAtISO,
-        dueISO: info.dueISO,
-        billId
-      });
+      items.push({ provider: bill.provider, category: bill.category, amount: info.amount, paidAtISO: info.paidAtISO, dueISO: info.dueISO, billId });
     }
     items.sort((a,b)=> (a.paidAtISO < b.paidAtISO ? 1 : -1) || a.provider.localeCompare(b.provider));
 
@@ -804,9 +643,7 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
       </div>
 
       ${items.length === 0 ? `
-        <div class="card">
-          <div class="muted">No payments logged for this month yet.</div>
-        </div>
+        <div class="card"><div class="muted">No payments logged for this month yet.</div></div>
       ` : items.map(it => `
         <div class="card">
           <div class="row">
@@ -860,12 +697,61 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
     }
   }
 
-  function escapeHtml(s){
-    return String(s ?? "").replace(/[&<>"']/g, m => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[m]));
+  function exportBillsToCalendar(){
+    const bills = activeBills().filter(b => !b.calendarExported);
+    if(bills.length === 0){
+      alert("No active bills to export.");
+      return;
+    }
+
+    const startMonth = firstOfMonthFromKey(state.monthKey);
+    const reminderHour = 9;
+    const reminderMinute = 0;
+    const alarmMinutesBefore = 24 * 60;
+
+    const lines = [];
+    lines.push("BEGIN:VCALENDAR");
+    lines.push("VERSION:2.0");
+    lines.push("PRODID:-//BillsTracker//EN");
+    lines.push("CALSCALE:GREGORIAN");
+    lines.push("METHOD:PUBLISH");
+
+    bills.forEach(b => {
+      const due = computeDueDate(monthKeyFromDate(startMonth), b.dueDay);
+      const dt = new Date(due.getFullYear(), due.getMonth(), due.getDate(), reminderHour, reminderMinute, 0);
+      const dtStart = formatICSDateTimeLocal(dt);
+      const dtEnd = formatICSDateTimeLocal(new Date(dt.getTime() + 30 * 60000));
+
+      const uidStr = `${b.id}@billstracker`;
+      const summary = `${b.provider} due`;
+      const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
+
+      lines.push("BEGIN:VEVENT");
+      lines.push(`UID:${icsEscape(uidStr)}`);
+      lines.push(`DTSTAMP:${formatICSDateTimeLocal(new Date())}`);
+      lines.push(`DTSTART:${dtStart}`);
+      lines.push(`DTEND:${dtEnd}`);
+      lines.push(`SUMMARY:${icsEscape(summary)}`);
+      lines.push(`DESCRIPTION:${icsEscape(desc)}`);
+      lines.push(`RRULE:FREQ=MONTHLY;BYMONTHDAY=${Number(b.dueDay)}`);
+
+      lines.push("BEGIN:VALARM");
+      lines.push(`TRIGGER:-PT${alarmMinutesBefore}M`);
+      lines.push("ACTION:DISPLAY");
+      lines.push(`DESCRIPTION:${icsEscape(summary)}`);
+      lines.push("END:VALARM");
+
+      lines.push("END:VEVENT");
+    });
+
+    lines.push("END:VCALENDAR");
+
+    downloadTextFile("bills-reminders.ics", lines.join("\r\n"), "text/calendar;charset=utf-8");
+    bills.forEach(b => b.calendarExported = true);
+    save();
+    renderAll();
+    alert("Calendar file downloaded. Open it and add the events to your calendar.");
   }
-  function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
 
   function doBackup(){
     const choice = prompt(
@@ -889,7 +775,7 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
       a.click();
       a.remove();
       setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-      alert("Backup downloaded. Save it in Files, like iCloud Drive.");
+      alert("Backup downloaded. Save it somewhere safe, like iCloud Drive.");
       return;
     }
 
@@ -906,6 +792,7 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
           if(!obj || !Array.isArray(obj.bills)) throw new Error("Invalid file");
           obj.payments ||= {};
           obj.notes ||= {};
+          obj.bills.forEach(b => { if (b.calendarExported === undefined) b.calendarExported = false; });
           state.data = obj;
           save();
           renderAll();
@@ -928,33 +815,29 @@ el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
     }
   }
 
+  // Wire events
   el.prevMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
     state.monthKey = monthKeyFromDate(addMonths(d, -1));
     renderAll();
   });
-
   el.nextMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
     state.monthKey = monthKeyFromDate(addMonths(d, 1));
     renderAll();
   });
+  el.monthSelect.addEventListener("change", () => { state.monthKey = el.monthSelect.value; renderAll(); });
 
-  el.monthSelect.addEventListener("change", () => {
-    state.monthKey = el.monthSelect.value;
-    renderAll();
-  });
-document.getElementById("btnCalendar").addEventListener("click", exportBillsToCalendar);
+  el.btnCalendar.addEventListener("click", exportBillsToCalendar);
+  el.btnBackup.addEventListener("click", doBackup);
 
   el.tabTracker.addEventListener("click", () => { setTab("tracker"); renderAll(); });
   el.tabBills.addEventListener("click", () => { setTab("bills"); renderAll(); });
   el.tabHistory.addEventListener("click", () => { setTab("history"); renderAll(); });
-  el.btnBackup.addEventListener("click", doBackup);
 
-  // Initial render
+  // Initial
   renderAll();
 })();
 </script>
 </body>
 </html>
-
