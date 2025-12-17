@@ -7,8 +7,6 @@
   <style>
     :root{
       --bg:#0f0f14;
-      --card:#171722;
-      --card2:#1f1f2c;
       --text:#f4f4f7;
       --muted:#b7b7c8;
       --purple:#b58ce8;
@@ -28,26 +26,54 @@
       color:var(--text);
     }
     .app{ max-width:520px; margin:0 auto; padding:18px 14px 22px; }
+
     .top{ display:flex; gap:10px; align-items:flex-start; justify-content:space-between; margin-bottom:10px; }
-    .title{ font-size:20px; font-weight:700; letter-spacing:0.2px; }
+    .title{ font-size:20px; font-weight:800; letter-spacing:0.2px; }
     .metaLine{ margin-top:4px; font-size:12px; color:var(--muted); line-height:1.25; }
 
+    .iconBtn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.04);
+      color:var(--text);
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .iconBtn:active{ transform:scale(0.99); }
+
     .monthRow{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin:10px 0 10px; }
+
     .btn{
       border:1px solid var(--line);
       background:rgba(255,255,255,0.04);
       color:var(--text);
       padding:10px 12px;
       border-radius:12px;
-      font-weight:600;
+      font-weight:700;
       cursor:pointer;
       user-select:none;
     }
     .btn:active{ transform:scale(0.99); }
+
     .btnPurple{
       border:1px solid rgba(181,140,232,0.45);
       background:rgba(181,140,232,0.18);
     }
+    .dangerBtn{
+      border:1px solid rgba(255,92,108,0.45);
+      background:rgba(255,92,108,0.16);
+    }
+    .okBtn{
+      border:1px solid rgba(43,213,118,0.45);
+      background:rgba(43,213,118,0.14);
+    }
+
     select,input,textarea{
       width:100%;
       border:1px solid var(--line);
@@ -57,6 +83,7 @@
       border-radius:12px;
       outline:none;
     }
+
     .stats{
       display:grid;
       grid-template-columns:1fr 1fr 1fr;
@@ -70,7 +97,7 @@
       padding:10px 12px;
     }
     .stat .k{ font-size:12px; color:var(--muted); }
-    .stat .v{ font-size:16px; font-weight:800; margin-top:4px; }
+    .stat .v{ font-size:16px; font-weight:900; margin-top:4px; }
 
     .seg{
       display:flex;
@@ -88,7 +115,7 @@
       border:0;
       background:transparent;
       color:var(--muted);
-      font-weight:800;
+      font-weight:900;
       cursor:pointer;
     }
     .seg button.active{
@@ -107,13 +134,18 @@
     .row{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
     .pill{
       font-size:12px;
-      font-weight:800;
+      font-weight:900;
       padding:6px 10px;
       border-radius:999px;
       background:rgba(181,140,232,0.16);
       border:1px solid rgba(181,140,232,0.35);
       color:var(--text);
       white-space:nowrap;
+    }
+    .pillGrey{
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line);
+      color:var(--muted);
     }
     .muted{ color:var(--muted); }
     .big{ font-size:16px; font-weight:900; }
@@ -127,7 +159,7 @@
       border-color:rgba(255,92,108,0.55);
       background:linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
     }
-    .paidFade{ opacity:0.75; }
+    .paidFade{ opacity:0.78; }
 
     .toggle{
       display:flex;
@@ -137,43 +169,20 @@
       white-space:nowrap;
     }
     .checkbox{ width:22px; height:22px; accent-color:var(--purple); }
+
     .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-
-    .dangerBtn{
-      border:1px solid rgba(255,92,108,0.45);
-      background:rgba(255,92,108,0.16);
-    }
-    .okBtn{
-      border:1px solid rgba(43,213,118,0.45);
-      background:rgba(43,213,118,0.14);
-    }
-
-    .footerNote{
-      margin-top:14px;
-      font-size:12px;
-      color:var(--muted);
-      line-height:1.35;
-    }
     .hr{ height:1px; background:var(--line); margin:10px 0; }
-    a{ color:var(--purple); text-decoration:none; }
 
-    .catTotals{
-      margin-bottom: 8px;
-      display:grid;
-      gap:8px;
-    }
+    .catTotals{ margin-bottom:8px; display:grid; gap:8px; }
     .catRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:10px 12px; border-radius:14px; border:1px solid var(--line);
       background:rgba(255,255,255,0.04);
     }
-    .catName{ font-weight:800; }
+    .catName{ font-weight:900; }
     .catAmt{ font-weight:900; }
+
+    .footerNote{ margin-top:14px; font-size:12px; color:var(--muted); line-height:1.35; }
   </style>
 </head>
 <body>
@@ -183,10 +192,7 @@
         <div class="title">Bills Tracker</div>
         <div class="metaLine" id="metaLine">Loading…</div>
       </div>
-      <div style="display:flex; gap:10px;">
-        <button class="btn" id="btnCalendar">Calendar</button>
-        <button class="btn btnPurple" id="btnBackup">Backup</button>
-      </div>
+      <button class="iconBtn" id="btnSettings" title="Settings" aria-label="Settings">⚙︎</button>
     </div>
 
     <div class="monthRow">
@@ -207,22 +213,25 @@
       <button id="tabTracker" class="active">Tracker</button>
       <button id="tabBills">Bills</button>
       <button id="tabHistory">History</button>
+      <button id="tabSettings">Settings</button>
     </div>
 
     <div id="viewTracker"></div>
     <div id="viewBills" style="display:none;"></div>
     <div id="viewHistory" style="display:none;"></div>
+    <div id="viewSettings" style="display:none;"></div>
 
     <div class="footerNote">
-      Model A local only. Data stays in this browser. Use Backup to export a file you can save in iCloud Drive.
+      Model A local only. Data stays in this browser. Use Settings for Calendar and Backups.
     </div>
   </div>
 
 <script>
 (function(){
-  const VERSION = "1.1";
+  const VERSION = "1.2";
+  const RELEASE_DATE = "2025-12-16";
   const DEVELOPER = "Manny Ch.";
-  const STORAGE_KEY = "billTrackerBlankV1_1";
+  const STORAGE_KEY = "billTrackerBlankV1_2";
 
   const today = () => {
     const d = new Date();
@@ -246,17 +255,26 @@
     const dt = new Date(y, m-1, 1);
     return dt.toLocaleString(undefined, {month:"long", year:"numeric"});
   };
+
   const addMonths = (d, delta) => {
     const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1);
     dt.setHours(0,0,0,0);
     return dt;
   };
+
   const firstOfMonthFromKey = (key) => {
     const [y,m] = key.split("-").map(Number);
     const dt = new Date(y, m-1, 1);
     dt.setHours(0,0,0,0);
     return dt;
   };
+
+  const monthsBetweenKeys = (fromKey, toKey) => {
+    const [fy,fm] = fromKey.split("-").map(Number);
+    const [ty,tm] = toKey.split("-").map(Number);
+    return (ty*12 + (tm-1)) - (fy*12 + (fm-1));
+  };
+
   const computeDueDate = (monthKey, dueDay) => {
     const base = firstOfMonthFromKey(monthKey);
     const y = base.getFullYear();
@@ -267,44 +285,17 @@
     dt.setHours(0,0,0,0);
     return dt;
   };
+
   const daysBetween = (a,b) => Math.floor((b.getTime() - a.getTime())/(24*60*60*1000));
   const uid = () => Math.random().toString(36).slice(2,10) + Math.random().toString(36).slice(2,10);
 
   function defaultData(){
     return {
       bills: [],
-      payments: {},
-      notes: {}
+      payments: {}, // month|bill -> { paidAtISO, dueISO, amountDue, amountPaid }
+      notes: {},    // month|bill -> string
+      skips: {}     // month|bill -> true
     };
-  }
-
-  function downloadTextFile(filename, content, mime){
-    const blob = new Blob([content], {type: mime});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-  }
-
-  function icsEscape(s){
-    return String(s ?? "")
-      .replace(/\\/g, "\\\\")
-      .replace(/\n/g, "\\n")
-      .replace(/,/g, "\\,")
-      .replace(/;/g, "\\;");
-  }
-
-  function formatICSDateTimeLocal(d){
-    const y = d.getFullYear();
-    const m = pad2(d.getMonth()+1);
-    const day = pad2(d.getDate());
-    const hh = pad2(d.getHours());
-    const mm = pad2(d.getMinutes());
-    const ss = pad2(d.getSeconds());
-    return `${y}${m}${day}T${hh}${mm}${ss}`;
   }
 
   function load(){
@@ -315,7 +306,12 @@
       if(!data || !Array.isArray(data.bills)) return defaultData();
       data.payments ||= {};
       data.notes ||= {};
-      data.bills.forEach(b => { if (b.calendarExported === undefined) b.calendarExported = false; });
+      data.skips ||= {};
+      data.bills.forEach(b => {
+        if (b.calendarExported === undefined) b.calendarExported = false;
+        if (!b.frequency) b.frequency = "monthly";
+        if (!b.startMonthKey) b.startMonthKey = monthKeyFromDate(today());
+      });
       return data;
     }catch(e){
       return defaultData();
@@ -334,6 +330,7 @@
 
   const el = {
     metaLine: document.getElementById("metaLine"),
+    btnSettings: document.getElementById("btnSettings"),
     monthSelect: document.getElementById("monthSelect"),
     prevMonth: document.getElementById("prevMonth"),
     nextMonth: document.getElementById("nextMonth"),
@@ -344,11 +341,11 @@
     tabTracker: document.getElementById("tabTracker"),
     tabBills: document.getElementById("tabBills"),
     tabHistory: document.getElementById("tabHistory"),
+    tabSettings: document.getElementById("tabSettings"),
     viewTracker: document.getElementById("viewTracker"),
     viewBills: document.getElementById("viewBills"),
     viewHistory: document.getElementById("viewHistory"),
-    btnBackup: document.getElementById("btnBackup"),
-    btnCalendar: document.getElementById("btnCalendar"),
+    viewSettings: document.getElementById("viewSettings"),
   };
 
   function escapeHtml(s){
@@ -357,6 +354,10 @@
     }[m]));
   }
   function escapeAttr(s){ return escapeHtml(s).replace(/"/g,"&quot;"); }
+
+  function renderMeta(){
+    el.metaLine.textContent = `Viewing ${monthLabelFromKey(state.monthKey)} • v${VERSION} • Released ${RELEASE_DATE} • Dev ${DEVELOPER}`;
+  }
 
   function monthOptions(){
     const now = today();
@@ -371,10 +372,6 @@
     return keys;
   }
 
-  function renderMeta(){
-    el.metaLine.textContent = `Viewing ${monthLabelFromKey(state.monthKey)} • v${VERSION} • Dev ${DEVELOPER}`;
-  }
-
   function renderMonthSelect(){
     const keys = monthOptions();
     el.monthSelect.innerHTML = keys.map(k => `<option value="${k}">${monthLabelFromKey(k)}</option>`).join("");
@@ -382,23 +379,30 @@
   }
 
   function getInstanceKey(monthKey, billId){ return `${monthKey}|${billId}`; }
-  function isPaid(monthKey, billId){ return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]); }
-  function paidInfo(monthKey, billId){ return state.data.payments[getInstanceKey(monthKey, billId)] || null; }
 
-  function setPaid(monthKey, bill){
-    const k = getInstanceKey(monthKey, bill.id);
-    const due = computeDueDate(monthKey, bill.dueDay);
-    state.data.payments[k] = { paidAtISO: toISODate(today()), dueISO: toISODate(due), amount: Number(bill.amount||0) };
-    save();
+  function isPaid(monthKey, billId){
+    return Boolean(state.data.payments[getInstanceKey(monthKey, billId)]);
   }
 
-  function setUnpaid(monthKey, billId){
+  function paidInfo(monthKey, billId){
+    return state.data.payments[getInstanceKey(monthKey, billId)] || null;
+  }
+
+  function isSkipped(monthKey, billId){
+    return Boolean(state.data.skips[getInstanceKey(monthKey, billId)]);
+  }
+
+  function setSkipped(monthKey, billId, val){
     const k = getInstanceKey(monthKey, billId);
-    delete state.data.payments[k];
+    if(val) state.data.skips[k] = true;
+    else delete state.data.skips[k];
     save();
   }
 
-  function getNote(monthKey, billId){ return state.data.notes[getInstanceKey(monthKey, billId)] || ""; }
+  function getNote(monthKey, billId){
+    return state.data.notes[getInstanceKey(monthKey, billId)] || "";
+  }
+
   function setNote(monthKey, billId, text){
     const k = getInstanceKey(monthKey, billId);
     if(text && text.trim()) state.data.notes[k] = text.trim();
@@ -406,35 +410,68 @@
     save();
   }
 
-  function activeBills(){ return state.data.bills.filter(b => b.active !== false); }
+  function activeBills(){
+    return state.data.bills.filter(b => b.active !== false);
+  }
+
+  function freqIntervalMonths(freq){
+    if(freq === "quarterly") return 3;
+    if(freq === "yearly") return 12;
+    return 1; // monthly
+  }
+
+  function billAppliesThisMonth(bill, monthKey){
+    const startKey = bill.startMonthKey || monthKeyFromDate(today());
+    const diff = monthsBetweenKeys(startKey, monthKey);
+    if(diff < 0) return false;
+    const interval = freqIntervalMonths(bill.frequency || "monthly");
+    return diff % interval === 0;
+  }
 
   function buildTrackerRows(){
-    const bills = activeBills();
+    const bills = activeBills().filter(b => billAppliesThisMonth(b, state.monthKey));
     const rows = bills.map(b => {
       const dueDate = computeDueDate(state.monthKey, b.dueDay);
+      const dueISO = toISODate(dueDate);
       const paid = isPaid(state.monthKey, b.id);
       const info = paid ? paidInfo(state.monthKey, b.id) : null;
       const note = getNote(state.monthKey, b.id);
-      return { bill:b, dueDate, dueISO:toISODate(dueDate), paid, paidAtISO: info ? info.paidAtISO : null, note };
+      const skipped = isSkipped(state.monthKey, b.id);
+
+      return {
+        bill: b,
+        dueDate,
+        dueISO,
+        dueAmount: Number(b.amount || 0),
+        paid,
+        paidAtISO: info ? info.paidAtISO : null,
+        amountPaid: info ? Number(info.amountPaid ?? info.amountDue ?? b.amount ?? 0) : null,
+        skipped,
+        note
+      };
     });
+
     rows.sort((a,b) => a.dueDate - b.dueDate || a.bill.provider.localeCompare(b.bill.provider));
     return rows;
   }
 
   function updateStats(rows){
-    const totalDue = rows.reduce((s,r)=> s + Number(r.bill.amount||0), 0);
-    const totalPaid = rows.filter(r=>r.paid).reduce((s,r)=> s + Number(r.bill.amount||0), 0);
-    const totalUnpaid = totalDue - totalPaid;
+    const dueRows = rows.filter(r => !r.skipped);
+    const totalDue = dueRows.reduce((s,r)=> s + Number(r.dueAmount||0), 0);
+    const totalPaid = dueRows.filter(r=>r.paid).reduce((s,r)=> s + Number(r.amountPaid ?? r.dueAmount ?? 0), 0);
+    const totalUnpaid = dueRows.filter(r=>!r.paid).reduce((s,r)=> s + Number(r.dueAmount||0), 0);
+
     el.statDue.textContent = fmtMoney(totalDue);
     el.statPaid.textContent = fmtMoney(totalPaid);
     el.statUnpaid.textContent = fmtMoney(totalUnpaid);
   }
 
   function renderCategoryTotals(rows){
+    const dueRows = rows.filter(r => !r.skipped);
     const byCat = new Map();
-    rows.forEach(r => {
+    dueRows.forEach(r => {
       const cat = (r.bill.category || "Other").trim() || "Other";
-      byCat.set(cat, (byCat.get(cat) || 0) + Number(r.bill.amount || 0));
+      byCat.set(cat, (byCat.get(cat) || 0) + Number(r.dueAmount || 0));
     });
 
     const items = Array.from(byCat.entries())
@@ -465,6 +502,43 @@
     return "Paid on time";
   }
 
+  function promptAmountPaid(defaultAmt){
+    const raw = prompt("Amount paid (leave blank to use the bill amount)", String(Number(defaultAmt || 0).toFixed(2)));
+    if(raw === null) return null; // cancelled
+    const trimmed = raw.trim();
+    if(!trimmed) return Number(defaultAmt || 0);
+    const num = Number(trimmed);
+    if(!Number.isFinite(num) || num < 0){
+      alert("Please enter a valid amount, 0 or more.");
+      return null;
+    }
+    return num;
+  }
+
+  function setPaid(monthKey, bill){
+    const k = getInstanceKey(monthKey, bill.id);
+    const due = computeDueDate(monthKey, bill.dueDay);
+    const amountPaid = promptAmountPaid(Number(bill.amount || 0));
+    if(amountPaid === null) return; // cancelled or invalid
+
+    // If it was skipped, unskip it since you paid it
+    setSkipped(monthKey, bill.id, false);
+
+    state.data.payments[k] = {
+      paidAtISO: toISODate(today()),
+      dueISO: toISODate(due),
+      amountDue: Number(bill.amount || 0),
+      amountPaid: Number(amountPaid)
+    };
+    save();
+  }
+
+  function setUnpaid(monthKey, billId){
+    const k = getInstanceKey(monthKey, billId);
+    delete state.data.payments[k];
+    save();
+  }
+
   function renderTracker(){
     const rows = buildTrackerRows();
     updateStats(rows);
@@ -473,9 +547,9 @@
     if(rows.length === 0){
       el.viewTracker.innerHTML = `
         <div class="card">
-          <div class="big">No bills yet</div>
+          <div class="big">No bills due this month</div>
           <div class="small muted" style="margin-top:6px;">
-            Go to Bills, tap Add, and create your first recurring bill.
+            If you have bills, go to Bills and make sure they are Active, and their Start Month and Frequency include this month.
           </div>
           <div class="row" style="margin-top:12px;">
             <button class="btn btnPurple" id="goBills">Go to Bills</button>
@@ -483,26 +557,40 @@
         </div>
       `;
       const btn = document.getElementById("goBills");
-      if(btn){
-        btn.addEventListener("click", () => { setTab("bills"); renderAll(); });
-      }
+      if(btn) btn.addEventListener("click", () => { setTab("bills"); renderAll(); });
       return;
     }
 
     const now = today();
+
     el.viewTracker.innerHTML = rows.map(r => {
       const dueIn = daysBetween(now, r.dueDate);
-      const overdue = !r.paid && r.dueDate < now;
-      const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
+      const overdue = !r.paid && !r.skipped && r.dueDate < now;
+      const dueSoon = !r.paid && !r.skipped && r.dueDate >= now && dueIn <= 7;
 
-      const cls = ["card", dueSoon ? "dueSoon" : "", overdue ? "overdue" : "", r.paid ? "paidFade" : ""]
-        .filter(Boolean).join(" ");
+      const cls = [
+        "card",
+        dueSoon ? "dueSoon" : "",
+        overdue ? "overdue" : "",
+        (r.paid || r.skipped) ? "paidFade" : ""
+      ].filter(Boolean).join(" ");
 
-      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
+      const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : (r.skipped ? "Skipped" : "Unpaid");
       const timing = r.paid ? paidTimingLabel(r.paidAtISO, r.dueDate) : "";
       const timingLine = timing ? `<div class="small muted">${escapeHtml(timing)}</div>` : "";
 
       const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
+
+      const freqLabel = (r.bill.frequency || "monthly").toUpperCase();
+
+      const rightAmt = r.paid
+        ? `<div class="big">${fmtMoney(r.amountPaid ?? r.dueAmount)}</div>
+           <div class="small muted">Due ${fmtMoney(r.dueAmount)}</div>`
+        : `<div class="big">${fmtMoney(r.dueAmount)}</div>`;
+
+      const skipBtn = r.paid
+        ? ""
+        : `<button class="btn ${r.skipped ? "okBtn" : ""}" data-skip="${r.bill.id}">${r.skipped ? "Unskip" : "Skip this month"}</button>`;
 
       return `
         <div class="${cls}">
@@ -510,20 +598,26 @@
             <div>
               <div class="small muted">Due ${r.dueISO}</div>
               <div class="big">${escapeHtml(r.bill.provider)}</div>
+              <div class="small muted">${escapeHtml(r.bill.category)} • ${freqLabel}</div>
             </div>
             <div class="toggle">
               <div style="text-align:right;">
-                <div class="big">${fmtMoney(r.bill.amount)}</div>
+                ${rightAmt}
                 <div class="small muted">${paidLabel}</div>
                 ${timingLine}
               </div>
-              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} data-billid="${r.bill.id}" />
+              <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} ${r.skipped ? "disabled" : ""} data-billid="${r.bill.id}" />
             </div>
           </div>
+
           <div class="row" style="margin-top:10px;">
             <div class="pill">${escapeHtml(r.bill.category)}</div>
-            <button class="btn" data-note="${r.bill.id}">Note</button>
+            <div style="display:flex; gap:8px;">
+              ${skipBtn}
+              <button class="btn" data-note="${r.bill.id}">Note</button>
+            </div>
           </div>
+
           ${noteLine}
         </div>
       `;
@@ -534,8 +628,12 @@
         const billId = e.target.getAttribute("data-billid");
         const bill = state.data.bills.find(b => b.id === billId);
         if(!bill) return;
-        if(e.target.checked) setPaid(state.monthKey, bill);
-        else setUnpaid(state.monthKey, billId);
+
+        if(e.target.checked){
+          setPaid(state.monthKey, bill);
+        }else{
+          setUnpaid(state.monthKey, billId);
+        }
         renderAll();
       });
     });
@@ -547,6 +645,15 @@
         const text = prompt("Note for this month and this bill", current);
         if(text === null) return;
         setNote(state.monthKey, billId, text);
+        renderAll();
+      });
+    });
+
+    el.viewTracker.querySelectorAll('button[data-skip]').forEach(btn => {
+      btn.addEventListener("click", () => {
+        const billId = btn.getAttribute("data-skip");
+        const currently = isSkipped(state.monthKey, billId);
+        setSkipped(state.monthKey, billId, !currently);
         renderAll();
       });
     });
@@ -567,9 +674,7 @@
       </div>
 
       ${bills.length === 0 ? `
-        <div class="card">
-          <div class="muted">No bills added yet.</div>
-        </div>
+        <div class="card"><div class="muted">No bills added yet.</div></div>
       ` : ""}
 
       ${bills.map(b => `
@@ -577,7 +682,11 @@
           <div class="row">
             <div>
               <div class="big">${escapeHtml(b.provider)}</div>
-              <div class="small muted">${escapeHtml(b.category)} · Due day ${Number(b.dueDay)} · ${fmtMoney(b.amount)}</div>
+              <div class="small muted">
+                ${escapeHtml(b.category)} • ${String(b.frequency||"monthly")} • Start ${escapeHtml(b.startMonthKey||"")}
+                <br/>
+                Due day ${Number(b.dueDay)} • ${fmtMoney(b.amount)}
+              </div>
             </div>
             <div class="toggle">
               <label class="small muted">Active</label>
@@ -586,11 +695,7 @@
           </div>
           <div class="row" style="margin-top:10px;">
             <button class="btn" data-edit="${b.id}">Edit</button>
-            <button class="btn" data-reexp="${b.id}">Re export</button>
             <button class="btn dangerBtn" data-del="${b.id}">Delete</button>
-          </div>
-          <div class="small muted" style="margin-top:8px;">
-            Calendar exported: ${b.calendarExported ? "Yes" : "No"}
           </div>
         </div>
       `).join("")}
@@ -613,18 +718,6 @@
       btn.addEventListener("click", () => editBill(btn.getAttribute("data-edit")));
     });
 
-    el.viewBills.querySelectorAll('button[data-reexp]').forEach(btn => {
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute("data-reexp");
-        const bill = state.data.bills.find(x => x.id === id);
-        if(!bill) return;
-        bill.calendarExported = false;
-        save();
-        renderAll();
-        alert("This bill will be included in the next Calendar export.");
-      });
-    });
-
     el.viewBills.querySelectorAll('button[data-del]').forEach(btn => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-del");
@@ -634,6 +727,7 @@
           state.data.bills = state.data.bills.filter(x => x.id !== id);
           for(const k of Object.keys(state.data.payments)) if(k.endsWith("|"+id)) delete state.data.payments[k];
           for(const k of Object.keys(state.data.notes)) if(k.endsWith("|"+id)) delete state.data.notes[k];
+          for(const k of Object.keys(state.data.skips)) if(k.endsWith("|"+id)) delete state.data.skips[k];
           save();
           renderAll();
         }
@@ -643,11 +737,11 @@
 
   function editBill(id){
     const isNew = !id;
-    const bill = isNew
-      ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, calendarExported:false}
+    const base = isNew
+      ? {id: uid(), category:"Subscriptions", provider:"", dueDay:1, amount:0, active:true, frequency:"monthly", startMonthKey: state.monthKey}
       : JSON.parse(JSON.stringify(state.data.bills.find(b=>b.id===id)));
 
-    if(!bill) return;
+    if(!base) return;
 
     const formHtml = `
       <div class="card">
@@ -656,29 +750,46 @@
         <div style="display:grid; gap:10px;">
           <div>
             <div class="small muted" style="margin:0 0 6px;">Provider</div>
-            <input id="fProvider" value="${escapeAttr(bill.provider)}" placeholder="Netflix" />
+            <input id="fProvider" value="${escapeAttr(base.provider)}" placeholder="Netflix" />
           </div>
+
           <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Category</div>
-              <input id="fCategory" value="${escapeAttr(bill.category)}" placeholder="Subscriptions" />
+              <input id="fCategory" value="${escapeAttr(base.category)}" placeholder="Subscriptions" />
             </div>
             <div>
               <div class="small muted" style="margin:0 0 6px;">Due day</div>
-              <input id="fDueDay" type="number" min="1" max="31" value="${Number(bill.dueDay)}" />
+              <input id="fDueDay" type="number" min="1" max="31" value="${Number(base.dueDay)}" />
             </div>
           </div>
+
           <div class="grid2">
             <div>
               <div class="small muted" style="margin:0 0 6px;">Amount</div>
-              <input id="fAmount" type="number" step="0.01" value="${Number(bill.amount)}" />
+              <input id="fAmount" type="number" step="0.01" value="${Number(base.amount)}" />
             </div>
             <div>
               <div class="small muted" style="margin:0 0 6px;">Active</div>
               <select id="fActive">
-                <option value="true" ${bill.active!==false ? "selected":""}>True</option>
-                <option value="false" ${bill.active===false ? "selected":""}>False</option>
+                <option value="true" ${base.active!==false ? "selected":""}>True</option>
+                <option value="false" ${base.active===false ? "selected":""}>False</option>
               </select>
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Frequency</div>
+              <select id="fFreq">
+                <option value="monthly" ${base.frequency==="monthly"?"selected":""}>Monthly</option>
+                <option value="quarterly" ${base.frequency==="quarterly"?"selected":""}>Quarterly</option>
+                <option value="yearly" ${base.frequency==="yearly"?"selected":""}>Yearly</option>
+              </select>
+            </div>
+            <div>
+              <div class="small muted" style="margin:0 0 6px;">Start month</div>
+              <select id="fStart"></select>
             </div>
           </div>
 
@@ -692,20 +803,30 @@
 
     el.viewBills.innerHTML = formHtml;
 
+    // Fill start month dropdown
+    const startSel = document.getElementById("fStart");
+    const keys = monthOptions();
+    startSel.innerHTML = keys.map(k => `<option value="${k}">${monthLabelFromKey(k)}</option>`).join("");
+    startSel.value = base.startMonthKey || state.monthKey;
+
     document.getElementById("cancelEdit").addEventListener("click", () => renderAll());
+
     document.getElementById("saveEdit").addEventListener("click", () => {
       const provider = document.getElementById("fProvider").value.trim();
       const category = document.getElementById("fCategory").value.trim();
       const dueDay = Number(document.getElementById("fDueDay").value);
       const amount = Number(document.getElementById("fAmount").value);
       const active = document.getElementById("fActive").value === "true";
+      const frequency = document.getElementById("fFreq").value;
+      const startMonthKey = document.getElementById("fStart").value;
 
       if(!provider){ alert("Provider is required."); return; }
       if(!category){ alert("Category is required."); return; }
       if(!Number.isFinite(dueDay) || dueDay < 1 || dueDay > 31){ alert("Due day must be 1 to 31."); return; }
       if(!Number.isFinite(amount) || amount < 0){ alert("Amount must be 0 or more."); return; }
+      if(!startMonthKey){ alert("Start month is required."); return; }
 
-      const newBill = { ...bill, provider, category, dueDay, amount, active };
+      const newBill = { ...base, provider, category, dueDay, amount, active, frequency, startMonthKey };
 
       if(isNew) state.data.bills.push(newBill);
       else{
@@ -726,7 +847,15 @@
       const bill = state.data.bills.find(b=>b.id===billId);
       const info = state.data.payments[k];
       if(!bill || !info) continue;
-      items.push({ provider: bill.provider, category: bill.category, amount: info.amount, paidAtISO: info.paidAtISO, dueISO: info.dueISO, billId });
+      items.push({
+        provider: bill.provider,
+        category: bill.category,
+        amountDue: Number(info.amountDue ?? bill.amount ?? 0),
+        amountPaid: Number(info.amountPaid ?? info.amountDue ?? bill.amount ?? 0),
+        paidAtISO: info.paidAtISO,
+        dueISO: info.dueISO,
+        billId
+      });
     }
     items.sort((a,b)=> (a.paidAtISO < b.paidAtISO ? 1 : -1) || a.provider.localeCompare(b.provider));
 
@@ -747,7 +876,8 @@
               <div class="small muted">For due date ${it.dueISO}</div>
             </div>
             <div style="text-align:right;">
-              <div class="big">${fmtMoney(it.amount)}</div>
+              <div class="big">${fmtMoney(it.amountPaid)}</div>
+              <div class="small muted">Due ${fmtMoney(it.amountDue)}</div>
               <div class="pill">${escapeHtml(it.category)}</div>
             </div>
           </div>
@@ -769,34 +899,40 @@
     });
   }
 
-  function setTab(tab){
-    state.activeTab = tab;
-    el.tabTracker.classList.toggle("active", tab === "tracker");
-    el.tabBills.classList.toggle("active", tab === "bills");
-    el.tabHistory.classList.toggle("active", tab === "history");
-
-    el.viewTracker.style.display = tab === "tracker" ? "" : "none";
-    el.viewBills.style.display = tab === "bills" ? "" : "none";
-    el.viewHistory.style.display = tab === "history" ? "" : "none";
+  // Calendar and backup live inside Settings now
+  function downloadTextFile(filename, content, mime){
+    const blob = new Blob([content], {type: mime});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
   }
 
-  function renderAll(){
-    renderMeta();
-    renderMonthSelect();
-    if(state.activeTab === "tracker") renderTracker();
-    if(state.activeTab === "bills") renderBills();
-    if(state.activeTab === "history") renderHistory();
-    if(state.activeTab !== "tracker"){
-      const rows = buildTrackerRows();
-      updateStats(rows);
-      renderCategoryTotals(rows);
-    }
+  function icsEscape(s){
+    return String(s ?? "")
+      .replace(/\\/g, "\\\\")
+      .replace(/\n/g, "\\n")
+      .replace(/,/g, "\\,")
+      .replace(/;/g, "\\;");
+  }
+
+  function formatICSDateTimeLocal(d){
+    const y = d.getFullYear();
+    const m = pad2(d.getMonth()+1);
+    const day = pad2(d.getDate());
+    const hh = pad2(d.getHours());
+    const mm = pad2(d.getMinutes());
+    const ss = pad2(d.getSeconds());
+    return `${y}${m}${day}T${hh}${mm}${ss}`;
   }
 
   function exportBillsToCalendar(){
-    const bills = activeBills().filter(b => !b.calendarExported);
+    const bills = activeBills().filter(b => billAppliesThisMonth(b, state.monthKey));
     if(bills.length === 0){
-      alert("No active bills to export.");
+      alert("No active bills for this month to export.");
       return;
     }
 
@@ -820,7 +956,7 @@
 
       const uidStr = `${b.id}@billstracker`;
       const summary = `${b.provider} due`;
-      const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}.`;
+      const desc = `${b.category}. Amount: ${fmtMoney(b.amount)}. Due day: ${b.dueDay}. Frequency: ${b.frequency || "monthly"}.`;
 
       lines.push("BEGIN:VEVENT");
       lines.push(`UID:${icsEscape(uidStr)}`);
@@ -829,6 +965,9 @@
       lines.push(`DTEND:${dtEnd}`);
       lines.push(`SUMMARY:${icsEscape(summary)}`);
       lines.push(`DESCRIPTION:${icsEscape(desc)}`);
+
+      // Keep the RRULE simple: monthly reminders on that day.
+      // Frequency logic is still handled inside the app.
       lines.push(`RRULE:FREQ=MONTHLY;BYMONTHDAY=${Number(b.dueDay)}`);
 
       lines.push("BEGIN:VALARM");
@@ -843,9 +982,6 @@
     lines.push("END:VCALENDAR");
 
     downloadTextFile("bills-reminders.ics", lines.join("\r\n"), "text/calendar;charset=utf-8");
-    bills.forEach(b => b.calendarExported = true);
-    save();
-    renderAll();
     alert("Calendar file downloaded. Open it and add the events to your calendar.");
   }
 
@@ -862,16 +998,10 @@
     const c = choice.trim();
     if(c === "1"){
       const blob = new Blob([JSON.stringify(state.data, null, 2)], {type:"application/json"});
-      const a = document.createElement("a");
       const stamp = new Date();
       const name = `bills-backup-${stamp.getFullYear()}-${pad2(stamp.getMonth()+1)}-${pad2(stamp.getDate())}.json`;
-      a.href = URL.createObjectURL(blob);
-      a.download = name;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(()=> URL.revokeObjectURL(a.href), 1500);
-      alert("Backup downloaded. Save it somewhere safe, like iCloud Drive.");
+      downloadTextFile(name, JSON.stringify(state.data, null, 2), "application/json;charset=utf-8");
+      alert("Backup downloaded. Save it somewhere safe.");
       return;
     }
 
@@ -888,7 +1018,11 @@
           if(!obj || !Array.isArray(obj.bills)) throw new Error("Invalid file");
           obj.payments ||= {};
           obj.notes ||= {};
-          obj.bills.forEach(b => { if (b.calendarExported === undefined) b.calendarExported = false; });
+          obj.skips ||= {};
+          obj.bills.forEach(b => {
+            if (!b.frequency) b.frequency = "monthly";
+            if (!b.startMonthKey) b.startMonthKey = monthKeyFromDate(today());
+          });
           state.data = obj;
           save();
           renderAll();
@@ -911,24 +1045,97 @@
     }
   }
 
+  function renderSettings(){
+    el.viewSettings.innerHTML = `
+      <div class="card">
+        <div class="big">Settings</div>
+        <div class="small muted" style="margin-top:6px;">
+          Tools and maintenance for this build.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="big">Tools</div>
+        <div class="hr"></div>
+        <div style="display:grid; gap:10px;">
+          <button class="btn btnPurple" id="btnCalExport">Export Calendar reminders</button>
+          <button class="btn" id="btnBackupRun">Backup and Import</button>
+        </div>
+        <div class="small muted" style="margin-top:10px;">
+          Calendar creates an .ics file. Backup exports and imports a JSON file.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="big">About</div>
+        <div class="hr"></div>
+        <div class="small muted">Version: ${VERSION}</div>
+        <div class="small muted">Release date: ${RELEASE_DATE}</div>
+        <div class="small muted">Developer: ${escapeHtml(DEVELOPER)}</div>
+        <div class="small muted" style="margin-top:8px;">
+          Storage key: ${escapeHtml(STORAGE_KEY)}
+        </div>
+      </div>
+    `;
+
+    document.getElementById("btnCalExport").addEventListener("click", exportBillsToCalendar);
+    document.getElementById("btnBackupRun").addEventListener("click", doBackup);
+  }
+
+  function setTab(tab){
+    state.activeTab = tab;
+
+    el.tabTracker.classList.toggle("active", tab === "tracker");
+    el.tabBills.classList.toggle("active", tab === "bills");
+    el.tabHistory.classList.toggle("active", tab === "history");
+    el.tabSettings.classList.toggle("active", tab === "settings");
+
+    el.viewTracker.style.display = tab === "tracker" ? "" : "none";
+    el.viewBills.style.display = tab === "bills" ? "" : "none";
+    el.viewHistory.style.display = tab === "history" ? "" : "none";
+    el.viewSettings.style.display = tab === "settings" ? "" : "none";
+  }
+
+  function renderAll(){
+    renderMeta();
+    renderMonthSelect();
+
+    if(state.activeTab === "tracker") renderTracker();
+    if(state.activeTab === "bills") renderBills();
+    if(state.activeTab === "history") renderHistory();
+    if(state.activeTab === "settings") renderSettings();
+
+    // Keep stats visible even when not on Tracker
+    if(state.activeTab !== "tracker"){
+      const rows = buildTrackerRows();
+      updateStats(rows);
+      renderCategoryTotals(rows);
+    }
+  }
+
   el.prevMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
     state.monthKey = monthKeyFromDate(addMonths(d, -1));
     renderAll();
   });
+
   el.nextMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
     state.monthKey = monthKeyFromDate(addMonths(d, 1));
     renderAll();
   });
-  el.monthSelect.addEventListener("change", () => { state.monthKey = el.monthSelect.value; renderAll(); });
 
-  el.btnCalendar.addEventListener("click", exportBillsToCalendar);
-  el.btnBackup.addEventListener("click", doBackup);
+  el.monthSelect.addEventListener("change", () => {
+    state.monthKey = el.monthSelect.value;
+    renderAll();
+  });
 
   el.tabTracker.addEventListener("click", () => { setTab("tracker"); renderAll(); });
   el.tabBills.addEventListener("click", () => { setTab("bills"); renderAll(); });
   el.tabHistory.addEventListener("click", () => { setTab("history"); renderAll(); });
+  el.tabSettings.addEventListener("click", () => { setTab("settings"); renderAll(); });
+
+  el.btnSettings.addEventListener("click", () => { setTab("settings"); renderAll(); });
 
   renderAll();
 })();
