@@ -28,8 +28,10 @@
       color:var(--text);
     }
     .app{ max-width:520px; margin:0 auto; padding:18px 14px 22px; }
-    .top{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .top{ display:flex; gap:10px; align-items:flex-start; justify-content:space-between; margin-bottom:10px; }
     .title{ font-size:20px; font-weight:700; letter-spacing:0.2px; }
+    .metaLine{ margin-top:4px; font-size:12px; color:var(--muted); line-height:1.25; }
+
     .monthRow{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin:10px 0 10px; }
     .btn{
       border:1px solid var(--line);
@@ -69,6 +71,7 @@
     }
     .stat .k{ font-size:12px; color:var(--muted); }
     .stat .v{ font-size:16px; font-weight:800; margin-top:4px; }
+
     .seg{
       display:flex;
       gap:8px;
@@ -93,6 +96,7 @@
       color:var(--text);
       border:1px solid rgba(181,140,232,0.35);
     }
+
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
       border:1px solid var(--line);
@@ -114,6 +118,7 @@
     .muted{ color:var(--muted); }
     .big{ font-size:16px; font-weight:900; }
     .small{ font-size:12px; }
+
     .dueSoon{
       border-color:rgba(181,140,232,0.55);
       background:linear-gradient(180deg, rgba(181,140,232,0.18), rgba(255,255,255,0.03));
@@ -122,7 +127,8 @@
       border-color:rgba(255,92,108,0.55);
       background:linear-gradient(180deg, rgba(255,92,108,0.16), rgba(255,255,255,0.03));
     }
-    .paidFade{ opacity:0.72; }
+    .paidFade{ opacity:0.75; }
+
     .toggle{
       display:flex;
       gap:10px;
@@ -132,6 +138,7 @@
     }
     .checkbox{ width:22px; height:22px; accent-color:var(--purple); }
     .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
     .dangerBtn{
       border:1px solid rgba(255,92,108,0.45);
       background:rgba(255,92,108,0.16);
@@ -140,6 +147,7 @@
       border:1px solid rgba(43,213,118,0.45);
       background:rgba(43,213,118,0.14);
     }
+
     .footerNote{
       margin-top:14px;
       font-size:12px;
@@ -148,12 +156,33 @@
     }
     .hr{ height:1px; background:var(--line); margin:10px 0; }
     a{ color:var(--purple); text-decoration:none; }
+
+    .catTotals{
+      margin-bottom: 8px;
+      display:grid;
+      gap:8px;
+    }
+    .catRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,0.04);
+    }
+    .catName{ font-weight:800; }
+    .catAmt{ font-weight:900; }
   </style>
 </head>
 <body>
   <div class="app">
     <div class="top">
-      <div class="title">Bills Tracker</div>
+      <div>
+        <div class="title">Bills Tracker</div>
+        <div class="metaLine" id="metaLine">Loading…</div>
+      </div>
       <div style="display:flex; gap:10px;">
         <button class="btn" id="btnCalendar">Calendar</button>
         <button class="btn btnPurple" id="btnBackup">Backup</button>
@@ -172,6 +201,8 @@
       <div class="stat"><div class="k">Unpaid</div><div class="v" id="statUnpaid">$0.00</div></div>
     </div>
 
+    <div id="catTotals" class="catTotals"></div>
+
     <div class="seg">
       <button id="tabTracker" class="active">Tracker</button>
       <button id="tabBills">Bills</button>
@@ -189,7 +220,9 @@
 
 <script>
 (function(){
-  const STORAGE_KEY = "billTrackerV1";
+  const VERSION = "1.1";
+  const DEVELOPER = "Manny Ch.";
+  const STORAGE_KEY = "billTrackerBlankV1_1";
 
   const today = () => {
     const d = new Date();
@@ -200,12 +233,18 @@
   const fmtMoney = (n) => new Intl.NumberFormat(undefined, {style:"currency", currency:"USD"}).format(Number(n || 0));
   const pad2 = (n) => String(n).padStart(2,"0");
   const toISODate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+  const fromISODate = (s) => {
+    const [y,m,d] = String(s).split("-").map(Number);
+    const dt = new Date(y, m-1, d);
+    dt.setHours(0,0,0,0);
+    return dt;
+  };
 
   const monthKeyFromDate = (d) => `${d.getFullYear()}-${pad2(d.getMonth()+1)}`;
   const monthLabelFromKey = (key) => {
     const [y,m] = key.split("-").map(Number);
     const dt = new Date(y, m-1, 1);
-    return dt.toLocaleString(undefined, {month:"short", year:"numeric"});
+    return dt.toLocaleString(undefined, {month:"long", year:"numeric"});
   };
   const addMonths = (d, delta) => {
     const dt = new Date(d.getFullYear(), d.getMonth()+delta, 1);
@@ -233,13 +272,12 @@
 
   function defaultData(){
     return {
-      bills: [],            // BLANK BUILD
-      payments: {},         // `${monthKey}|${billId}` -> { paidAtISO, dueISO, amount }
-      notes: {}             // `${monthKey}|${billId}` -> "text"
+      bills: [],
+      payments: {},
+      notes: {}
     };
   }
 
-  // Calendar helpers (MUST be inside the IIFE)
   function downloadTextFile(filename, content, mime){
     const blob = new Blob([content], {type: mime});
     const a = document.createElement("a");
@@ -295,12 +333,14 @@
   }
 
   const el = {
+    metaLine: document.getElementById("metaLine"),
     monthSelect: document.getElementById("monthSelect"),
     prevMonth: document.getElementById("prevMonth"),
     nextMonth: document.getElementById("nextMonth"),
     statDue: document.getElementById("statDue"),
     statPaid: document.getElementById("statPaid"),
     statUnpaid: document.getElementById("statUnpaid"),
+    catTotals: document.getElementById("catTotals"),
     tabTracker: document.getElementById("tabTracker"),
     tabBills: document.getElementById("tabBills"),
     tabHistory: document.getElementById("tabHistory"),
@@ -329,6 +369,10 @@
       cur = addMonths(cur, 1);
     }
     return keys;
+  }
+
+  function renderMeta(){
+    el.metaLine.textContent = `Viewing ${monthLabelFromKey(state.monthKey)} • v${VERSION} • Dev ${DEVELOPER}`;
   }
 
   function renderMonthSelect(){
@@ -386,19 +430,62 @@
     el.statUnpaid.textContent = fmtMoney(totalUnpaid);
   }
 
+  function renderCategoryTotals(rows){
+    const byCat = new Map();
+    rows.forEach(r => {
+      const cat = (r.bill.category || "Other").trim() || "Other";
+      byCat.set(cat, (byCat.get(cat) || 0) + Number(r.bill.amount || 0));
+    });
+
+    const items = Array.from(byCat.entries())
+      .sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+
+    if(items.length === 0){
+      el.catTotals.innerHTML = "";
+      return;
+    }
+
+    el.catTotals.innerHTML = items.map(([cat, amt]) => `
+      <div class="catRow">
+        <div class="catName">${escapeHtml(cat)}</div>
+        <div class="catAmt">${fmtMoney(amt)}</div>
+      </div>
+    `).join("");
+  }
+
+  function paidTimingLabel(paidAtISO, dueDate){
+    if(!paidAtISO) return "";
+    const paidDate = fromISODate(paidAtISO);
+    const diff = daysBetween(paidDate, dueDate); // due - paid
+    if(diff > 0) return `Paid ${diff} day${diff===1?"":"s"} early`;
+    if(diff < 0){
+      const late = Math.abs(diff);
+      return `Paid ${late} day${late===1?"":"s"} late`;
+    }
+    return "Paid on time";
+  }
+
   function renderTracker(){
     const rows = buildTrackerRows();
     updateStats(rows);
+    renderCategoryTotals(rows);
 
     if(rows.length === 0){
       el.viewTracker.innerHTML = `
         <div class="card">
           <div class="big">No bills yet</div>
           <div class="small muted" style="margin-top:6px;">
-            Tap <b>Bills</b> then <b>Add</b> to create your first recurring bill.
+            Go to Bills, tap Add, and create your first recurring bill.
+          </div>
+          <div class="row" style="margin-top:12px;">
+            <button class="btn btnPurple" id="goBills">Go to Bills</button>
           </div>
         </div>
       `;
+      const btn = document.getElementById("goBills");
+      if(btn){
+        btn.addEventListener("click", () => { setTab("bills"); renderAll(); });
+      }
       return;
     }
 
@@ -407,8 +494,14 @@
       const dueIn = daysBetween(now, r.dueDate);
       const overdue = !r.paid && r.dueDate < now;
       const dueSoon = !r.paid && r.dueDate >= now && dueIn <= 7;
-      const cls = ["card", dueSoon ? "dueSoon" : "", overdue ? "overdue" : "", r.paid ? "paidFade" : ""].filter(Boolean).join(" ");
+
+      const cls = ["card", dueSoon ? "dueSoon" : "", overdue ? "overdue" : "", r.paid ? "paidFade" : ""]
+        .filter(Boolean).join(" ");
+
       const paidLabel = r.paid ? `Paid ${r.paidAtISO}` : "Unpaid";
+      const timing = r.paid ? paidTimingLabel(r.paidAtISO, r.dueDate) : "";
+      const timingLine = timing ? `<div class="small muted">${escapeHtml(timing)}</div>` : "";
+
       const noteLine = r.note ? `<div class="small muted" style="margin-top:6px;">Note: ${escapeHtml(r.note)}</div>` : "";
 
       return `
@@ -422,6 +515,7 @@
               <div style="text-align:right;">
                 <div class="big">${fmtMoney(r.bill.amount)}</div>
                 <div class="small muted">${paidLabel}</div>
+                ${timingLine}
               </div>
               <input class="checkbox" type="checkbox" ${r.paid ? "checked" : ""} data-billid="${r.bill.id}" />
             </div>
@@ -687,6 +781,7 @@
   }
 
   function renderAll(){
+    renderMeta();
     renderMonthSelect();
     if(state.activeTab === "tracker") renderTracker();
     if(state.activeTab === "bills") renderBills();
@@ -694,6 +789,7 @@
     if(state.activeTab !== "tracker"){
       const rows = buildTrackerRows();
       updateStats(rows);
+      renderCategoryTotals(rows);
     }
   }
 
@@ -806,7 +902,7 @@
     }
 
     if(c === "3"){
-      if(confirm("This wipes all data in this browser. Continue?")){
+      if(confirm("This wipes all data in this browser for this build. Continue?")){
         state.data = defaultData();
         save();
         renderAll();
@@ -815,7 +911,6 @@
     }
   }
 
-  // Wire events
   el.prevMonth.addEventListener("click", () => {
     const d = firstOfMonthFromKey(state.monthKey);
     state.monthKey = monthKeyFromDate(addMonths(d, -1));
@@ -835,7 +930,6 @@
   el.tabBills.addEventListener("click", () => { setTab("bills"); renderAll(); });
   el.tabHistory.addEventListener("click", () => { setTab("history"); renderAll(); });
 
-  // Initial
   renderAll();
 })();
 </script>
